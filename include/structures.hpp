@@ -48,11 +48,18 @@ private:
 // ---------------------------------------------------------------------------
 // Baseline 2: static B-tree with B keys per node.
 //
-// B = 8 gives a 64-byte node, exactly one cache line. This is the structure
-// that actually wins in practice, and it wins for a reason the fusion tree
-// cannot exploit: it moves less memory per level of descent.
+// B = 8 gives 64 bytes of keys. The whole node (keys + child indices + count)
+// is 112 bytes, so a node spans two cache lines, not one. The fusion node is
+// 184 bytes (about three lines): the two trees share a shape but not a
+// memory footprint.
+//
+// Branchless = false: the within-node scan stops at the first key >= q. That
+//   is one data-dependent branch per key examined, which random queries
+//   mispredict.
+// Branchless = true:  every slot is compared and the results summed. Fixed
+//   trip count, no data-dependent branch. This is the stronger baseline.
 // ---------------------------------------------------------------------------
-template <int B = 8>
+template <int B = 8, bool Branchless = false>
 class BTree {
 public:
     void build(const std::vector<u64>& sorted) {
@@ -68,7 +75,11 @@ public:
         while (idx >= 0) {
             const Node& nd = nodes_[idx];
             int r = 0;
-            while (r < nd.n && nd.key[r] < q) ++r;   // linear scan, vectorises
+            if constexpr (Branchless) {
+                for (int i = 0; i < B; ++i) r += (i < nd.n) & (nd.key[i] < q);
+            } else {
+                while (r < nd.n && nd.key[r] < q) ++r;   // early-exit scan
+            }
             if (r > 0) { out = nd.key[r - 1]; found = true; }
             idx = nd.leaf ? -1 : nd.child[r];
         }

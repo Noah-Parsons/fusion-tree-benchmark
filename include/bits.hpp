@@ -57,8 +57,8 @@ inline int popcount(u64 x) {
 //
 // This is the NAIVE sketch: it costs one iteration per position, so it is
 // O(r), not O(1). It is correct, it is easy to check, and it is the version
-// you build first. The O(1) multiplication-based version lives in
-// sketch_mult.hpp and is validated against this one.
+// you build first. The O(1) versions (PEXT, and the multiplier search) live
+// in sketch_fast.hpp; `make test-loop` runs the tests against this one.
 // ---------------------------------------------------------------------------
 inline u64 extract_bits_naive(u64 x, const int* positions, int r) {
     u64 s = 0;

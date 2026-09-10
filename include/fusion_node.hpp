@@ -83,7 +83,7 @@ public:
     u64 key(int i) const { return keys_[i]; }
 
     // The sketch of a key: its bits at the important positions, concatenated.
-    // O(r) as written. See sketch_mult.hpp for the O(1) version.
+    // O(r) with the loop; O(1) with PEXT. See sketch_fast.hpp.
     u64 sketch(u64 x) const {
 #ifdef FT_USE_PEXT
         return sketch_pext(x, mask_);      // one instruction, O(1)

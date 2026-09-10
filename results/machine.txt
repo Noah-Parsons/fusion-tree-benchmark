@@ -1,0 +1,19 @@
+Machine record — written 2026-09-10 (the file created on 2026-09-09 was empty).
+The 2026-09-09 runs (smoke, unpinned, lab/raw) were made on this same laptop.
+
+System      : Lenovo 83F3 (laptop), Windows 11 Home 10.0.26200
+CPU         : Intel Core Ultra 7 255HX (Arrow Lake-HX), GenuineIntel
+Topology    : 20 cores, 20 logical processors, no SMT
+              HYBRID: 8 performance cores + 12 efficiency cores
+              P-cores (EfficiencyClass 1): logical CPUs 0,1,6,7,8,9,18,19
+              E-cores (EfficiencyClass 0): logical CPUs 2,3,4,5,10-17
+              (read with GetSystemCpuSetInformation)
+Base clock  : 2.4 GHz reported (MaxClockSpeed); turbo on, not controllable here
+Caches      : L2 36 MB total (Win32 L2CacheSize), L3 30 MB shared
+RAM         : 32 GB (2 x 16 GB) DDR5-5600
+Power plan  : Balanced
+ISA         : BMI2 yes (PEXT native), POPCNT, LZCNT, AVX2 yes, AVX-512 NO
+Compiler    : g++ (Rev5, Built by MSYS2 project) 16.1.0, ucrt64 environment
+              -march=native resolves to arrowlake-s; clang++ not installed
+Build flags : -O3 -std=c++20 -march=native -mbmi2 -DFT_USE_PEXT -static
+Counters    : no perf on Windows; WSL2 Ubuntu installed but not yet tried

@@ -37,6 +37,7 @@ int main() {
 
         SortedArray sa;   sa.build(a);
         BTree<8> bt;      bt.build(a);
+        BTree<8, true> bb; bb.build(a);
         FusionTree<8> ftree; ftree.build(a);
 
         for (int i = 0; i < 4000; ++i) {
@@ -63,6 +64,16 @@ int main() {
             if (h2 != hw || (hw && got != want)) {
                 ++failures;
                 if (failures < 5) std::printf("BTree mismatch q=%llu got=%llu want=%llu\n",
+                                              (unsigned long long)q, (unsigned long long)got,
+                                              (unsigned long long)want);
+            }
+
+            got = 0;
+            bool h4 = bb.predecessor(q, got);
+            ++checks;
+            if (h4 != hw || (hw && got != want)) {
+                ++failures;
+                if (failures < 5) std::printf("BTree(branchless) mismatch q=%llu got=%llu want=%llu\n",
                                               (unsigned long long)q, (unsigned long long)got,
                                               (unsigned long long)want);
             }
