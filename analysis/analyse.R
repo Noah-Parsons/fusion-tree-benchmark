@@ -17,6 +17,7 @@ suppressPackageStartupMessages(library(ggplot2))
 args   <- commandArgs(trailingOnly = TRUE)
 infile <- if (length(args) >= 1) args[1] else "results/timing_raw.csv"
 tag    <- if (length(args) >= 2) paste0("_", args[2]) else ""
+label  <- if (length(args) >= 2) sprintf(" (%s)", args[2]) else ""
 dir.create("figures", showWarnings = FALSE)
 set.seed(20260910)
 cat(sprintf("Input: %s\n", infile))
@@ -63,7 +64,7 @@ p1 <- ggplot(summary_df, aes(x = n, y = median_ns, colour = structure)) +
   scale_x_log10() + scale_y_log10() +
   labs(x = "number of stored keys (log scale)",
        y = "nanoseconds per predecessor query (log scale)",
-       title = sprintf("Predecessor query cost%s", tag),
+       title = sprintf("Predecessor query cost%s", label),
        subtitle = "median of repetitions; bars show interquartile range") +
   theme_minimal(base_size = 11)
 ggsave(sprintf("figures/timing%s.png", tag), p1, width = 7, height = 4.5, dpi = 300)
@@ -99,7 +100,7 @@ p2 <- ggplot(ratios, aes(x = n, y = ratio, colour = baseline, fill = baseline)) 
   scale_x_log10() + scale_y_log10() +
   labs(x = "number of stored keys (log scale)",
        y = "fusion tree time / baseline time (log scale)",
-       title = sprintf("Relative cost%s", tag),
+       title = sprintf("Relative cost%s", label),
        subtitle = "band: bootstrap 95% interval; below the dashed line the fusion tree wins") +
   theme_minimal(base_size = 11)
 ggsave(sprintf("figures/ratio%s.png", tag), p2, width = 7, height = 4.5, dpi = 300)

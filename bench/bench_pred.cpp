@@ -35,7 +35,7 @@
 //   structure,n,rep,ns_per_query,checksum
 // Configuration is printed to stderr.
 //
-// Run:   ./build/bench_pred [reps=15] [max_log=22] [cpu=-1] [tput|lat]
+// Run:   ./build/bench_pred [reps=15] [max_log=22] [cpu=-1] [tput|lat] [shuffled|blocked]
 #include "structures.hpp"
 #include <algorithm>
 #include <array>
@@ -121,6 +121,7 @@ int main(int argc, char** argv) {
     int max_log = (argc > 2) ? std::atoi(argv[2]) : 22;
     int cpu     = (argc > 3) ? std::atoi(argv[3]) : -1;
     bool latency = (argc > 4) && std::strcmp(argv[4], "lat") == 0;
+    bool blocked = (argc > 5) && std::strcmp(argv[5], "blocked") == 0;
     std::size_t nq = 1u << 16;
 
     bool pinned = cpu >= 0 && pin_to_cpu(cpu);
@@ -130,8 +131,9 @@ int main(int argc, char** argv) {
 #else
     const char* sketch = "loop";
 #endif
-    std::fprintf(stderr, "mode=%s cpu=%d pinned=%d sketch=%s reps=%d max_log=%d\n",
-                 latency ? "lat" : "tput", cpu, pinned ? 1 : 0, sketch, reps, max_log);
+    std::fprintf(stderr, "mode=%s order=%s cpu=%d pinned=%d sketch=%s reps=%d max_log=%d\n",
+                 latency ? "lat" : "tput", blocked ? "blocked" : "shuffled",
+                 cpu, pinned ? 1 : 0, sketch, reps, max_log);
 
     std::mt19937_64 rng(20260909);
     std::mt19937 order_rng(12345);
@@ -153,10 +155,22 @@ int main(int argc, char** argv) {
 
         warm(sa, queries); warm(bt, queries); warm(bb, queries); warm(ftree, queries);
 
+        // shuffled: every repetition runs the four structures in a fresh
+        //   random order (default).
+        // blocked:  all repetitions of one structure, then the next — the
+        //   original design, in which each structure re-reads its own data.
+        std::vector<std::pair<int, int>> plan;   // (rep, structure)
         std::array<int, 4> order = {0, 1, 2, 3};
-        for (int rep = 0; rep < reps; ++rep) {
-            std::shuffle(order.begin(), order.end(), order_rng);
-            for (int which : order) {
+        if (blocked) {
+            for (int which : order) for (int rep = 0; rep < reps; ++rep) plan.push_back({rep, which});
+        } else {
+            for (int rep = 0; rep < reps; ++rep) {
+                std::shuffle(order.begin(), order.end(), order_rng);
+                for (int which : order) plan.push_back({rep, which});
+            }
+        }
+        for (auto [rep, which] : plan) {
+            {
                 u64 cs = 0;
                 double ns = 0;
                 switch (which) {
