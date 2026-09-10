@@ -1,0 +1,15 @@
+node,keys,mode,ns,cycles
+btree_scan_early_exit,8,tput,7.806,38.9
+btree_scan_early_exit,8,lat,7.428,37.0
+btree_scan_branchfree,8,tput,2.155,10.7
+btree_scan_branchfree,8,lat,8.002,39.9
+btree_scan_branchfree,16,tput,4.376,21.8
+btree_scan_branchfree,16,lat,9.229,46.0
+fusion_original,8,tput,8.875,44.2
+fusion_original,8,lat,11.963,59.6
+fusion_branchfree,8,tput,7.581,37.8
+fusion_branchfree,8,lat,12.262,61.1
+fusion_compact,8,tput,8.282,41.3
+fusion_compact,8,lat,11.981,59.7
+fusion_wide_avx2,16,tput,8.795,43.8
+fusion_wide_avx2,16,lat,17.017,84.8

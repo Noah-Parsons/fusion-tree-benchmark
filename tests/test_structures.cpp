@@ -1,9 +1,9 @@
-// test_structures.cpp — differential test of the three full structures.
+// test_structures.cpp — differential test of every full structure.
 //
 // Oracle: std::lower_bound over the same sorted vector. Every structure must
 // agree with it on every query, or the run fails.
 //
-// Build: g++ -O2 -std=c++20 -Iinclude tests/test_structures.cpp -o build/test_structures
+// Build: make test
 #include "structures.hpp"
 #include <algorithm>
 #include <cstdio>
@@ -19,9 +19,28 @@ static bool oracle_pred(const std::vector<u64>& a, u64 q, u64& out) {
     return true;
 }
 
+struct Tally { long long checks = 0, failures = 0; };
+
+template <typename S>
+static void check(const char* name, const S& st, const std::vector<u64>& a,
+                  const std::vector<u64>& qs, Tally& t) {
+    for (u64 q : qs) {
+        u64 want = 0, got = 0;
+        bool hw = oracle_pred(a, q, want);
+        bool h = st.predecessor(q, got);
+        ++t.checks;
+        if (h != hw || (hw && got != want)) {
+            ++t.failures;
+            if (t.failures < 8)
+                std::printf("%s mismatch n=%zu q=%llu got=%llu want=%llu\n", name, a.size(),
+                            (unsigned long long)q, (unsigned long long)got, (unsigned long long)want);
+        }
+    }
+}
+
 int main() {
     std::mt19937_64 rng(20260909);
-    long long checks = 0, failures = 0;
+    Tally t;
 
     for (int trial = 0; trial < 300; ++trial) {
         std::size_t n = 1 + rng() % 5000;
@@ -35,60 +54,26 @@ int main() {
         }
         std::vector<u64> a(s.begin(), s.end());
 
-        SortedArray sa;   sa.build(a);
-        BTree<8> bt;      bt.build(a);
-        BTree<8, true> bb; bb.build(a);
-        FusionTree<8> ftree; ftree.build(a);
-
+        std::vector<u64> qs(4000);
         for (int i = 0; i < 4000; ++i) {
-            u64 q;
             int pick = i % 4;
-            if (pick == 0) q = a[rng() % a.size()];
-            else if (pick == 1) q = a[rng() % a.size()] + 1;
-            else if (pick == 2) { q = a[rng() % a.size()]; if (q) --q; }
-            else q = rng();
-
-            u64 want = 0, got = 0;
-            bool hw = oracle_pred(a, q, want);
-
-            bool h1 = sa.predecessor(q, got);
-            ++checks;
-            if (h1 != hw || (hw && got != want)) {
-                ++failures;
-                if (failures < 5) std::printf("SortedArray mismatch q=%llu\n", (unsigned long long)q);
-            }
-
-            got = 0;
-            bool h2 = bt.predecessor(q, got);
-            ++checks;
-            if (h2 != hw || (hw && got != want)) {
-                ++failures;
-                if (failures < 5) std::printf("BTree mismatch q=%llu got=%llu want=%llu\n",
-                                              (unsigned long long)q, (unsigned long long)got,
-                                              (unsigned long long)want);
-            }
-
-            got = 0;
-            bool h4 = bb.predecessor(q, got);
-            ++checks;
-            if (h4 != hw || (hw && got != want)) {
-                ++failures;
-                if (failures < 5) std::printf("BTree(branchless) mismatch q=%llu got=%llu want=%llu\n",
-                                              (unsigned long long)q, (unsigned long long)got,
-                                              (unsigned long long)want);
-            }
-
-            got = 0;
-            bool h3 = ftree.predecessor(q, got);
-            ++checks;
-            if (h3 != hw || (hw && got != want)) {
-                ++failures;
-                if (failures < 5) std::printf("FusionTree mismatch n=%zu q=%llu got=%llu want=%llu\n",
-                                              n, (unsigned long long)q, (unsigned long long)got,
-                                              (unsigned long long)want);
-            }
+            if (pick == 0) qs[i] = a[rng() % a.size()];
+            else if (pick == 1) qs[i] = a[rng() % a.size()] + 1;
+            else if (pick == 2) { qs[i] = a[rng() % a.size()]; if (qs[i]) --qs[i]; }
+            else qs[i] = rng();
         }
+
+        SortedArray sa;   sa.build(a);   check("SortedArray", sa, a, qs, t);
+        BTree8 b1;        b1.build(a);   check("btree8", b1, a, qs, t);
+        BTree8BL b2;      b2.build(a);   check("btree8_bl", b2, a, qs, t);
+        BTree8A64 b3;     b3.build(a);   check("btree8_a64", b3, a, qs, t);
+        BTree8BLA64 b4;   b4.build(a);   check("btree8_bl_a64", b4, a, qs, t);
+        BTree16BLA64 b5;  b5.build(a);   check("btree16_bl_a64", b5, a, qs, t);
+        Fusion8 f1;       f1.build(a);   check("fusion8", f1, a, qs, t);
+        Fusion8BF f2;     f2.build(a);   check("fusion8_bf", f2, a, qs, t);
+        Fusion8C f3;      f3.build(a);   check("fusion8_c", f3, a, qs, t);
+        Fusion16W f4;     f4.build(a);   check("fusion16_w", f4, a, qs, t);
     }
-    std::printf("checks=%lld failures=%lld\n", checks, failures);
-    return failures == 0 ? 0 : 1;
+    std::printf("checks=%lld failures=%lld\n", t.checks, t.failures);
+    return t.failures == 0 ? 0 : 1;
 }

@@ -18,6 +18,8 @@ Three conventions:
 
 The companion code tree accompanies this manual. Everything in it has been compiled and run; the correctness tests pass 5.3 million checks with zero failures, and the timing figures quoted in Part X are real measurements, not illustrations.
 
+> **Updated 10–11 September 2026.** The code tree has grown since this manual was written: three more fusion node types (branch-free, compact, 256-bit), four more B-tree variants, and tools for Experiments 3 and 4. The tests now run 8,483,288 node checks and 12,000,000 structure checks, all passing under both g++ and clang. Corrections to this manual are marked **[Correction]** where they occur. The work logs in the repository record what changed and why.
+
 ---
 
 ## Part 0 — What you are doing, in one page
@@ -233,7 +235,7 @@ A modern CPU core sits at the top of a pyramid of increasingly large, increasing
 
 Memory does not move one byte at a time. It moves in **cache lines**, almost universally 64 bytes — which is exactly eight 64-bit keys. Touching one key drags its seven neighbours along at no extra cost.
 
-> **WHY this single fact decides your experiment.** A B-tree node holding 8 keys is one cache line: one memory transaction gives you all eight comparisons. A fusion node holding 8 keys must fetch its keys *and* its packed sketch word *and* its important-bit metadata. It does more arithmetic to save comparisons — but comparisons were never the expensive part. Memory traffic was. The fusion tree optimises the wrong resource, and it optimises it against a model that could not see the right one, because the word RAM was formalised before the memory wall became the dominant cost in computing.
+> **WHY this single fact decides your experiment.** A B-tree node holding 8 keys is one cache line: one memory transaction gives you all eight comparisons. **[Correction]** The *keys* are one cache line; with its child indices the whole node in this code tree is 112 bytes. A fusion node holding 8 keys must fetch its keys *and* its packed sketch word *and* its important-bit metadata. It does more arithmetic to save comparisons — but comparisons were never the expensive part. Memory traffic was. The fusion tree optimises the wrong resource, and it optimises it against a model that could not see the right one, because the word RAM was formalised before the memory wall became the dominant cost in computing.
 
 ### II.2 Latency versus throughput
 
@@ -337,7 +339,7 @@ git add -A && git commit -m "fusion node: parallel comparison"
 make test
 ```
 
-> **CHECKPOINT 2.** You should see `checks=1720312 failures=0` and then `checks=3600000 failures=0`. If either reports failures, go to Part IX before doing anything else. Do not benchmark a structure that is not correct — the numbers will be meaningless and you will not find out until December.
+> **CHECKPOINT 2.** You should see `checks=8483288 failures=0` and then `checks=12000000 failures=0` (the counts before the node variants were added were 1720312 and 3600000). If either reports failures, go to Part IX before doing anything else. Do not benchmark a structure that is not correct — the numbers will be meaningless and you will not find out until December.
 
 ---
 
@@ -361,7 +363,7 @@ Read them in that order. Each is commented at the level of "why", not just "what
 
 **On why the tree is static.** It is built once from a sorted array and never updated. Insertion into a fusion tree requires recomputing important bits, sketches and all three packed constants for the affected node, plus B-tree-style splitting. It is perhaps 400 additional lines and it does not change the question being asked. Say so explicitly in the report's limitations section; do not let a reader think you did not notice.
 
-**On why the B-tree and the fusion tree share a shape.** They have identical node arity, identical layout, identical build procedure, identical descent loop. The *only* difference is the within-node search. This is deliberate: any measured difference is therefore attributable to the thing under study and not to some unrelated layout accident. Preserving this property is more important than making either structure marginally faster.
+**On why the B-tree and the fusion tree share a shape.** They have identical node arity, identical separators, identical build procedure, identical descent loop. **[Correction]** Their memory layouts are *not* identical: a B-tree node is 112 bytes and a fusion node 184 bytes. `FusionNodeCompact` with 64-byte alignment makes both 128 bytes; Experiment 3 uses that pair. The *only* difference is the within-node search. This is deliberate: any measured difference is therefore attributable to the thing under study and not to some unrelated layout accident. Preserving this property is more important than making either structure marginally faster.
 
 ---
 
@@ -403,7 +405,7 @@ This is where projects like this are won or lost. Naive microbenchmarking reliab
 ### What to control
 
 - **Close everything else.** A background browser tab will move your numbers more than any algorithmic difference you are trying to measure.
-- **Pin the CPU** if you can: `taskset -c 2 ./build/bench_pred` on Linux.
+- **Pin the CPU** if you can: `taskset -c 2 ./build/bench_pred` on Linux. **[Correction]** On a hybrid CPU, CPU 2 may be an *efficiency* core. On the Core Ultra 7 255HX the performance cores are logical CPUs 0, 1, 6–9, 18 and 19. The benchmark now pins itself: `make bench CPU=8`.
 - **Note whether turbo boost is on.** If the clock varies, the measurements vary. You cannot always disable it on a lab machine; you can always record it.
 - **Run both compilers.** `make CXX=g++` and `make CXX=clang++`. If they disagree substantially, that is a finding about compilers, not about algorithms, and it belongs in the report.
 - **Randomise the order** of structures across repetitions if you can. Systematic ordering can bake in cache-warming effects.
@@ -457,11 +459,15 @@ If instructions are lower but cycles are higher, the answer is the dependency ch
 
 On Windows without `perf`, use Intel VTune (free) or fall back to Valgrind's `cachegrind`, which simulates rather than measures — usable, but say so.
 
+> **[Update]** On the project laptop, WSL2 exposes no hardware performance counters (no `cpu` event source), and VTune is not installed. Experiment 3 was therefore done in three parts: `make node-lat` times one node search in cycles with everything in L1 (the dependency chain of Part II.2); `make traffic` counts the cache lines each query touches and runs them through a model of the cache hierarchy (like cachegrind, data only); and the timing campaign includes ablations that remove one mechanism at a time (branch-free rank, equal-footprint nodes).
+
 ### Experiment 4 — Does a wider word help?
 
 **Question.** The whole limit is *K*² ≤ *w*. Modern CPUs have 512-bit vector registers. What if *w* = 512?
 
 **Method.** Reimplement the parallel comparison over an AVX-512 register (or 256-bit AVX2, more widely available) instead of a scalar word. This permits *K* = 22 at *w* = 512. Measure whether the ratio moves, and by how much.
+
+> **[Update]** The project laptop has AVX2 but no AVX-512, so Experiment 4 uses *w* = 256 and *K* = 16 (`include/fusion_node_wide.hpp`, structure `fusion16_w`), compared against a 16-key B-tree (`btree16_bl_a64`). `make spread` now also asks whether the classical multiplication sketch fits in 256 bits.
 
 **Why this is the best use of your remaining time.** It converts a negative result into a quantitative statement about hardware: *"the fusion tree would need a word width of at least X bits to be competitive, which is Y times wider than anything that exists."* That is a considerably better thing to hand a reader than a second half-finished data structure. Treat it as optional — it is the first thing to cut if the schedule slips.
 

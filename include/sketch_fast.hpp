@@ -69,27 +69,24 @@ struct Multiplier {
 // nothing carries and nothing is destroyed.
 //
 // Chosen greedily: take the smallest shift that does not collide with
-// anything already placed.
+// anything already placed. A candidate's own cross terms pos[i] + cand
+// cannot collide with each other, because the positions are distinct, so
+// only collisions with earlier landings need checking. The landings are
+// kept in a bitset, so each candidate costs r lookups; with a list it cost
+// r times the number of landings, which is too slow at r = 15.
 inline Multiplier find_multiplier(const int* pos, int r) {
     Multiplier res;
     if (r == 0) { res.ok = true; return res; }
-    std::vector<int> used;                 // every landing position so far
+    constexpr int LIMIT = 4096;
+    std::vector<bool> used(LIMIT + W, false);   // every landing position so far
     res.m.assign(r, 0);
     for (int t = 0; t < r; ++t) {
-        for (int cand = 0; cand < 4096; ++cand) {
+        for (int cand = 0; cand < LIMIT; ++cand) {
             bool clash = false;
-            // Candidate must not make any cross term collide.
-            for (int i = 0; i < r && !clash; ++i)
-                for (int u : used)
-                    if (pos[i] + cand == u) { clash = true; break; }
-            if (clash) continue;
-            // Also must not collide within its own new set of cross terms.
-            for (int i = 0; i < r && !clash; ++i)
-                for (int j = i + 1; j < r; ++j)
-                    if (pos[i] + cand == pos[j] + cand) { clash = true; break; }
+            for (int i = 0; i < r && !clash; ++i) clash = used[pos[i] + cand];
             if (clash) continue;
             res.m[t] = cand;
-            for (int i = 0; i < r; ++i) used.push_back(pos[i] + cand);
+            for (int i = 0; i < r; ++i) used[pos[i] + cand] = true;
             break;
         }
     }

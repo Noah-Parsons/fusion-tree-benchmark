@@ -150,8 +150,11 @@ if (file.exists("results/spread.csv")) {
   # Whether K fields fit depends on the node size K, not on r, so report it
   # per K as well.
   cat("\nShare of key sets whose K fields fit in one word, by node size K:\n")
+  has256 <- "fields_fit256" %in% names(s)
   for (k in sort(unique(s$k))) {
-    cat(sprintf("  K=%d  %5.1f%%\n", k, 100 * mean(s$fields_fit[s$k == k])))
+    cat(sprintf("  K=%2d  64-bit word %5.1f%%", k, 100 * mean(s$fields_fit[s$k == k])))
+    if (has256) cat(sprintf("   256-bit word %5.1f%%", 100 * mean(s$fields_fit256[s$k == k])))
+    cat(sprintf("   median window %3.0f bits\n", median(s$spread[s$k == k])))
   }
 }
 

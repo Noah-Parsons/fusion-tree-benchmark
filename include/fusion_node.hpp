@@ -31,7 +31,48 @@
 
 namespace ft {
 
-template <int K = 8>
+// ---------------------------------------------------------------------------
+// The branch-free rank, shared by every branch-free node type.
+//
+// Same algorithm as FusionNode::rank below, rearranged so that no branch
+// depends on the query:
+//
+//   * the two neighbouring candidates are clamped into range instead of
+//     skipped;
+//   * the candidate sharing the longer prefix with q is the one whose XOR
+//     with q is smaller (a lower highest set bit means a smaller value);
+//   * both repair values are computed and one is selected;
+//   * the "<=" and "<" comparisons become ONE parallel comparison: taking 1
+//     off the query field turns "count sketches <= s" into "count sketches
+//     < s". When s = 0 the field becomes 2^r - 1, whose sentinel never
+//     survives, so the count is correctly 0.
+//
+// `sk(x)` computes a sketch. `le(s, minus)` counts stored sketches <= s when
+// minus = 0 and < s when minus = 1, in one parallel comparison.
+// Requires n >= 1 (tree nodes are never empty).
+// ---------------------------------------------------------------------------
+template <typename Sketch, typename RankLE>
+inline int branchfree_rank(u64 q, const u64* keys, int n, Sketch sk, RankLE le) {
+    int i  = le(sk(q), 0);
+    int lo = i > 0 ? i - 1 : 0;
+    int hi = i < n ? i : n - 1;
+    u64 xa = q ^ keys[lo], xb = q ^ keys[hi];
+    u64 x  = xa < xb ? xa : xb;
+    int exact = xa == 0 ? lo : hi;          // used only when x == 0
+    int h  = msb(x | 1);                    // | 1 keeps msb defined at x == 0
+    u64 bit   = (q >> h) & 1ull;
+    u64 below = (1ull << h) - 1;
+    u64 e = bit ? ((q & ~(1ull << h)) | below)    // sibling block below q: its max
+                : ((q | (1ull << h)) & ~below);   // sibling block above q: its min
+    int rk = le(sk(e), bit ^ 1ull);
+    return x == 0 ? exact : rk;
+}
+
+// BranchFree = false: the rank as written below, with early returns and a
+// data-dependent choice between the two repair cases.
+// BranchFree = true:  branchfree_rank above. Same answers, no branch that
+// depends on the query.
+template <int K = 8, bool BranchFree = false>
 class FusionNode {
     static_assert(K >= 1 && K <= 8, "K*K must fit in a 64-bit word");
 
@@ -126,6 +167,14 @@ public:
     // whose sketch is guaranteed faithful.
     int rank(u64 q) const {
         if (n_ == 0) return 0;
+        if constexpr (BranchFree) {
+            return branchfree_rank(q, keys_.data(), n_,
+                [this](u64 x) { return sketch(x); },
+                [this](u64 s, u64 minus) {
+                    u64 query = ((s | (1ull << r_)) - minus) * broadcast_;
+                    return popcount((query - packed_) & sentinels_);
+                });
+        }
 
         // Provisional position from the sketch alone.
         int i = sketch_rank_le(sketch(q));
@@ -182,6 +231,26 @@ public:
 
     int important_bit_count() const { return r_; }
     const std::array<int, K>& important_bits() const { return imp_; }
+
+    // Report every piece of node memory rank(q) reads, as f(address, bytes).
+    // Used only by the traffic experiment (bench/traffic.cpp).
+    template <typename F>
+    void touch(u64 q, F&& f) const {
+        f(&n_, sizeof n_);
+        f(&r_, sizeof r_);
+#ifdef FT_USE_PEXT
+        f(&mask_, sizeof mask_);
+#else
+        f(imp_.data(), sizeof(int) * r_);
+#endif
+        f(&broadcast_, sizeof broadcast_);
+        f(&packed_, sizeof packed_);
+        f(&sentinels_, sizeof sentinels_);
+        if (n_ == 0) return;
+        int i = sketch_rank_le(sketch(q));
+        f(&keys_[i > 0 ? i - 1 : 0], sizeof(u64));
+        f(&keys_[i < n_ ? i : n_ - 1], sizeof(u64));
+    }
 
 private:
     int n_;

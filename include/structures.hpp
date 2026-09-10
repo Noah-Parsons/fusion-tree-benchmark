@@ -1,16 +1,19 @@
-// structures.hpp — the three things being compared.
+// structures.hpp — the things being compared.
 //
-//   FusionTree<K>  the structure under test: a static multiway search tree
-//                  whose nodes are fusion nodes
+//   FusionTreeT<Node, K, Align>  the structure under test: a static multiway
+//                  search tree whose nodes are fusion nodes of arity K
+//   FusionTree<K>  the original: FusionNode<K> nodes, natural alignment
 //   SortedArray    baseline 1: branchless binary search over a sorted array
-//   BTree<B>       baseline 2: a static B-tree with cache-line-sized nodes
+//   BTree<B, Branchless, Align>  baseline 2: a static B-tree
 //
-// All three answer the same query: predecessor(q) = the largest stored key
-// strictly less than q. All three are STATIC — built once from a sorted array,
+// All answer the same query: predecessor(q) = the largest stored key
+// strictly less than q. All are STATIC — built once from a sorted array,
 // never updated. That is deliberate. Insertion and deletion would add a large
 // amount of code and would not change the question being asked.
 #pragma once
 #include "fusion_node.hpp"
+#include "fusion_node_compact.hpp"
+#include "fusion_node_wide.hpp"
 #include <vector>
 #include <cstddef>
 
@@ -41,6 +44,20 @@ public:
         return true;
     }
     std::size_t size() const { return a_.size(); }
+    int levels(u64) const { return 0; }
+
+    // Every piece of memory predecessor(q) reads, as f(address, bytes).
+    template <typename F>
+    void touch(u64 q, F&& f) const {
+        std::size_t lo = 0, len = a_.size();
+        while (len > 0) {
+            std::size_t half = len / 2;
+            f(&a_[lo + half], sizeof(u64));
+            lo += (a_[lo + half] < q) ? (len - half) : 0;
+            len = half;
+        }
+        if (lo > 0) f(&a_[lo - 1], sizeof(u64));
+    }
 private:
     std::vector<u64> a_;
 };
@@ -48,18 +65,18 @@ private:
 // ---------------------------------------------------------------------------
 // Baseline 2: static B-tree with B keys per node.
 //
-// B = 8 gives 64 bytes of keys. The whole node (keys + child indices + count)
-// is 112 bytes, so a node spans two cache lines, not one. The fusion node is
-// 184 bytes (about three lines): the two trees share a shape but not a
-// memory footprint.
+// B = 8 gives 64 bytes of keys. With child indices and a count the node is
+// 112 bytes: two cache lines, not one. Align = 64 pads it to 128 bytes and
+// starts every node on a line boundary — the same footprint as a tree node
+// built from FusionNodeCompact.
 //
 // Branchless = false: the within-node scan stops at the first key >= q. That
 //   is one data-dependent branch per key examined, which random queries
 //   mispredict.
 // Branchless = true:  every slot is compared and the results summed. Fixed
-//   trip count, no data-dependent branch. This is the stronger baseline.
+//   trip count, no data-dependent branch.
 // ---------------------------------------------------------------------------
-template <int B = 8, bool Branchless = false>
+template <int B = 8, bool Branchless = false, int Align = alignof(u64)>
 class BTree {
 public:
     void build(const std::vector<u64>& sorted) {
@@ -74,25 +91,58 @@ public:
         int idx = root_;
         while (idx >= 0) {
             const Node& nd = nodes_[idx];
-            int r = 0;
-            if constexpr (Branchless) {
-                for (int i = 0; i < B; ++i) r += (i < nd.n) & (nd.key[i] < q);
-            } else {
-                while (r < nd.n && nd.key[r] < q) ++r;   // early-exit scan
-            }
+            int r = node_rank(nd, q);
             if (r > 0) { out = nd.key[r - 1]; found = true; }
             idx = nd.leaf ? -1 : nd.child[r];
         }
         return found;
     }
 
+    // Number of nodes a query visits. Diagnostic only.
+    int levels(u64 q) const {
+        int d = 0;
+        for (int idx = root_; idx >= 0; ++d) {
+            const Node& nd = nodes_[idx];
+            idx = nd.leaf ? -1 : nd.child[node_rank(nd, q)];
+        }
+        return d;
+    }
+
+    static constexpr std::size_t node_bytes() { return sizeof(Node); }
+
+    // Every piece of memory predecessor(q) reads, as f(address, bytes).
+    template <typename F>
+    void touch(u64 q, F&& f) const {
+        for (int idx = root_; idx >= 0;) {
+            const Node& nd = nodes_[idx];
+            int r = node_rank(nd, q);
+            int scanned = Branchless ? B : (r < nd.n ? r + 1 : nd.n);
+            f(nd.key, sizeof(u64) * scanned);
+            f(&nd.n, sizeof nd.n);
+            f(&nd.leaf, sizeof nd.leaf);
+            if (r > 0) f(&nd.key[r - 1], sizeof(u64));
+            if (!nd.leaf) f(&nd.child[r], sizeof(int));
+            idx = nd.leaf ? -1 : nd.child[r];
+        }
+    }
+
 private:
-    struct Node {
+    struct alignas(Align) Node {
         u64 key[B];
         int child[B + 1];
         int n;
         bool leaf;
     };
+
+    static int node_rank(const Node& nd, u64 q) {
+        int r = 0;
+        if constexpr (Branchless) {
+            for (int i = 0; i < B; ++i) r += (i < nd.n) & (nd.key[i] < q);
+        } else {
+            while (r < nd.n && nd.key[r] < q) ++r;   // early-exit scan
+        }
+        return r;
+    }
 
     int build_range(const std::vector<u64>& s, std::size_t lo, std::size_t hi) {
         int self = (int)nodes_.size();
@@ -138,13 +188,19 @@ private:
 // ---------------------------------------------------------------------------
 // The fusion tree.
 //
-// Structurally identical to the B-tree above; the only difference is that the
-// within-node search is a fusion node's O(1) rank instead of a scan. That is
-// the whole experiment: same shape, same memory layout, one operation swapped.
-// Any difference in measured time is attributable to the node search.
+// Structurally identical to the B-tree above: same arity, same separators,
+// same build, same descent loop. The only difference is that the
+// within-node search is a fusion node's O(1) rank instead of a scan. The
+// node type is a parameter so that the node's layout, its branches and its
+// word width can each be changed on their own:
+//
+//   FusionTreeT<FusionNode<8>, 8>         the original
+//   FusionTreeT<FusionNode<8, true>, 8>   same layout, branch-free rank
+//   FusionTreeT<FusionNodeCompact, 8, 64> 128-byte nodes, branch-free rank
+//   FusionTreeT<FusionNodeWide, 16, 64>   K = 16 on a 256-bit word
 // ---------------------------------------------------------------------------
-template <int K = 8>
-class FusionTree {
+template <typename NodeT, int K, int Align = alignof(NodeT)>
+class FusionTreeT {
 public:
     void build(const std::vector<u64>& sorted) {
         nodes_.clear();
@@ -164,9 +220,33 @@ public:
         return found;
     }
 
+    int levels(u64 q) const {
+        int d = 0;
+        for (int idx = root_; idx >= 0; ++d) {
+            const Node& nd = nodes_[idx];
+            idx = nd.leaf ? -1 : nd.child[nd.fn.rank(q)];
+        }
+        return d;
+    }
+
+    static constexpr std::size_t node_bytes() { return sizeof(Node); }
+
+    // Every piece of memory predecessor(q) reads, as f(address, bytes).
+    template <typename F>
+    void touch(u64 q, F&& f) const {
+        for (int idx = root_; idx >= 0;) {
+            const Node& nd = nodes_[idx];
+            nd.fn.touch(q, f);
+            int r = nd.fn.rank(q);
+            f(&nd.leaf, sizeof nd.leaf);
+            if (!nd.leaf) f(&nd.child[r], sizeof(int));
+            idx = nd.leaf ? -1 : nd.child[r];
+        }
+    }
+
 private:
-    struct Node {
-        FusionNode<K> fn;
+    struct alignas(Align) Node {
+        NodeT fn;
         int child[K + 1];
         bool leaf;
     };
@@ -178,8 +258,7 @@ private:
         if (count <= (std::size_t)K) {
             Node nd{};
             nd.leaf = true;
-            std::vector<u64> ks(s.begin() + lo, s.begin() + hi);
-            nd.fn.build(ks.data(), (int)ks.size());
+            nd.fn.build(s.data() + lo, (int)count);
             nodes_[self] = nd;
             return self;
         }
@@ -211,5 +290,21 @@ private:
     std::vector<Node> nodes_;
     int root_ = -1;
 };
+
+template <int K = 8>
+using FusionTree = FusionTreeT<FusionNode<K>, K>;
+
+// ---------------------------------------------------------------------------
+// Every structure in the study, by the name used in the result files.
+// ---------------------------------------------------------------------------
+using BTree8          = BTree<8>;                       // btree8
+using BTree8BL        = BTree<8, true>;                 // btree8_bl
+using BTree8A64       = BTree<8, false, 64>;            // btree8_a64
+using BTree8BLA64     = BTree<8, true, 64>;             // btree8_bl_a64
+using BTree16BLA64    = BTree<16, true, 64>;            // btree16_bl_a64
+using Fusion8         = FusionTree<8>;                  // fusion8
+using Fusion8BF       = FusionTreeT<FusionNode<8, true>, 8>;   // fusion8_bf
+using Fusion8C        = FusionTreeT<FusionNodeCompact, 8, 64>; // fusion8_c
+using Fusion16W       = FusionTreeT<FusionNodeWide, 16, 64>;   // fusion16_w
 
 } // namespace ft

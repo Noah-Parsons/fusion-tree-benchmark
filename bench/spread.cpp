@@ -9,20 +9,23 @@
 //
 // This program measures the window width actually achieved on random key
 // sets, so the project can say something quantitative rather than repeating
-// the worst-case bound.
+// the worst-case bound. It runs node sizes K = 2..16, so the same question
+// can be asked of a 256-bit word (Experiment 4).
 //
 // Output: CSV on stdout. Columns:
-//   k, r, spread, bound_r4, fields_fit
+//   k, r, spread, bound_r4, fields_fit, fields_fit256
 //
 // fields_fit is the question that actually matters: can K sketch fields, each
 // one bit wider than the sketch itself, be packed into a single 64-bit word?
-// If not, the classical multiplication-based fusion node cannot be built at
-// this word width, whatever the asymptotics say.
+// fields_fit256 asks the same of a 256-bit word. If not, the classical
+// multiplication-based fusion node cannot be built at that word width,
+// whatever the asymptotics say.
 //
-// Build: g++ -O2 -std=c++20 -mbmi2 -Iinclude bench/spread.cpp -o build/spread
+// Build: make spread
 #include "sketch_fast.hpp"
-#include "fusion_node.hpp"
+#include <algorithm>
 #include <cstdio>
+#include <cstdlib>
 #include <random>
 #include <set>
 #include <vector>
@@ -33,29 +36,30 @@ int main(int argc, char** argv) {
     int trials = (argc > 1) ? std::atoi(argv[1]) : 2000;
     std::mt19937_64 rng(20260909);
 
-    std::printf("k,r,spread,bound_r4,fields_fit\n");
+    std::printf("k,r,spread,bound_r4,fields_fit,fields_fit256\n");
 
-    for (int k = 2; k <= 8; ++k) {
+    for (int k = 2; k <= 16; ++k) {
         for (int t = 0; t < trials; ++t) {
             std::set<u64> s;
             while ((int)s.size() < k) s.insert(rng());
             std::vector<u64> keys(s.begin(), s.end());
 
-            FusionNode<8> node;
-            node.build(keys.data(), k);
-            int r = node.important_bit_count();
+            // Important bits: the highest differing bit of each adjacent pair.
+            std::vector<int> pos;
+            for (int i = 0; i + 1 < k; ++i) pos.push_back(highest_diff_bit(keys[i], keys[i + 1]));
+            std::sort(pos.begin(), pos.end());
+            pos.erase(std::unique(pos.begin(), pos.end()), pos.end());
+            int r = (int)pos.size();
             if (r == 0) continue;
 
-            std::vector<int> pos(node.important_bits().begin(),
-                                 node.important_bits().begin() + r);
             Multiplier mul = find_multiplier(pos.data(), r);
 
             long long bound = 1;
             for (int i = 0; i < 4; ++i) bound *= r;
 
-            int fields_fit = (k * (mul.spread() + 1) <= W) ? 1 : 0;
-            std::printf("%d,%d,%d,%lld,%d\n",
-                        k, r, mul.spread(), bound, fields_fit);
+            int field = mul.spread() + 1;
+            std::printf("%d,%d,%d,%lld,%d,%d\n", k, r, mul.spread(), bound,
+                        (k * field <= 64) ? 1 : 0, (k * field <= 256) ? 1 : 0);
         }
     }
     return 0;
