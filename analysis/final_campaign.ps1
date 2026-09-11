@@ -15,6 +15,7 @@
 param(
     [string]$OutDir = 'results\final_v2',
     [int]$Sessions = 3,
+    [int]$StartSession = 1,
     [int]$Reps = 15,
     [int]$MaxLog = 25,
     [int]$Cpu = 8,
@@ -44,7 +45,7 @@ $configs = @(
     @('clang', 'build_clang\bench_pred.exe', 'lat',  'shuffled')
 )
 
-for ($s = 1; $s -le $Sessions; $s++) {
+for ($s = $StartSession; $s -le $Sessions; $s++) {
     $bat = Get-CimInstance Win32_Battery
     $seed = 20260909 + $s - 1
     Log "session $s start; seed=$seed; BatteryStatus=$($bat.BatteryStatus) (2 = on AC) charge=$($bat.EstimatedChargeRemaining)%"

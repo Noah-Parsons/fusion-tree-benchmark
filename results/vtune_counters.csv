@@ -1,0 +1,3 @@
+run,structure,collected,queries,elapsed_s,clockticks,instructions,cpi,retiring_pct,bad_spec_pct,frontend_pct,backend_pct,memory_bound_pct,core_bound_pct,dram_bound_pct,l1_bound_pct,l3_bound_pct,branch_mispredict_pct,clean
+vt_fusion,fusion8,2026-09-11T16:15:22,39321600,82.764,32670720000,17418240000,1.876,6.2,11.0,8.1,74.7,50.1,24.6,26.6,17.4,7.1,14.9,no
+vt_btree,btree8_bl,2026-09-11T16:18:48,39321600,2.952,11390400000,7891200000,1.443,7.6,19.7,14.6,58.1,33.1,25.1,16.0,15.4,4.0,16.8,yes
