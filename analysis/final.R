@@ -59,7 +59,7 @@ summ <- aggregate(ns ~ compiler + mode + order + structure + n, data = sm,
                   FUN = function(v) c(med = median(v), lo = min(v), hi = max(v), k = length(v)))
 summ <- data.frame(summ[, 1:5], median_ns = summ$ns[, 1], min_ns = summ$ns[, 2],
                    max_ns = summ$ns[, 3], sessions = summ$ns[, 4])
-write.csv(summ, "results/final_summary.csv", row.names = FALSE)
+write.csv(summ, out("results/final_summary", "csv"), row.names = FALSE)
 
 # ---------------------------------------------------------------------------
 # 2. The comparisons. Each is a ratio of session medians within one session,
@@ -93,7 +93,7 @@ rs <- do.call(rbind, rows)
 rsum <- aggregate(ratio ~ compiler + mode + order + comparison + n, data = rs,
                   FUN = function(v) c(med = median(v), lo = min(v), hi = max(v)))
 rsum <- data.frame(rsum[, 1:5], ratio = rsum$ratio[, 1], lo = rsum$ratio[, 2], hi = rsum$ratio[, 3])
-write.csv(rsum, "results/final_ratios.csv", row.names = FALSE)
+write.csv(rsum, out("results/final_ratios", "csv"), row.names = FALSE)
 
 # ---------------------------------------------------------------------------
 # 3. Trend and crossover, per comparison and configuration. The slope is
@@ -119,7 +119,7 @@ for (cfg in split(rs, list(rs$compiler, rs$mode, rs$order, rs$comparison), drop 
 }
 trend <- do.call(rbind, trend)
 rownames(trend) <- NULL
-write.csv(trend, "results/final_trends.csv", row.names = FALSE)
+write.csv(trend, out("results/final_trends", "csv"), row.names = FALSE)
 print(trend[order(trend$comparison, trend$compiler, trend$mode, trend$order),
             c("comparison", "compiler", "mode", "order", "b", "b_lo", "b_hi",
               "ratio_at_max_n", "crossover_log2n", "first_n_below_1_every_session")],
@@ -138,7 +138,7 @@ p1 <- ggplot(g, aes(n, median_ns, colour = structure)) +
        title = "All ten structures (g++, shuffled order)",
        subtitle = "line: median of 3 sessions; band: range across sessions") +
   theme_minimal(base_size = 10)
-ggsave("figures/final_timing.png", p1, width = 9, height = 4.8, dpi = 250)
+ggsave(out("figures/final_timing", "png"), p1, width = 9, height = 4.8, dpi = 250)
 
 main_cmp <- c("original fusion vs branch-free B-tree",
               "equal footprint: compact fusion vs aligned B-tree",
@@ -155,7 +155,7 @@ p2 <- ggplot(g2, aes(n, ratio, colour = comparison, fill = comparison)) +
        title = "The comparisons that answer the question (g++)",
        subtitle = "below the dashed line the fusion variant wins; band: range across 3 sessions") +
   theme_minimal(base_size = 10) + theme(legend.position = "bottom", legend.direction = "vertical")
-ggsave("figures/final_ratios.png", p2, width = 9, height = 7, dpi = 250)
+ggsave(out("figures/final_ratios", "png"), p2, width = 9, height = 7, dpi = 250)
 
 abl <- c("branch-free rank vs original rank", "compact 128-B node vs 184-B node",
          "Exp 4: 16-key fusion vs 8-key fusion")
@@ -170,6 +170,6 @@ p3 <- ggplot(g3, aes(n, ratio, colour = compiler, fill = compiler)) +
        title = "Ablations: what each change to the fusion node buys",
        subtitle = "below 1: the change helps; shuffled order; band: range across sessions") +
   theme_minimal(base_size = 10)
-ggsave("figures/final_ablations.png", p3, width = 9, height = 7, dpi = 250)
+ggsave(out("figures/final_ablations", "png"), p3, width = 9, height = 7, dpi = 250)
 
-cat("\nDone. Tables in results/final_*.csv, figures in figures/final_*.png\n")
+cat(sprintf("\nDone. Tables in results/final_*_%s.csv, figures in figures/final_*_%s.png\n", tag, tag))

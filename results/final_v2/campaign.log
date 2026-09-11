@@ -1,0 +1,44 @@
+2026-09-10T18:22:24.6214671-06:00  build
+2026-09-10T18:22:24.9798636-06:00  session 1 start; seed=20260909; BatteryStatus=2 (2 = on AC) charge=77%
+2026-09-10T18:22:24.9798636-06:00    run results\final_v2\gcc_tput_shuffled_s1.csv
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260909 compiler=gcc 16.1.0
+2026-09-10T18:23:16.7042668-06:00    run results\final_v2\gcc_lat_shuffled_s1.csv
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260909 compiler=gcc 16.1.0
+2026-09-10T18:24:15.7270185-06:00    run results\final_v2\gcc_tput_blocked_s1.csv
+mode=tput order=blocked cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260909 compiler=gcc 16.1.0
+2026-09-10T18:25:01.5198006-06:00    run results\final_v2\gcc_lat_blocked_s1.csv
+mode=lat order=blocked cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260909 compiler=gcc 16.1.0
+2026-09-10T18:25:53.8077475-06:00    run results\final_v2\clang_tput_shuffled_s1.csv
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260909 compiler=clang 22.1.7 (https://github.com/msys2/MINGW-packages b8f306ad57e0c8f3f15aed0dc809d7e3e8e2eee9)
+2026-09-10T18:26:44.0930644-06:00    run results\final_v2\clang_lat_shuffled_s1.csv
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260909 compiler=clang 22.1.7 (https://github.com/msys2/MINGW-packages b8f306ad57e0c8f3f15aed0dc809d7e3e8e2eee9)
+2026-09-10T18:27:42.2537743-06:00  session 1 done
+2026-09-10T18:30:42.4884299-06:00  session 2 start; seed=20260910; BatteryStatus=2 (2 = on AC) charge=77%
+2026-09-10T18:30:42.4884299-06:00    run results\final_v2\gcc_lat_shuffled_s2.csv
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260910 compiler=gcc 16.1.0
+2026-09-10T18:31:39.8204494-06:00    run results\final_v2\gcc_tput_blocked_s2.csv
+mode=tput order=blocked cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260910 compiler=gcc 16.1.0
+2026-09-10T18:32:25.2064320-06:00    run results\final_v2\gcc_lat_blocked_s2.csv
+mode=lat order=blocked cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260910 compiler=gcc 16.1.0
+2026-09-10T18:33:18.5180780-06:00    run results\final_v2\clang_tput_shuffled_s2.csv
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260910 compiler=clang 22.1.7 (https://github.com/msys2/MINGW-packages b8f306ad57e0c8f3f15aed0dc809d7e3e8e2eee9)
+2026-09-10T18:34:09.2566112-06:00    run results\final_v2\clang_lat_shuffled_s2.csv
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260910 compiler=clang 22.1.7 (https://github.com/msys2/MINGW-packages b8f306ad57e0c8f3f15aed0dc809d7e3e8e2eee9)
+2026-09-10T18:35:06.2001507-06:00    run results\final_v2\gcc_tput_shuffled_s2.csv
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260910 compiler=gcc 16.1.0
+2026-09-10T18:35:56.8642181-06:00  session 2 done
+2026-09-10T18:38:57.0709610-06:00  session 3 start; seed=20260911; BatteryStatus=2 (2 = on AC) charge=77%
+2026-09-10T18:38:57.0780324-06:00    run results\final_v2\gcc_tput_blocked_s3.csv
+mode=tput order=blocked cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260911 compiler=gcc 16.1.0
+2026-09-10T18:39:42.4460173-06:00    run results\final_v2\gcc_lat_blocked_s3.csv
+mode=lat order=blocked cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260911 compiler=gcc 16.1.0
+2026-09-10T18:40:34.2468609-06:00    run results\final_v2\clang_tput_shuffled_s3.csv
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260911 compiler=clang 22.1.7 (https://github.com/msys2/MINGW-packages b8f306ad57e0c8f3f15aed0dc809d7e3e8e2eee9)
+2026-09-10T18:41:23.8825485-06:00    run results\final_v2\clang_lat_shuffled_s3.csv
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260911 compiler=clang 22.1.7 (https://github.com/msys2/MINGW-packages b8f306ad57e0c8f3f15aed0dc809d7e3e8e2eee9)
+2026-09-10T18:42:20.0324618-06:00    run results\final_v2\gcc_tput_shuffled_s3.csv
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260911 compiler=gcc 16.1.0
+2026-09-10T18:43:09.4084921-06:00    run results\final_v2\gcc_lat_shuffled_s3.csv
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=10 seed=20260911 compiler=gcc 16.1.0
+2026-09-10T18:44:06.5242704-06:00  session 3 done
+2026-09-10T18:44:06.5242704-06:00  campaign done

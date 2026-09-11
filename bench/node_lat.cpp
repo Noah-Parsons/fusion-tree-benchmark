@@ -70,8 +70,9 @@ static double ns_per_cycle() {
     return best;
 }
 
-// B-tree node scans, the same code as BTree::node_rank in structures.hpp,
-// without the child indices (a single node search never reads them).
+// B-tree node scans, the same code as BTree::node_rank in structures.hpp
+// (explicit AVX2 for the branch-free scan), without the child indices: a
+// single node search never reads them.
 template <int B, bool Branchless>
 struct BTreeNodeScan {
     u64 key[B];
@@ -80,6 +81,19 @@ struct BTreeNodeScan {
     int rank(u64 q) const {
         int r = 0;
         if constexpr (Branchless) {
+#if defined(__AVX2__)
+            if constexpr (B % 4 == 0) {
+                const __m256i flip = _mm256_set1_epi64x((long long)0x8000000000000000ull);
+                const __m256i qv = _mm256_xor_si256(_mm256_set1_epi64x((long long)q), flip);
+                unsigned m = 0;
+                for (int i = 0; i < B; i += 4) {
+                    __m256i k = _mm256_xor_si256(
+                        _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&key[i])), flip);
+                    m |= (unsigned)_mm256_movemask_pd(_mm256_castsi256_pd(_mm256_cmpgt_epi64(qv, k))) << i;
+                }
+                return popcount(m & ((1u << n) - 1));
+            }
+#endif
             for (int i = 0; i < B; ++i) r += (i < n) & (key[i] < q);
         } else {
             while (r < n && key[r] < q) ++r;

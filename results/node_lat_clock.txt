@@ -1,2 +1,2 @@
-cpu=8 pinned=1 clock=5.05 GHz before, 5.06 GHz after (cycles use 'before')
-cpu=8 pinned=1 clock=4.98 GHz before, 4.99 GHz after (cycles use 'before')
+cpu=8 pinned=1 clock=5.07 GHz before, 5.06 GHz after (cycles use 'before')
+cpu=8 pinned=1 clock=5.08 GHz before, 5.06 GHz after (cycles use 'before')
