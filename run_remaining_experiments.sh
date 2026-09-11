@@ -13,9 +13,6 @@
 #                  "shuffled beat blocked" and "unpinned beat pinned" in your
 #                  earlier data are actually the same underlying cause
 #                  (sustained load throttling one pinned core).
-#
-# Run from the project root, in MSYS2/Git-Bash. Set CPU to your performance
-# core if it isn't 8 — check results/machine.txt.
 
 set -euo pipefail
 

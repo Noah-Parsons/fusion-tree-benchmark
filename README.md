@@ -1,8 +1,7 @@
 # Fusion Tree — Galactic Algorithms, Measured
 
-Reference implementation and measurement harness for the STEM Lab 2026–27 project.
-See `Fusion_Tree_Project_Manual.md` for the complete manual, and the work logs
-(`Work_Log_*.docx`) for what was changed, measured and found.
+Reference implementation and measurement harness.
+See the work logs (`Work_Log_*.docx`) for what was changed, measured and found.
 
 ## Quick start
 
