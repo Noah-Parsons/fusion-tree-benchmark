@@ -95,15 +95,21 @@ static void warm(const S& st, const std::vector<u64>& queries) {
 }
 
 // One timed pass. Returns ns per query; the checksum goes out via `checksum`.
+//
+// The checksum is accumulated in a local and written out once, after the
+// clock stops, so nothing is stored through a reference inside the timed
+// loop. (This was first suspected, wrongly, of slowing the branch-free
+// B-tree in this harness; the real cause was g++ declining to vectorise its
+// scan here. See the comment on BTree::node_rank in structures.hpp.)
 template <typename S>
 static double time_once(const S& st, const std::vector<u64>& queries,
                         bool latency, u64& checksum) {
-    checksum = 0;
+    u64 cs = 0;
     auto t0 = std::chrono::steady_clock::now();
     if (!latency) {
         for (u64 q : queries) {
             u64 o = 0;
-            if (st.predecessor(q, o)) checksum ^= o;
+            if (st.predecessor(q, o)) cs ^= o;
         }
     } else {
         const u64 z = g_zero;
@@ -111,11 +117,12 @@ static double time_once(const S& st, const std::vector<u64>& queries,
         for (u64 q0 : queries) {
             u64 o = 0;
             bool hit = st.predecessor(q0 ^ dep, o);
-            if (hit) checksum ^= o;
+            if (hit) cs ^= o;
             dep = (o + hit) & z;          // always 0, but only at run time
         }
     }
     auto t1 = std::chrono::steady_clock::now();
+    checksum = cs;
     return std::chrono::duration<double, std::nano>(t1 - t0).count()
            / (double)queries.size();
 }

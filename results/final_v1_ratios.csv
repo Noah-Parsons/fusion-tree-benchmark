@@ -1,0 +1,865 @@
+"compiler","mode","order","comparison","n","ratio","lo","hi"
+"gcc","lat","blocked","branch-free rank vs original rank",256,1.08850272262648,1.07941910303131,1.09732736777463
+"gcc","tput","blocked","branch-free rank vs original rank",256,1.07429443261315,1.06865401987353,1.0758241791396
+"clang","lat","shuffled","branch-free rank vs original rank",256,1.05134103428124,1.0453514348699,1.06571449534105
+"gcc","lat","shuffled","branch-free rank vs original rank",256,1.07338233218398,1.07312072021525,1.08869913873697
+"clang","tput","shuffled","branch-free rank vs original rank",256,1.02366119660509,1.01092537491558,1.04243935603323
+"gcc","tput","shuffled","branch-free rank vs original rank",256,1.06222552945898,1.0571947255649,1.07946559381009
+"gcc","lat","blocked","compact 128-B node vs 184-B node",256,0.982526723696029,0.973281315352315,0.991293672506852
+"gcc","tput","blocked","compact 128-B node vs 184-B node",256,0.99011450349568,0.956947657216633,0.997210481825866
+"clang","lat","shuffled","compact 128-B node vs 184-B node",256,0.964265288398399,0.961483385349734,0.969320654745009
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",256,0.975485769150332,0.973770599589535,0.981042764920458
+"clang","tput","shuffled","compact 128-B node vs 184-B node",256,0.958016750242852,0.955040162506058,0.958611363764418
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",256,0.971577875087645,0.968208820309456,0.977905504731383
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",256,1.66904466129554,1.64691393567167,1.68589534466447
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",256,2.21486236865215,2.17540233820868,2.22952082649221
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",256,1.49324597619056,1.48154121539769,1.49732681476399
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",256,1.66100535780767,1.64699247373751,1.66261271621289
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",256,2.17716269995167,2.17037492677211,2.23874003709459
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",256,2.21494252873563,2.21287943159836,2.21577156168672
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",256,2.21076814462461,2.20607217738629,2.25551529579256
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",256,2.15949466724389,2.07300399437945,2.17554719262931
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",256,1.82232725788901,1.82149785432955,1.8286338575429
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",256,2.20992830199545,2.20483479091772,2.22890998568985
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",256,4.47123743039973,4.23653484587553,4.60676403036625
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",256,2.17522306796536,2.10295123734931,2.18207907165869
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",256,0.902754574218962,0.885721810204149,0.926898979266424
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",256,0.737944483296573,0.716069042619911,0.766828480325759
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",256,0.879520295202952,0.860879842114926,0.888345207246264
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",256,0.901105532830192,0.885430632477193,0.910610396030192
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",256,0.703990653469506,0.677338860189109,0.721771023661765
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",256,0.746296418791094,0.708895857577212,0.769633652252337
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",256,2.21076814462461,2.20607217738629,2.25551529579256
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",256,2.15949466724389,2.07300399437945,2.17554719262931
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",256,1.84033221809048,1.82149785432955,1.89040924366802
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",256,2.20992830199545,2.20483479091772,2.22890998568985
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",256,4.47123743039973,4.23653484587553,4.60676403036625
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",256,2.17522306796536,2.10295123734931,2.18207907165869
+"gcc","lat","blocked","original fusion vs binary search",256,2.98734459282937,2.98174072759265,2.9941131025958
+"gcc","tput","blocked","original fusion vs binary search",256,7.6314267923857,7.59773065902579,7.66741996233522
+"clang","lat","shuffled","original fusion vs binary search",256,1.75545776537512,1.65804892731823,1.75693678973282
+"gcc","lat","shuffled","original fusion vs binary search",256,3.02816520704941,3.02492756750092,3.05535532760373
+"clang","tput","shuffled","original fusion vs binary search",256,1.60584719615078,1.57811340280517,1.60887343119971
+"gcc","tput","shuffled","original fusion vs binary search",256,7.76056093431164,7.67674973011875,7.76638961731633
+"gcc","lat","blocked","original fusion vs branch-free B-tree",256,1.44534432644144,1.4342419823994,1.45064084625287
+"gcc","tput","blocked","original fusion vs branch-free B-tree",256,1.98482333412378,1.97454456636999,2.03773773773774
+"clang","lat","shuffled","original fusion vs branch-free B-tree",256,1.38583407142931,1.37887427960572,1.3911114914007
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",256,1.46130386740331,1.4426628936827,1.4714292683476
+"clang","tput","shuffled","original fusion vs branch-free B-tree",256,2.07904118008605,2.06049179692475,2.17872000945515
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",256,2.00825449496376,2.00358897622447,2.03095014912654
+"gcc","lat","blocked","branch-free rank vs original rank",512,1.11783445947658,1.10270539155229,1.1258744294978
+"gcc","tput","blocked","branch-free rank vs original rank",512,1.10938068812431,1.10007785405903,1.1205697618971
+"clang","lat","shuffled","branch-free rank vs original rank",512,1.07332163859361,1.05694822757154,1.07989033670284
+"gcc","lat","shuffled","branch-free rank vs original rank",512,1.11259135905264,1.10164353607586,1.11961761168993
+"clang","tput","shuffled","branch-free rank vs original rank",512,1.04597069547493,1.0343593703338,1.06779537189367
+"gcc","tput","shuffled","branch-free rank vs original rank",512,1.08875431195326,1.08180887808622,1.10329540374104
+"gcc","lat","blocked","compact 128-B node vs 184-B node",512,0.986507351690832,0.985204183660657,0.988750663527106
+"gcc","tput","blocked","compact 128-B node vs 184-B node",512,0.969648716464003,0.968609104508395,1.00537307380373
+"clang","lat","shuffled","compact 128-B node vs 184-B node",512,0.967338774275085,0.965505230447007,0.969042065343298
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",512,0.981411895847286,0.979586902459243,0.986434283444952
+"clang","tput","shuffled","compact 128-B node vs 184-B node",512,0.961603859886525,0.95749362742548,0.963945405704762
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",512,0.979576844345332,0.975090066637538,0.98384244502615
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",512,1.81231412600695,1.76253707563221,1.81607466511114
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",512,2.51058661126938,2.45470092430474,2.64110453095981
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",512,1.58438259614649,1.54299508471678,1.590459253527
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",512,1.8122440002158,1.75865447419987,1.81328886842618
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",512,3.24109804323503,3.06660224423322,3.28945997262331
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",512,2.55572318073347,2.46516138155812,2.55792441495317
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",512,1.99464721319815,1.99271993480539,2.02373649285299
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",512,1.85996599444719,1.85902811982765,1.88061619687733
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",512,1.66294338279401,1.6587164882199,1.69671605144946
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",512,1.99012993214569,1.98545891141942,2.00946045765705
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",512,1.9180433190826,1.91056003173037,1.92725814185077
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",512,1.878617155281,1.85276352007945,1.88281835488289
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",512,1.16486777095725,1.14436974980445,1.20355350723398
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",512,1.13078234444877,1.11768739061766,1.15834030324476
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",512,1.12263256732943,1.10279793356863,1.1575349170755
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",512,1.16609428308392,1.14327290869782,1.19946808510638
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",512,1.05931483973311,1.05074091518423,1.07751391562191
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",512,1.14285228767055,1.13936847392973,1.16317195487065
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",512,2.25541559057608,2.23319012623168,2.28301171073815
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",512,2.9323805258086,2.93093158119109,2.93615306444265
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",512,2.16968401678822,2.1455549381246,2.17109465737515
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",512,2.23699019124051,2.18989668532071,2.2628956445433
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",512,3.57043414388329,3.45099590973084,3.58564931337484
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",512,2.98427814641872,2.91449774072553,2.98629892750363
+"gcc","lat","blocked","original fusion vs binary search",512,2.72342245840521,2.71384831636594,2.74705321274655
+"gcc","tput","blocked","original fusion vs binary search",512,6.80090326688154,6.70786516853933,6.86598252387726
+"clang","lat","shuffled","original fusion vs binary search",512,1.43038379861157,1.39854840685441,1.4353711700029
+"gcc","lat","shuffled","original fusion vs binary search",512,2.75703837849133,2.73820389394792,2.78208454780074
+"clang","tput","shuffled","original fusion vs binary search",512,1.23186371275375,1.23119155414747,1.23580790381892
+"gcc","tput","shuffled","original fusion vs binary search",512,6.89556068260472,6.82030537378544,6.96974329448669
+"gcc","lat","blocked","original fusion vs branch-free B-tree",512,1.4669566553144,1.46026022652813,1.48157799873832
+"gcc","tput","blocked","original fusion vs branch-free B-tree",512,2.20708691413186,2.17574252661161,2.23802742266676
+"clang","lat","shuffled","original fusion vs branch-free B-tree",512,1.44289047521643,1.43596866761341,1.45176114046738
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",512,1.47744425449958,1.4684817916319,1.49549034125328
+"clang","tput","shuffled","original fusion vs branch-free B-tree",512,2.9783694916347,2.93978676621795,3.09761619278402
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",512,2.22515676445859,2.19739977639355,2.26558375765555
+"gcc","lat","blocked","branch-free rank vs original rank",1024,1.13607301833801,1.13431926287842,1.14618580637935
+"gcc","tput","blocked","branch-free rank vs original rank",1024,1.1450057650822,1.13551956022719,1.18068218235188
+"clang","lat","shuffled","branch-free rank vs original rank",1024,1.09248376058696,1.08243409165777,1.09661708460788
+"gcc","lat","shuffled","branch-free rank vs original rank",1024,1.09970341389537,1.09929337996877,1.12582559656177
+"clang","tput","shuffled","branch-free rank vs original rank",1024,1.10569397039607,1.1044502101446,1.114185184363
+"gcc","tput","shuffled","branch-free rank vs original rank",1024,1.16562993536294,1.15447850697753,1.17844369858868
+"gcc","lat","blocked","compact 128-B node vs 184-B node",1024,0.984503938084092,0.984112608804529,0.986723668138683
+"gcc","tput","blocked","compact 128-B node vs 184-B node",1024,0.978813585200657,0.934273233114946,1.150093187752
+"clang","lat","shuffled","compact 128-B node vs 184-B node",1024,0.956884769677687,0.949269446712094,0.959929044731853
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",1024,0.967123688307169,0.961008574281577,0.970535791825188
+"clang","tput","shuffled","compact 128-B node vs 184-B node",1024,0.955738248645339,0.953852008439811,0.957601796004838
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",1024,0.939245815454791,0.937839357382841,0.94702165504171
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",1024,1.69666623385055,1.67626952651534,1.70668881210935
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",1024,2.14353734217847,2.10793371852562,2.51951627393946
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",1024,1.52994727156911,1.5177269700333,1.53797548300171
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",1024,1.69015371455234,1.68832562107386,1.70200156184687
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",1024,1.81243256544701,1.80267783734315,1.82256537311422
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",1024,2.19670360716694,2.18040561762462,2.20229757372963
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",1024,2.08789985570526,2.0804117725872,2.09284873839718
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",1024,2.07518787033194,2.06597866060088,2.51840084607619
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",1024,1.72745977544598,1.72352664576803,1.73175232498104
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",1024,2.09573160086326,2.07372627004732,2.09959002835978
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",1024,2.73192380998925,2.67237056786979,2.79836904964608
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",1024,2.12371654156635,2.10483592478148,2.15852988621005
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",1024,1.05287418960819,1.0524878886414,1.05752697051325
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",1024,0.950391990407381,0.92442906792179,1.16994887870162
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",1024,1.01996320837948,1.01776726328981,1.02358463595702
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",1024,1.04233882536739,1.04070480815644,1.04248899203435
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",1024,0.909415191734583,0.891011681446961,0.922559107581981
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",1024,0.927476902856701,0.913052528777895,0.961392975315738
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",1024,2.1726343459083,2.15070649065498,2.18266797863368
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",1024,2.08572303432117,2.0812959198231,2.56301425915548
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",1024,2.05468426041111,2.02495258088872,2.08501371807909
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",1024,2.14136788554706,2.13256429580425,2.14199098698922
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",1024,2.73192380998925,2.67237056786979,2.79836904964608
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",1024,2.15308475793063,2.13864535297013,2.23571805952558
+"gcc","lat","blocked","original fusion vs binary search",1024,2.93236135403578,2.92988899616945,2.94738202565962
+"gcc","tput","blocked","original fusion vs binary search",1024,7.44421394737752,7.35507035751535,7.50003467526613
+"clang","lat","shuffled","original fusion vs binary search",1024,1.4242517634792,1.42294669009959,1.44786629165739
+"gcc","lat","shuffled","original fusion vs binary search",1024,3.10013694048453,3.03536000909257,3.11472710756731
+"clang","tput","shuffled","original fusion vs binary search",1024,1.30536975417629,1.3009471936687,1.31028284215058
+"gcc","tput","shuffled","original fusion vs binary search",1024,7.69139995494637,7.68437186195233,7.69917843211709
+"gcc","lat","blocked","original fusion vs branch-free B-tree",1024,1.39220618037485,1.39120233725373,1.41345124716553
+"gcc","tput","blocked","original fusion vs branch-free B-tree",1024,1.8664028739522,1.85994419536804,1.8720307773532
+"clang","lat","shuffled","original fusion vs branch-free B-tree",1024,1.37962244778385,1.37228392899515,1.38179746639889
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",1024,1.46975562762533,1.44275505640909,1.4873603036419
+"clang","tput","shuffled","original fusion vs branch-free B-tree",1024,1.60273588804292,1.57107084065735,1.63000688960729
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",1024,1.87794324683879,1.87031434350244,1.90461856391995
+"gcc","lat","blocked","branch-free rank vs original rank",2048,1.08830108159812,1.08006220496351,1.09231585152443
+"gcc","tput","blocked","branch-free rank vs original rank",2048,1.06568495997114,0.975807793661273,1.07943532014805
+"clang","lat","shuffled","branch-free rank vs original rank",2048,1.04478716198614,1.03928876259748,1.05306098912044
+"gcc","lat","shuffled","branch-free rank vs original rank",2048,1.08976359905702,1.07576249858639,1.09785150147076
+"clang","tput","shuffled","branch-free rank vs original rank",2048,1.02083984906331,1.01511921931484,1.02319707495161
+"gcc","tput","shuffled","branch-free rank vs original rank",2048,1.04421445254083,1.03586082374161,1.06576035045591
+"gcc","lat","blocked","compact 128-B node vs 184-B node",2048,0.979039434284651,0.978311281784316,0.986947661143562
+"gcc","tput","blocked","compact 128-B node vs 184-B node",2048,0.96036899418733,0.937113398315125,1.14575337331334
+"clang","lat","shuffled","compact 128-B node vs 184-B node",2048,0.958435353329253,0.955864409935204,0.958550091183494
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",2048,0.956206437962319,0.949157837744114,0.963501371244101
+"clang","tput","shuffled","compact 128-B node vs 184-B node",2048,0.951149341938291,0.950299132246995,0.953037297817928
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",2048,0.947667965779122,0.947633821877969,0.965615496212918
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",2048,1.75287895951586,1.7520857154957,1.75737868175042
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",2048,2.26567229751993,2.25490958248574,2.64677818761148
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",2048,1.55006091071836,1.54840212403869,1.55630034754964
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",2048,1.72972041593,1.72025876949402,1.7340635039223
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",2048,2.28796726445373,2.239347588575,2.29232967205809
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",2048,2.24011537381627,2.23157010771301,2.24602122590427
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",2048,2.23532494559872,2.22615608851199,2.23803065186502
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",2048,2.26251608751609,2.24564395411464,3.78509877536426
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",2048,1.85564819044719,1.85533515953348,1.87634299549571
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",2048,2.24054460072578,2.23080575507036,2.24085546781979
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",2048,3.59369442939242,3.55988099105218,3.60249826822877
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",2048,2.32392437413551,2.31640247350468,2.34307992202729
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",2048,0.995767285276852,0.993888216562663,1.0037708649986
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",2048,0.903474725921566,0.894468188723406,1.58710269865067
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",2048,0.970627133353578,0.968750519467135,0.974287560361831
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",2048,0.988007455501436,0.968327109331423,0.989555843769978
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",2048,0.867363402342192,0.866303156608756,0.868826596698662
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",2048,0.923208625815584,0.914131561519192,0.942425557353755
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",2048,2.23532494559872,2.22615608851199,2.23803065186502
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",2048,2.26251608751609,2.24564395411464,3.78509877536426
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",2048,1.85564819044719,1.85533515953348,1.87634299549571
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",2048,2.24054460072578,2.23080575507036,2.24085546781979
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",2048,3.59369442939242,3.55988099105218,3.60249826822877
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",2048,2.32392437413551,2.31640247350468,2.34307992202729
+"gcc","lat","blocked","original fusion vs binary search",2048,3.16139636363636,3.14601888240355,3.16187418574353
+"gcc","tput","blocked","original fusion vs binary search",2048,7.81906719222098,7.79124856815578,8.39660652591171
+"clang","lat","shuffled","original fusion vs binary search",2048,1.44945084544377,1.43303667569828,1.45389637249789
+"gcc","lat","shuffled","original fusion vs binary search",2048,3.23442046873639,3.19058397464916,3.23832748157277
+"clang","tput","shuffled","original fusion vs binary search",2048,1.3639264070029,1.36363887036694,1.37665445300232
+"gcc","tput","shuffled","original fusion vs binary search",2048,7.95183552701816,7.91267484266084,8.12811556903657
+"gcc","lat","blocked","original fusion vs branch-free B-tree",2048,1.51608279277822,1.50825122981089,1.51628422254034
+"gcc","tput","blocked","original fusion vs branch-free B-tree",2048,2.09736663583102,2.09315530811583,2.24500361283542
+"clang","lat","shuffled","original fusion vs branch-free B-tree",2048,1.44883811632676,1.43633132708535,1.44991788136483
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",2048,1.53833871110325,1.51728858467653,1.54241422464394
+"clang","tput","shuffled","original fusion vs branch-free B-tree",2048,2.18851733543606,2.1506576164676,2.19003789490749
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",2048,2.12457289235028,2.12138029807994,2.16958696069973
+"gcc","lat","blocked","branch-free rank vs original rank",4096,1.09623318578366,1.09370303416986,1.10174380303608
+"gcc","tput","blocked","branch-free rank vs original rank",4096,1.09377466817098,1.07141542604198,1.11496328047197
+"clang","lat","shuffled","branch-free rank vs original rank",4096,1.04266783939195,1.04103667767058,1.06086682989866
+"gcc","lat","shuffled","branch-free rank vs original rank",4096,1.09034675455435,1.08691379971841,1.09926579331951
+"clang","tput","shuffled","branch-free rank vs original rank",4096,1.0149614361534,1.01161307491019,1.01596767953388
+"gcc","tput","shuffled","branch-free rank vs original rank",4096,1.06852686328238,1.05959510982103,1.07212327261041
+"gcc","lat","blocked","compact 128-B node vs 184-B node",4096,0.973244557927568,0.97067464362165,0.980334793645193
+"gcc","tput","blocked","compact 128-B node vs 184-B node",4096,0.971555137686007,0.925876787483394,1.26655166343954
+"clang","lat","shuffled","compact 128-B node vs 184-B node",4096,0.9520998807076,0.947662910290952,0.95443867221819
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",4096,0.959446271500743,0.956875438347038,0.960764677223675
+"clang","tput","shuffled","compact 128-B node vs 184-B node",4096,0.947865976179237,0.94658737577185,0.950726102319756
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",4096,0.94548832969595,0.942848830178229,0.95246473241419
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",4096,1.84294018479793,1.83761281574604,1.84533406872884
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",4096,2.49186364121185,2.42569894582229,3.26445354856565
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",4096,1.62135197832682,1.61521418419787,1.62831680496154
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",4096,1.83102382461959,1.81949583508011,1.8378535598878
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",4096,2.94370173363781,2.9426798818052,2.95768941238985
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",4096,2.42825114126471,2.41455784267081,2.4440907681363
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",4096,2.26768601353244,2.26631861816029,2.28812769246905
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",4096,2.24825345480994,2.23067941497817,2.33262420985057
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",4096,1.88194762085234,1.87991159371547,1.88383917672426
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",4096,2.26703398384926,2.26420719851804,2.27378979001972
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",4096,4.04908693616357,4.02785182620737,4.07314112291351
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",4096,2.31571490692814,2.29121722855183,2.33296566345314
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",4096,0.955270607718871,0.95487322031707,0.962164201777856
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",4096,0.8495289927134,0.82826752747932,0.876259461362436
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",4096,0.934112265556362,0.923230173244198,0.936472417016926
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",4096,0.945653593002188,0.944895485103413,0.947246581492209
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",4096,0.816136199824279,0.811885944466784,0.819468305960105
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",4096,0.868160185112145,0.860371531678693,0.868291694656814
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",4096,2.26768601353244,2.26631861816029,2.28812769246905
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",4096,2.24825345480994,2.23067941497817,2.33262420985057
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",4096,1.88194762085234,1.87991159371547,1.88383917672426
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",4096,2.26703398384926,2.26420719851804,2.27378979001972
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",4096,4.04908693616357,4.02785182620737,4.07314112291351
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",4096,2.31571490692814,2.29121722855183,2.33296566345314
+"gcc","lat","blocked","original fusion vs binary search",4096,3.00572089115322,2.98377893184587,3.01442461801475
+"gcc","tput","blocked","original fusion vs binary search",4096,7.12665497770353,7.11463613386186,7.17365302542712
+"clang","lat","shuffled","original fusion vs binary search",4096,1.34524483978463,1.34179311855335,1.37021515596647
+"gcc","lat","shuffled","original fusion vs binary search",4096,3.06618240085459,3.0520004273276,3.08138657822238
+"clang","tput","shuffled","original fusion vs binary search",4096,1.28526249065139,1.27929594394557,1.29002702324931
+"gcc","tput","shuffled","original fusion vs binary search",4096,7.40287618083671,7.31967314597004,7.43400107685723
+"gcc","lat","blocked","original fusion vs branch-free B-tree",4096,1.58409603077678,1.5761167744776,1.59223410559585
+"gcc","tput","blocked","original fusion vs branch-free B-tree",4096,2.2548329259769,2.24059172524184,2.28673379433771
+"clang","lat","shuffled","original fusion vs branch-free B-tree",4096,1.53463441940942,1.52712032966605,1.53529925831938
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",4096,1.6088076294675,1.60096444823026,1.61276675570189
+"clang","tput","shuffled","original fusion vs branch-free B-tree",4096,2.94421055930468,2.92333632156111,2.94498335407426
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",4096,2.30741019866273,2.28482050841635,2.3156982569916
+"gcc","lat","blocked","branch-free rank vs original rank",8192,1.11935676053941,1.10926228221629,1.12375044619839
+"gcc","tput","blocked","branch-free rank vs original rank",8192,1.12932540228304,1.12803010654433,1.13823333786038
+"clang","lat","shuffled","branch-free rank vs original rank",8192,1.06720944964595,1.06602562205982,1.06746935987127
+"gcc","lat","shuffled","branch-free rank vs original rank",8192,1.10640416486689,1.09539397481456,1.10767123413044
+"clang","tput","shuffled","branch-free rank vs original rank",8192,1.05837928207436,1.05629525075772,1.059717168686
+"gcc","tput","shuffled","branch-free rank vs original rank",8192,1.10773653668059,1.09902241561526,1.10843153170206
+"gcc","lat","blocked","compact 128-B node vs 184-B node",8192,0.9541396695396,0.94728713251488,0.978987757056061
+"gcc","tput","blocked","compact 128-B node vs 184-B node",8192,0.959012845007855,0.95701786709464,0.960117581510901
+"clang","lat","shuffled","compact 128-B node vs 184-B node",8192,0.943822750661937,0.940524694846293,0.944828736654804
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",8192,0.954977390751646,0.953219575238609,0.959487224684163
+"clang","tput","shuffled","compact 128-B node vs 184-B node",8192,0.947020440896374,0.946889785612309,0.953759104710886
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",8192,0.961886789176172,0.958538804111839,0.97010468322873
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",8192,1.78340271569805,1.78126012094698,1.79372528178443
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",8192,2.18109952040866,2.16589686090955,2.31405211870663
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",8192,1.60659969270772,1.60565554884037,1.60776713566043
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",8192,1.78315484153151,1.77625210884879,1.80211676887543
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",8192,2.30182672140258,2.2998823325452,2.30983382152699
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",8192,2.28064600413816,2.27343872922923,2.32025346956243
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",8192,2.01151789280398,1.98489725049823,2.03032902638282
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",8192,1.87337263741023,1.85653129385655,1.87974508404036
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",8192,1.66437636919957,1.6627508478975,1.68702032971228
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",8192,1.98211068633817,1.9550061896509,1.9857100213546
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",8192,1.99382782293548,1.95932731074478,2.0010618016844
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",8192,1.88531896348516,1.82684416181033,1.88863667648226
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",8192,1.08590935272924,1.07248224521764,1.09206355911321
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",8192,1.03912090399974,1.03370497453212,1.03938252392887
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",8192,1.04023108135862,1.03897490958409,1.04443950177936
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",8192,1.0802681480543,1.07580187016649,1.08166452286335
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",8192,0.989327876969332,0.987671366037552,1.00058552499617
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",8192,1.03425586493728,1.02437937232451,1.03840417654138
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",8192,2.13352314146207,2.10358695109157,2.14542523311047
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",8192,2.36881337580944,2.33459394972891,2.50734903292485
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",8192,1.95083631101869,1.93089071217591,1.99914853761335
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",8192,2.1125504643118,2.10407294865695,2.1299263374251
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",8192,2.3986049582631,2.39597502085809,2.43235752827922
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",8192,2.47066923712476,2.42114120359286,2.47368742829811
+"gcc","lat","blocked","original fusion vs binary search",8192,2.7663796509785,2.75443569918427,2.78156552284121
+"gcc","tput","blocked","original fusion vs binary search",8192,6.33238259052015,6.32803358344627,6.37188355039947
+"clang","lat","shuffled","original fusion vs binary search",8192,1.35551783843352,1.35009874783671,1.35880293156335
+"gcc","lat","shuffled","original fusion vs binary search",8192,2.8341773946212,2.82583245328563,2.86061217683569
+"clang","tput","shuffled","original fusion vs binary search",8192,1.28770746866924,1.27943711101879,1.29253146401083
+"gcc","tput","shuffled","original fusion vs binary search",8192,6.70971635485818,6.69159327287213,6.71519055518452
+"gcc","lat","blocked","original fusion vs branch-free B-tree",8192,1.56185264995232,1.55251592948938,1.56841741190288
+"gcc","tput","blocked","original fusion vs branch-free B-tree",8192,1.9998418499431,1.99888627085197,2.01420184260691
+"clang","lat","shuffled","original fusion vs branch-free B-tree",8192,1.50162718114469,1.49506343469507,1.51258322431238
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",8192,1.56689655499645,1.55536970870285,1.56755299182256
+"clang","tput","shuffled","original fusion vs branch-free B-tree",8192,2.16451675107327,2.13321594074811,2.18313838206238
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",8192,2.0481691062994,2.03633280195367,2.05146785398135
+"gcc","lat","blocked","branch-free rank vs original rank",16384,1.08195246548165,1.08172438236761,1.08595185891388
+"gcc","tput","blocked","branch-free rank vs original rank",16384,1.04061499092418,1.03566398278769,1.04830368501325
+"clang","lat","shuffled","branch-free rank vs original rank",16384,1.03333576482603,1.01865698123967,1.04121233212978
+"gcc","lat","shuffled","branch-free rank vs original rank",16384,1.06603089649066,1.05751205546402,1.0688545374169
+"clang","tput","shuffled","branch-free rank vs original rank",16384,0.976196275966695,0.972161347305787,0.983698509164289
+"gcc","tput","shuffled","branch-free rank vs original rank",16384,1.03354150026381,1.02407793114021,1.0374753694733
+"gcc","lat","blocked","compact 128-B node vs 184-B node",16384,0.968816896349189,0.965771651797138,0.96996332645395
+"gcc","tput","blocked","compact 128-B node vs 184-B node",16384,0.980351238839734,0.978450730333408,0.980971038862473
+"clang","lat","shuffled","compact 128-B node vs 184-B node",16384,0.957416819615041,0.952313592917945,0.963835157648986
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",16384,0.960741552192263,0.960361333490421,0.971201246797723
+"clang","tput","shuffled","compact 128-B node vs 184-B node",16384,0.964085291465549,0.945647057362338,0.964469722142134
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",16384,0.973081236360915,0.952350861855984,0.979398955095869
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",16384,1.71970095819733,1.70795317907367,1.71986350358045
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",16384,2.09472201303963,2.09233963189624,2.09762796718908
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",16384,1.53351235736967,1.53017481135948,1.53581027914333
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",16384,1.63037009589256,1.58790990093694,1.6564317690257
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",16384,2.11297773925556,2.05985731639022,2.11435567692384
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",16384,2.03290948690026,1.80974586887385,2.04215235949213
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",16384,2.01152635089741,2.00702153927291,2.01904312974582
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",16384,1.95533812780257,1.76595739588893,1.96273754280925
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",16384,1.62201286359062,1.59678484484962,1.65731821006837
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",16384,1.82204770600916,1.82064116555054,1.88991148961286
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",16384,2.49509056030638,2.47559992600032,2.55398400069847
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",16384,1.95543089505559,1.82026656383103,1.97107644083494
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",16384,1.02099786902514,1.02013539760252,1.02284425373541
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",16384,0.979989487206306,0.97751455932617,0.987725380486434
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",16384,0.975592170681717,0.972892842016095,0.990880255220843
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",16384,1.00804666127101,1.00103234807278,1.01586176151689
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",16384,0.930961915875457,0.93073173155146,0.936672299415737
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",16384,0.997970077348486,0.985657321336953,0.999763836533585
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",16384,2.01152635089741,2.00702153927291,2.01904312974582
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",16384,2.09262605120217,2.09033770411393,2.11340619558244
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",16384,1.79750282157658,1.77955358523186,1.80001567275292
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",16384,1.83697208702222,1.83689239920043,1.88991148961286
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",16384,2.49509056030638,2.47559992600032,2.55398400069847
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",16384,2.04589979288109,1.98905563091695,2.09814967283442
+"gcc","lat","blocked","original fusion vs binary search",16384,2.60248975515686,2.57156725717945,2.61601173080951
+"gcc","tput","blocked","original fusion vs binary search",16384,6.19670298485643,6.11353167646351,6.20313534616939
+"clang","lat","shuffled","original fusion vs binary search",16384,1.43178981972731,1.42685498330298,1.44176010629068
+"gcc","lat","shuffled","original fusion vs binary search",16384,2.81516951739453,2.7367674134475,2.82872000723747
+"clang","tput","shuffled","original fusion vs binary search",16384,1.40802077076454,1.38791135379006,1.47087991617309
+"gcc","tput","shuffled","original fusion vs binary search",16384,6.44180093488348,6.43676948466237,6.73192361295461
+"gcc","lat","blocked","original fusion vs branch-free B-tree",16384,1.54862022427186,1.54654025371268,1.55570077807503
+"gcc","tput","blocked","original fusion vs branch-free B-tree",16384,1.94565842515816,1.92454090963197,1.9560598089887
+"clang","lat","shuffled","original fusion vs branch-free B-tree",16384,1.50748022043879,1.49383852993656,1.51203784937815
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",16384,1.55837469749858,1.55732192727711,1.56450677810462
+"clang","tput","shuffled","original fusion vs branch-free B-tree",16384,2.17168441883795,2.15423545445604,2.19354385890567
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",16384,1.92798136693708,1.92110726807431,1.95632659392937
+"gcc","lat","blocked","branch-free rank vs original rank",32768,1.08729232857832,1.08568069194514,1.09677551056861
+"gcc","tput","blocked","branch-free rank vs original rank",32768,1.03813006390887,1.02685485621126,1.03819992541792
+"clang","lat","shuffled","branch-free rank vs original rank",32768,1.03714676665627,1.03674718548475,1.04223579708816
+"gcc","lat","shuffled","branch-free rank vs original rank",32768,1.09571670203888,1.07620903564952,1.10354341681907
+"clang","tput","shuffled","branch-free rank vs original rank",32768,0.9949239780363,0.990414362217866,0.99618059217339
+"gcc","tput","shuffled","branch-free rank vs original rank",32768,1.0843443022881,1.04270329618988,1.09439931827247
+"gcc","lat","blocked","compact 128-B node vs 184-B node",32768,0.972594150533832,0.964839991633549,0.987648137488206
+"gcc","tput","blocked","compact 128-B node vs 184-B node",32768,0.981062093417565,0.980276706023047,0.981939806222866
+"clang","lat","shuffled","compact 128-B node vs 184-B node",32768,0.969549716881019,0.968363097700861,0.976173406991945
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",32768,0.967174556737303,0.95055858650198,0.968443998946777
+"clang","tput","shuffled","compact 128-B node vs 184-B node",32768,0.96535603858624,0.955789513997015,0.967635043180911
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",32768,0.937740741047539,0.924869093647532,0.957422426347037
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",32768,1.80430054835569,1.79017767630185,1.80906746177714
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",32768,2.2789542468023,2.27385258299605,2.27962338955381
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",32768,1.57144262121453,1.5502195369633,1.59253922449214
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",32768,1.75044426015875,1.70208265999853,1.7598478245265
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",32768,2.75909845805833,2.67226350887877,2.82815284249767
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",32768,2.17794066720536,1.97730253949673,2.21853326682505
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",32768,2.13732526933622,2.13033848334654,2.15129146801204
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",32768,2.08979430053097,2.08623574018941,2.09192869522159
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",32768,1.75203868552498,1.74465589491099,1.76882617218414
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",32768,2.06256914285714,1.92825797574608,2.09762750062471
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",32768,3.19474434538375,3.04770355396766,3.25899261416093
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",32768,2.02424613757528,1.87039168858611,2.06529382350796
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",32768,1.02827715050824,1.02741812010041,1.02907922563852
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",32768,0.977427714744403,0.977091081540131,0.979365298103313
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",32768,1.00585657056499,1.00545176813468,1.01591693404676
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",32768,1.00553506994552,0.999611177268825,1.01745234435999
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",32768,0.936495809455542,0.931062710410007,0.940131968647115
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",32768,0.938427093404272,0.935428539875773,0.951884171614204
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",32768,2.13732526933622,2.13033848334654,2.15129146801204
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",32768,2.27051178147084,2.2664631995552,2.27364653752201
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",32768,1.77168310741495,1.76617338526895,1.80664189204594
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",32768,2.06256914285714,1.92825797574608,2.09762750062471
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",32768,3.19474434538375,3.04770355396766,3.25899261416093
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",32768,2.17953474821765,2.10441240932854,2.24386277875004
+"gcc","lat","blocked","original fusion vs binary search",32768,2.16590407884329,2.15452258889179,2.16983337485047
+"gcc","tput","blocked","original fusion vs binary search",32768,4.94026795560046,4.92931662855147,4.97840494354191
+"clang","lat","shuffled","original fusion vs binary search",32768,1.29201864736337,1.28968546090737,1.29494970985268
+"gcc","lat","shuffled","original fusion vs binary search",32768,2.21118046000935,2.18472159476707,2.29424352834482
+"clang","tput","shuffled","original fusion vs binary search",32768,1.25675591034502,1.25496383559547,1.31155538282161
+"gcc","tput","shuffled","original fusion vs binary search",32768,5.0307172703735,4.97924230211188,5.29020298452127
+"gcc","lat","blocked","original fusion vs branch-free B-tree",32768,1.62657801855044,1.60693370715684,1.63878428756918
+"gcc","tput","blocked","original fusion vs branch-free B-tree",32768,2.11008607657769,2.10961871506016,2.12699627905406
+"clang","lat","shuffled","original fusion vs branch-free B-tree",32768,1.52548341575662,1.52472321443451,1.5407821562003
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",32768,1.60696830161399,1.59509936757113,1.62482651637366
+"clang","tput","shuffled","original fusion vs branch-free B-tree",32768,2.79025389110807,2.77202380952381,2.82365738230549
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",32768,2.12024477888423,2.10271827633722,2.15094096628524
+"gcc","lat","blocked","branch-free rank vs original rank",65536,1.07976119641208,1.07867528061637,1.08295658523586
+"gcc","tput","blocked","branch-free rank vs original rank",65536,1.06311129258491,1.06213643977463,1.06956221808826
+"clang","lat","shuffled","branch-free rank vs original rank",65536,1.02730550028518,1.01082732246429,1.04118296065443
+"gcc","lat","shuffled","branch-free rank vs original rank",65536,1.07954500478076,1.07576305561512,1.08945300536038
+"clang","tput","shuffled","branch-free rank vs original rank",65536,0.994726758284379,0.981519477093531,0.997748265718375
+"gcc","tput","shuffled","branch-free rank vs original rank",65536,1.07577962995584,1.07327939658503,1.08333471891991
+"gcc","lat","blocked","compact 128-B node vs 184-B node",65536,0.974259926699158,0.970460810481034,0.977537480893688
+"gcc","tput","blocked","compact 128-B node vs 184-B node",65536,0.988369259001728,0.98780912821753,0.992962196705179
+"clang","lat","shuffled","compact 128-B node vs 184-B node",65536,0.962038647936749,0.955356594636856,0.965954379269292
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",65536,0.963120942353317,0.95486276820821,0.969008192746231
+"clang","tput","shuffled","compact 128-B node vs 184-B node",65536,0.957227334732834,0.953537779616946,0.969255468593217
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",65536,0.951366229248203,0.902132695975915,0.956073642573686
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",65536,1.76757382948946,1.75381591073597,1.78835683261475
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",65536,2.2082893865112,2.19996649274807,2.2272872331938
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",65536,1.53596857602501,1.50110303930743,1.56231990440423
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",65536,1.65167994211993,1.59066446936437,1.65384067383266
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",65536,2.67360242148128,2.61564251693914,2.7425839276791
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",65536,1.94642991718513,1.83417601009265,2.02588699798259
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",65536,2.16837142050378,2.1517980989648,2.21725622067856
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",65536,2.07882625792965,2.02753034408057,2.20727706281639
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",65536,1.7382928641006,1.72046603191429,1.78687017285767
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",65536,1.98678264359414,1.91503063559985,2.01370926243568
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",65536,3.40268011085133,3.28496593735203,3.51348364492747
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",65536,2.03112455905608,1.88253544807488,2.05759153118789
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",65536,0.965660671891769,0.961092078204955,0.976989569962016
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",65536,0.882970475899201,0.869944779368368,0.937241906704053
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",65536,0.936095725009077,0.930122965079391,0.936898841070479
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",65536,0.931434221500678,0.909784084232138,0.937379602167886
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",65536,0.834887761245377,0.821295788708029,0.842260085958701
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",65536,0.84006241526616,0.804119841579911,0.861267371800865
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",65536,2.16837142050378,2.1517980989648,2.21725622067856
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",65536,2.07882625792965,2.02753034408057,2.20727706281639
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",65536,1.7382928641006,1.72046603191429,1.78687017285767
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",65536,1.98678264359414,1.91503063559985,2.01370926243568
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",65536,3.40268011085133,3.28496593735203,3.51348364492747
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",65536,2.03112455905608,1.88253544807488,2.05759153118789
+"gcc","lat","blocked","original fusion vs binary search",65536,1.84884746162207,1.82724150579937,1.87597092081161
+"gcc","tput","blocked","original fusion vs binary search",65536,3.92469744509189,3.91522520554474,3.94950525603249
+"clang","lat","shuffled","original fusion vs binary search",65536,1.26795700586836,1.25088043899609,1.31256831194646
+"gcc","lat","shuffled","original fusion vs binary search",65536,1.94669682299358,1.92717606706544,2.00596295197463
+"clang","tput","shuffled","original fusion vs binary search",65536,1.23504584964939,1.20939098235437,1.31214364302423
+"gcc","tput","shuffled","original fusion vs binary search",65536,4.25100957030238,4.14863636363636,4.44763174533359
+"gcc","lat","blocked","original fusion vs branch-free B-tree",65536,1.61832598951607,1.6133655574475,1.6292719796599
+"gcc","tput","blocked","original fusion vs branch-free B-tree",65536,2.04709739553453,2.04591124103661,2.05846431619553
+"clang","lat","shuffled","original fusion vs branch-free B-tree",65536,1.528106558086,1.49466021490541,1.53647519553197
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",65536,1.56672021020715,1.4855892438047,1.61559495783896
+"clang","tput","shuffled","original fusion vs branch-free B-tree",65536,2.75932146668266,2.75154269079523,2.79137640843424
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",65536,1.99268655793324,1.97765440856144,2.01001540513007
+"gcc","lat","blocked","branch-free rank vs original rank",131072,1.06840268338668,1.06509025018452,1.09362916752023
+"gcc","tput","blocked","branch-free rank vs original rank",131072,0.993098991495645,0.955970860543519,1.02508597520193
+"clang","lat","shuffled","branch-free rank vs original rank",131072,1.03609972668731,1.00721687387691,1.04408740726527
+"gcc","lat","shuffled","branch-free rank vs original rank",131072,1.04074406755381,1.0036736,1.04698801180941
+"clang","tput","shuffled","branch-free rank vs original rank",131072,1.00192730513189,0.991173786907492,1.00221984232495
+"gcc","tput","shuffled","branch-free rank vs original rank",131072,1.04749650127015,1.00760663695931,1.05426954861767
+"gcc","lat","blocked","compact 128-B node vs 184-B node",131072,0.906200386663935,0.835584914855023,0.915325033056922
+"gcc","tput","blocked","compact 128-B node vs 184-B node",131072,0.925397401389496,0.908462643702766,0.94568874959729
+"clang","lat","shuffled","compact 128-B node vs 184-B node",131072,0.880651333197639,0.854933005501124,0.902669503051081
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",131072,0.949905019396934,0.93621496007971,0.960378119052251
+"clang","tput","shuffled","compact 128-B node vs 184-B node",131072,0.8816630635286,0.870596689726981,0.897827649243407
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",131072,0.950361340243813,0.918271386057114,0.950830478361801
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",131072,1.6099601933466,1.56794372668694,1.64867748394949
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",131072,1.73345289019227,1.64332401671049,1.73784119350569
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",131072,1.28893928366494,1.24818859465041,1.30455792461035
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",131072,1.40516013158568,1.35811283664925,1.47811587809617
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",131072,1.97272774546292,1.93426185537243,1.99162238037671
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",131072,1.29689614238397,1.26160802988414,1.32699559786204
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",131072,1.71945339090964,1.66018670190078,1.73823298831982
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",131072,1.5818563682435,1.40126371726244,1.61234874841364
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",131072,1.39664485640231,1.39047774701029,1.40252638372181
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",131072,1.55284675794541,1.49805974787926,1.56575294113007
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",131072,1.80973338802297,1.79184893239205,1.83336393378159
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",131072,1.2416894611948,1.22509326503144,1.24910227435707
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",131072,0.980775686521066,0.894167497762809,0.981159735736966
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",131072,1.01354705401559,1.00953794198287,1.03864459620901
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",131072,0.93951870234386,0.924425362291845,0.948050798310487
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",131072,0.968436413930715,0.953367323086805,0.985266467960443
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",131072,0.857741903501047,0.84093235269626,0.878439288220336
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",131072,0.949618517707429,0.908879883492687,0.954851612982306
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",131072,1.74313335228888,1.72574893885586,1.76426571881898
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",131072,1.90384148901822,1.83449255446851,1.93119291601693
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",131072,1.6886939959543,1.68268816730353,1.71973016155628
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",131072,1.76011735275765,1.70961719993018,1.77007740858532
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",131072,1.92465200682245,1.92422421566377,1.92718928324481
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",131072,1.66891936123136,1.63038475605462,1.66911359381089
+"gcc","lat","blocked","original fusion vs binary search",131072,2.01085211000872,1.97614793685892,2.15288564242153
+"gcc","tput","blocked","original fusion vs binary search",131072,4.29721523379891,4.26590652500039,4.54696784073507
+"clang","lat","shuffled","original fusion vs binary search",131072,1.832740665934,1.80917139965861,1.8632994695286
+"gcc","lat","shuffled","original fusion vs binary search",131072,2.50905607299967,2.47945729302497,2.58399509857966
+"clang","tput","shuffled","original fusion vs binary search",131072,1.83167570771983,1.74506469787473,1.83474258178447
+"gcc","tput","shuffled","original fusion vs binary search",131072,5.05903985987471,4.91572085997826,5.06863591173953
+"gcc","lat","blocked","original fusion vs branch-free B-tree",131072,1.5868619654305,1.5558232690639,1.69483884530098
+"gcc","tput","blocked","original fusion vs branch-free B-tree",131072,1.8225829157948,1.75925255640189,1.89333465117354
+"clang","lat","shuffled","original fusion vs branch-free B-tree",131072,1.48437692639625,1.48123125141635,1.50663352823095
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",131072,1.57252823721562,1.50236013452137,1.57781281324139
+"clang","tput","shuffled","original fusion vs branch-free B-tree",131072,2.23888915546676,2.18681722290519,2.3085793503261
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",131072,1.55405271220271,1.52366255455945,1.65428255645349
+"gcc","lat","blocked","branch-free rank vs original rank",262144,1.05763967062577,1.05197744554225,1.06888176203383
+"gcc","tput","blocked","branch-free rank vs original rank",262144,0.996832787503576,0.935633859380345,1.00601683518454
+"clang","lat","shuffled","branch-free rank vs original rank",262144,1.01937098503874,1.01440710363625,1.03257540179986
+"gcc","lat","shuffled","branch-free rank vs original rank",262144,1.05522101406453,1.00890685531413,1.06744245080095
+"clang","tput","shuffled","branch-free rank vs original rank",262144,1.01885467117605,1.00550652540022,1.04963211971072
+"gcc","tput","shuffled","branch-free rank vs original rank",262144,1.00483963536598,0.986249283167527,1.00538618606239
+"gcc","lat","blocked","compact 128-B node vs 184-B node",262144,0.919435831276905,0.906385964382849,0.923961896103209
+"gcc","tput","blocked","compact 128-B node vs 184-B node",262144,0.895746886317604,0.885407989367858,0.957668656982444
+"clang","lat","shuffled","compact 128-B node vs 184-B node",262144,0.891221358099115,0.889479453778282,0.921175631017332
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",262144,0.925019223119331,0.905865387577038,0.968569411316177
+"clang","tput","shuffled","compact 128-B node vs 184-B node",262144,0.898228117872181,0.893873356419028,0.901563843088224
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",262144,0.931444793270475,0.920736879601654,0.934146175566458
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",262144,1.61886391259705,1.61233676443821,1.63398231454955
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",262144,1.91956290970753,1.86083294801506,1.94419865346375
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",262144,1.18564571680575,1.18455127310114,1.19677752621282
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",262144,1.33141951576521,1.28521020728736,1.34843507680836
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",262144,2.43054907794803,2.35218880472872,2.44115381436482
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",262144,1.35411331279268,1.33559672694351,1.37469317209658
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",262144,1.58010876513135,1.55253387662485,1.6532248503491
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",262144,1.22893324770584,1.14608253706885,1.44145004336444
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",262144,1.17116989569179,1.1677863928796,1.17299963543338
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",262144,1.25305416448069,1.24212002264965,1.25352958984889
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",262144,1.9918860681443,1.98324032513223,2.00060205566517
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",262144,1.11375509870939,1.09087886924026,1.11745263417899
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",262144,1.10650038361673,1.09498341244401,1.15724055723
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",262144,1.10436122213425,1.03567045447319,1.19590582472679
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",262144,1.11304499269576,1.1109189879613,1.13737388264114
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",262144,1.08597341576853,1.07228219375925,1.15629149043508
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",262144,0.959715598073122,0.929119129483473,0.982014339106065
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",262144,1.04923144539008,1.00734772300041,1.07901584878435
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",262144,1.96642549307775,1.91077361499363,2.06766983171846
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",262144,2.29421031772244,2.24533166061224,2.42785276217503
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",262144,2.0553001631357,2.05111853125275,2.06916345066854
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",262144,2.01722624150206,1.94939963573515,2.02332312540106
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",262144,2.61267325851009,2.54198951410452,2.68791793190696
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",262144,1.84990918168633,1.78825070630826,1.85389249122807
+"gcc","lat","blocked","original fusion vs binary search",262144,1.81437867712605,1.81245733915281,1.83397642284479
+"gcc","tput","blocked","original fusion vs binary search",262144,3.98813349892712,3.8108705761766,4.31119946134855
+"clang","lat","shuffled","original fusion vs binary search",262144,1.72863620286285,1.70259207443562,1.77893879352933
+"gcc","lat","shuffled","original fusion vs binary search",262144,2.16009822238562,2.13703153959727,2.19630177149999
+"clang","tput","shuffled","original fusion vs binary search",262144,1.6480153193413,1.64073123382226,1.66522292613021
+"gcc","tput","shuffled","original fusion vs binary search",262144,4.28612446267804,4.07650053805753,4.44424686302859
+"gcc","lat","blocked","original fusion vs branch-free B-tree",262144,1.60195473818969,1.58332739099262,1.61520476824366
+"gcc","tput","blocked","original fusion vs branch-free B-tree",262144,2.06770205263986,1.97656579446092,2.21866548744408
+"clang","lat","shuffled","original fusion vs branch-free B-tree",262144,1.40551473709194,1.39193079867208,1.46897575328852
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",262144,1.45301611180376,1.41359741968117,1.4615952732644
+"clang","tput","shuffled","original fusion vs branch-free B-tree",262144,2.67196217510283,2.60654508283657,2.72215770515681
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",262144,1.72274232510191,1.70985768421053,1.75366323123427
+"gcc","lat","blocked","branch-free rank vs original rank",524288,1.07432196475455,1.05824402199589,1.10287793338845
+"gcc","tput","blocked","branch-free rank vs original rank",524288,1.06212421016035,0.939757617842045,1.14153533517534
+"clang","lat","shuffled","branch-free rank vs original rank",524288,1.04472828126195,1.0143648089671,1.05293920449009
+"gcc","lat","shuffled","branch-free rank vs original rank",524288,1.03549627294208,1.00876438349993,1.06252498279723
+"clang","tput","shuffled","branch-free rank vs original rank",524288,0.980962705820104,0.976388229000489,1
+"gcc","tput","shuffled","branch-free rank vs original rank",524288,1.06072955322562,1.06050290868578,1.06211080749383
+"gcc","lat","blocked","compact 128-B node vs 184-B node",524288,0.908792118577875,0.896277785982899,0.911250458958915
+"gcc","tput","blocked","compact 128-B node vs 184-B node",524288,0.864056420043023,0.81862784329145,0.893869289523215
+"clang","lat","shuffled","compact 128-B node vs 184-B node",524288,0.885472972383962,0.88228603956898,0.919388399758858
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",524288,0.907597098783682,0.879385824600939,0.924125586420972
+"clang","tput","shuffled","compact 128-B node vs 184-B node",524288,0.91927013627657,0.899724152555097,0.935168813781873
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",524288,0.876970759419067,0.844578450196588,0.891737089477877
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",524288,1.6893492826112,1.67733790632341,1.69975509514694
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",524288,1.90770097613718,1.88518649506148,1.96170202121273
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",524288,1.18347578080656,1.17568225537999,1.18348603227222
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",524288,1.33996549805947,1.29416087961866,1.34063449316222
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",524288,2.46691579681352,2.4622406861701,2.59308088659172
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",524288,1.31902518691942,1.28533059542144,1.36949134179592
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",524288,1.77642121327738,1.74737952515213,1.79884791595159
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",524288,1.30501395387156,1.18640412193061,1.43479800011707
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",524288,1.23625231547815,1.22854366028708,1.24027635801313
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",524288,1.30943967569513,1.21776398824646,1.33832669111549
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",524288,2.22348357980188,2.22189394806086,2.27758814410263
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",524288,1.16084633567177,1.11885813138346,1.16485287516115
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",524288,1.19229322371134,1.14209026738222,1.24670306817267
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",524288,1.19083738125424,1.07466238904335,1.21107615660394
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",524288,1.22601285637324,1.22429969098921,1.25975484678376
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",524288,1.20987972943615,1.05691303733584,1.22517706434784
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",524288,1.00841639123732,0.981427947188789,1.01435493537407
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",524288,1.075162358754,1.06401252983658,1.08971185190193
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",524288,2.20058974841584,2.1659286679428,2.31123826950153
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",524288,2.58468569533488,2.57524514708825,2.59815273271519
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",524288,2.26323243798858,2.1654088276927,2.2765895682409
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",524288,2.18203779994699,2.1632162409451,2.30009523020868
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",524288,2.89662411072499,2.8551319972258,2.9230773536326
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",524288,1.9383259612806,1.92070268332368,1.96987228398906
+"gcc","lat","blocked","original fusion vs binary search",524288,1.17581777663303,1.15302434006248,1.18332341681809
+"gcc","tput","blocked","original fusion vs binary search",524288,2.41644398372111,2.34925358552503,2.68181899922673
+"clang","lat","shuffled","original fusion vs binary search",524288,1.3508206455592,1.34104942710778,1.35560239167881
+"gcc","lat","shuffled","original fusion vs binary search",524288,1.45853579913309,1.33413881243106,1.83458775679522
+"clang","tput","shuffled","original fusion vs binary search",524288,1.31535545145792,1.30251771877277,1.38292812101753
+"gcc","tput","shuffled","original fusion vs binary search",524288,2.56922146873085,2.50058511312187,2.59566146128328
+"gcc","lat","blocked","original fusion vs branch-free B-tree",524288,1.63468969329338,1.60112760818368,1.64714525883143
+"gcc","tput","blocked","original fusion vs branch-free B-tree",524288,2.06712888456814,1.99751619045087,2.21569634128424
+"clang","lat","shuffled","original fusion vs branch-free B-tree",524288,1.39414805447803,1.37434207488319,1.43080626483877
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",524288,1.5402857926352,1.45126188354982,1.54639711863653
+"clang","tput","shuffled","original fusion vs branch-free B-tree",524288,2.95493488563006,2.85563170218795,2.97951266128587
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",524288,1.69739505716028,1.69314671998075,1.70180083285072
+"gcc","lat","blocked","branch-free rank vs original rank",1048576,1.03148004879664,1.01847727077663,1.06707865877523
+"gcc","tput","blocked","branch-free rank vs original rank",1048576,0.947575513124118,0.884678419223713,1.00789389272964
+"clang","lat","shuffled","branch-free rank vs original rank",1048576,1.00437461198721,0.994250805490439,1.02331587504432
+"gcc","lat","shuffled","branch-free rank vs original rank",1048576,1.01459705970417,1.01112428496663,1.03020932650101
+"clang","tput","shuffled","branch-free rank vs original rank",1048576,0.995190500963981,0.977363117177992,1.00822301066054
+"gcc","tput","shuffled","branch-free rank vs original rank",1048576,1.04301433239065,1.03902876721886,1.04789372009392
+"gcc","lat","blocked","compact 128-B node vs 184-B node",1048576,0.820626079297669,0.814423082037906,0.834309450389987
+"gcc","tput","blocked","compact 128-B node vs 184-B node",1048576,0.904866386537228,0.830899244218701,0.969879154788384
+"clang","lat","shuffled","compact 128-B node vs 184-B node",1048576,0.927038923407347,0.915777244779864,0.929584132423469
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",1048576,0.909717513242873,0.903966404509611,0.910978240699425
+"clang","tput","shuffled","compact 128-B node vs 184-B node",1048576,0.915147183995985,0.907414874723401,0.931798490539958
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",1048576,0.900445714420717,0.882624548761036,0.917774658074953
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",1048576,1.63390399434248,1.57799789078335,1.7110713475267
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",1048576,1.11294274894186,1.11039250960426,1.21863255937532
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",1048576,1.3512585866976,1.3500185550499,1.36356398575625
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",1048576,1.33474991366027,1.3169296765156,1.33815651059264
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",1048576,2.35385437955973,2.34466562325999,2.40991587468596
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",1048576,1.14026004670962,1.11738152293162,1.17534256126414
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",1048576,1.83268203277869,1.80443319361273,1.9221607242362
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",1048576,1.21322121553068,1.05845667444129,1.55981094962299
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",1048576,1.2841641536797,1.27790502023386,1.29310300830129
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",1048576,1.37560261118341,1.35889180580671,1.38514532097588
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",1048576,2.29796716829831,2.28719790667815,2.31375655946762
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",1048576,1.14965790534751,1.10838357858275,1.15179397514249
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",1048576,0.588339133761892,0.57694172218075,0.614442227462362
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",1048576,0.496967240897518,0.473360546584487,0.558951395632969
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",1048576,0.662335814808937,0.656287912989643,0.663354772943233
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",1048576,0.665709659735591,0.659892051156185,0.670394226197732
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",1048576,0.485393224566911,0.467106909094334,0.49075331294048
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",1048576,0.517557478371161,0.512678022238702,0.519727634853637
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",1048576,1.83268203277869,1.80443319361273,1.9221607242362
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",1048576,1.21322121553068,1.05845667444129,1.55981094962299
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",1048576,1.2841641536797,1.27790502023386,1.29310300830129
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",1048576,1.37560261118341,1.35889180580671,1.38514532097588
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",1048576,2.29796716829831,2.28719790667815,2.31375655946762
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",1048576,1.14965790534751,1.10838357858275,1.15179397514249
+"gcc","lat","blocked","original fusion vs binary search",1048576,1.65124722607113,1.47875678277988,1.69011856875215
+"gcc","tput","blocked","original fusion vs binary search",1048576,3.55007174929408,3.13411770725881,3.83940357916627
+"clang","lat","shuffled","original fusion vs binary search",1048576,1.67266545160125,1.52994211465911,2.04394850688065
+"gcc","lat","shuffled","original fusion vs binary search",1048576,1.64814295357348,1.59484018411665,1.67748946559867
+"clang","tput","shuffled","original fusion vs binary search",1048576,1.71652559712261,1.71592051571742,2.03078651265576
+"gcc","tput","shuffled","original fusion vs binary search",1048576,3.1509586439185,3.09097643548086,3.30167433855139
+"gcc","lat","blocked","original fusion vs branch-free B-tree",1048576,1.66586980887021,1.60198614400653,1.67544492404468
+"gcc","tput","blocked","original fusion vs branch-free B-tree",1048576,1.29495246433242,1.21395450241578,1.4243404660971
+"clang","lat","shuffled","original fusion vs branch-free B-tree",1048576,1.39747574597503,1.39573724104441,1.40245985952135
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",1048576,1.39346719803287,1.38389909778229,1.44157623059134
+"clang","tput","shuffled","original fusion vs branch-free B-tree",1048576,2.48295514430678,2.48284347856199,2.49022641193102
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",1048576,1.20556987656244,1.16536981017845,1.20714028793914
+"gcc","lat","blocked","branch-free rank vs original rank",2097152,0.975590676662321,0.920150448687214,0.991482479176764
+"gcc","tput","blocked","branch-free rank vs original rank",2097152,1.00113497626195,0.983470346728983,1.01568759320918
+"clang","lat","shuffled","branch-free rank vs original rank",2097152,1.01842069212277,1.015355616896,1.01907741410724
+"gcc","lat","shuffled","branch-free rank vs original rank",2097152,1.02179542089621,1.01640600008395,1.03155824097152
+"clang","tput","shuffled","branch-free rank vs original rank",2097152,1.0079192761064,0.99954865729853,1.01357489814427
+"gcc","tput","shuffled","branch-free rank vs original rank",2097152,1.01630568406616,1.0045647000695,1.0460253027654
+"gcc","lat","blocked","compact 128-B node vs 184-B node",2097152,0.86026659148682,0.828694725130817,0.880247830728009
+"gcc","tput","blocked","compact 128-B node vs 184-B node",2097152,0.830579828940451,0.784573950381226,0.863412858479199
+"clang","lat","shuffled","compact 128-B node vs 184-B node",2097152,0.909876828439849,0.907038908457332,0.924934969995102
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",2097152,0.906212154182508,0.898923420797304,0.917328683019876
+"clang","tput","shuffled","compact 128-B node vs 184-B node",2097152,0.927773826945377,0.916238247908516,0.936560588664976
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",2097152,0.896991464670991,0.886483526178503,0.920842076314094
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",2097152,1.53836174789297,1.35533749367453,1.97399654952867
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",2097152,1.31043581401502,1.26045531767538,1.46842772530926
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",2097152,1.17529577843985,1.16248188506898,1.18009943367486
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",2097152,1.16462411150056,1.15888110879457,1.17856205454001
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",2097152,2.67341894244406,2.62592193432067,2.6861209536371
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",2097152,1.1672049429921,1.16324537256909,1.19204878500099
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",2097152,1.41951718377985,1.25401495238548,1.44001483597754
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",2097152,1.05032164677387,0.970034000397215,1.13985924183007
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",2097152,1.33599808923806,1.3215176009049,1.33610045582861
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",2097152,1.31786557945785,1.3074098855728,1.34438700695592
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",2097152,2.08312986802605,2.06904646199404,2.14623887712776
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",2097152,1.08482972868638,0.99158774252431,1.09649525999267
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",2097152,0.90752849576029,0.907199038733711,1.00583164089161
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",2097152,0.830933570170877,0.773501361794011,0.895961954325594
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",2097152,0.93954522416125,0.93539972033031,0.958560630365441
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",2097152,0.930257732178117,0.917132420942261,0.944970258812699
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",2097152,0.83999706933322,0.836514601008971,0.872614083565791
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",2097152,0.882229058224204,0.810488750092531,0.896742874361747
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",2097152,1.86719291705859,1.42979793595857,2.03443588235257
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",2097152,1.41663532389183,1.32499240813848,1.58402037794768
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",2097152,1.33599808923806,1.3215176009049,1.33610045582861
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",2097152,1.31786557945785,1.3074098855728,1.34438700695592
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",2097152,2.40741612147523,2.39918209776107,2.51447384340321
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",2097152,1.33060766718355,1.2569046231189,1.33260653382006
+"gcc","lat","blocked","original fusion vs binary search",2097152,1.28425385508496,1.27735425576474,1.55206804937516
+"gcc","tput","blocked","original fusion vs binary search",2097152,2.61134089941764,2.5656251134831,2.79428264274515
+"clang","lat","shuffled","original fusion vs binary search",2097152,1.29970652590587,1.02914208465383,1.32650520821104
+"gcc","lat","shuffled","original fusion vs binary search",2097152,1.17683141628527,1.16368204107784,1.19018853435512
+"clang","tput","shuffled","original fusion vs binary search",2097152,1.3284404973468,1.31380225730804,1.51665452480619
+"gcc","tput","shuffled","original fusion vs binary search",2097152,2.33842979637782,2.28906965399206,2.47088264718915
+"gcc","lat","blocked","original fusion vs branch-free B-tree",2097152,1.50904517969097,1.40480897774845,2.10272103805306
+"gcc","tput","blocked","original fusion vs branch-free B-tree",2097152,1.51344880317499,1.42916451755708,1.55860835177735
+"clang","lat","shuffled","original fusion vs branch-free B-tree",2097152,1.21156620419823,1.20881098823164,1.22287125704744
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",2097152,1.19761360072931,1.17798960715667,1.22427819089721
+"clang","tput","shuffled","original fusion vs branch-free B-tree",2097152,2.71613383706757,2.70657289122296,2.7627128189508
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",2097152,1.29512883268616,1.15676197283981,1.30032084408649
+"gcc","lat","blocked","branch-free rank vs original rank",4194304,1.00956742461109,1.00868305121088,1.0155862977473
+"gcc","tput","blocked","branch-free rank vs original rank",4194304,1.01669860677584,0.990304412306796,1.11685363866696
+"clang","lat","shuffled","branch-free rank vs original rank",4194304,1.01574462669039,1.01413585650649,1.02106652514044
+"gcc","lat","shuffled","branch-free rank vs original rank",4194304,1.02743675776121,1.02331282106316,1.03267473280209
+"clang","tput","shuffled","branch-free rank vs original rank",4194304,1.00051008298105,0.99399157860883,1.01617334313948
+"gcc","tput","shuffled","branch-free rank vs original rank",4194304,1.04006687495353,1.01114616687751,1.04594985433981
+"gcc","lat","blocked","compact 128-B node vs 184-B node",4194304,0.774093705982652,0.756632379090473,0.959699387744476
+"gcc","tput","blocked","compact 128-B node vs 184-B node",4194304,0.776370152354571,0.756670340531834,0.869167051409061
+"clang","lat","shuffled","compact 128-B node vs 184-B node",4194304,0.914886911129411,0.907658734242204,0.920975610578509
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",4194304,0.888747662872073,0.886529987287952,0.907571919017972
+"clang","tput","shuffled","compact 128-B node vs 184-B node",4194304,0.902049777777778,0.900141845537705,0.909594254411584
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",4194304,0.885675251964751,0.875553525720061,0.887994355301296
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",4194304,1.29355041106564,1.2635282987561,1.33884094384968
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",4194304,1.50779820673249,1.15906811658933,1.51505384250862
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",4194304,1.15918147207,1.15603125480033,1.16327643797436
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",4194304,1.16376199758214,1.15415349802606,1.18026357959625
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",4194304,2.68519877999208,2.67243859897067,2.8223396798138
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",4194304,1.18239660417361,1.15711130108495,1.21442307024791
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",4194304,1.16682930150229,1.13848884717882,1.29395187435382
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",4194304,0.986833381148194,0.969722775746368,1.03580645079355
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",4194304,1.11599584569361,1.11073854215308,1.13278467358988
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",4194304,1.15178414815899,1.14795349742513,1.19581550521011
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",4194304,2.0259897032129,2.00029340235464,2.05407779688569
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",4194304,1.00816255196881,1.00361296124866,1.01036878115517
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",4194304,1.09118576706528,1.02606922138578,1.23072402169911
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",4194304,1.07522680055402,1.03584093033776,1.09225715277682
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",4194304,1.0837474370933,1.08034476421798,1.08681646689958
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",4194304,1.06612791669456,1.0375179701413,1.10641282509825
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",4194304,0.894870222222222,0.869555755323659,0.913061062731639
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",4194304,1.02204970717419,1.01409304508893,1.03452640194679
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",4194304,1.69993049251266,1.67481984116871,1.93082429812104
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",4194304,1.90392444540932,1.65443920714915,2.06409451191867
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",4194304,1.49977837900286,1.49623797393084,1.5022704004356
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",4194304,1.49831660643573,1.47442536104919,1.55550869454892
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",4194304,2.69810599633573,2.65116824132213,2.72373789071066
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",4194304,1.50016032299628,1.49059268729183,1.50290922236358
+"gcc","lat","blocked","original fusion vs binary search",4194304,0.693456545413413,0.662233883442871,0.750870571400679
+"gcc","tput","blocked","original fusion vs binary search",4194304,1.33967222653662,1.28415377904424,1.34033480391639
+"clang","lat","shuffled","original fusion vs binary search",4194304,0.80340359193658,0.761047856097078,0.871042656093416
+"gcc","lat","shuffled","original fusion vs binary search",4194304,0.705235233003195,0.696243399015339,0.71318027118401
+"clang","tput","shuffled","original fusion vs binary search",4194304,0.929658698996642,0.879296780315194,1.07326261521795
+"gcc","tput","shuffled","original fusion vs binary search",4194304,1.385464811672,1.35497513787254,1.42919562498818
+"gcc","lat","blocked","original fusion vs branch-free B-tree",4194304,1.45945938124998,1.12457079828333,1.65105209894103
+"gcc","tput","blocked","original fusion vs branch-free B-tree",4194304,1.38696471230568,1.35781753048897,1.49431858931939
+"clang","lat","shuffled","original fusion vs branch-free B-tree",4194304,1.2085116855703,1.20335239358989,1.20862007030818
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",4194304,1.23136719778303,1.22353269280924,1.23589686410194
+"clang","tput","shuffled","original fusion vs branch-free B-tree",4194304,2.88333020549475,2.85238718435875,2.96807551781123
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",4194304,1.27718017930389,1.26296248028831,1.3147907346796
+"gcc","lat","blocked","branch-free rank vs original rank",8388608,1.03734173851315,1.00957517930971,1.06103153603295
+"gcc","tput","blocked","branch-free rank vs original rank",8388608,1.02641356711948,1.00686895216326,1.05681523342258
+"clang","lat","shuffled","branch-free rank vs original rank",8388608,1.03411960236015,1.00950916480213,1.04092715486351
+"gcc","lat","shuffled","branch-free rank vs original rank",8388608,1.02900040842344,1.02005195182268,1.04628115885758
+"clang","tput","shuffled","branch-free rank vs original rank",8388608,1.02590396150199,1.02341277192236,1.03332196028596
+"gcc","tput","shuffled","branch-free rank vs original rank",8388608,1.03663941660386,1.02742088100434,1.04107593106873
+"gcc","lat","blocked","compact 128-B node vs 184-B node",8388608,0.871124999103506,0.86682192344017,0.879860166370822
+"gcc","tput","blocked","compact 128-B node vs 184-B node",8388608,0.874227265933669,0.833362881928439,0.891064096446472
+"clang","lat","shuffled","compact 128-B node vs 184-B node",8388608,0.916378794099903,0.901656887518381,0.929390587185992
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",8388608,0.906105354140932,0.890741382304488,0.914014905105481
+"clang","tput","shuffled","compact 128-B node vs 184-B node",8388608,0.913360997073476,0.911251422072632,0.923155774326401
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",8388608,0.89693156534783,0.895960303279543,0.908411229618659
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",8388608,1.3853101763296,1.02164346586021,1.56021860625035
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",8388608,1.45636067467019,1.13716638231897,1.4874099938699
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",8388608,1.25215926891334,1.24554522614056,1.26140768440903
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",8388608,1.21611465186067,1.21599268937585,1.2273202476784
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",8388608,2.55230789067892,2.53405874360003,2.58897763996627
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",8388608,1.15840693313069,1.14660345187362,1.18006962695449
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",8388608,1.19473658985134,1.01391164214866,1.30170640097653
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",8388608,0.973142258284563,0.948643557491697,1.11974956116463
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",8388608,1.17658936626262,1.16826166908597,1.18202610933104
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",8388608,1.1649030778453,1.15961070151951,1.19210888291602
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",8388608,2.21627350929594,2.18364639452675,2.28397522995292
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",8388608,1.0143123184115,1.00566437336163,1.04908772744613
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",8388608,0.767367047743693,0.765384364775826,0.780792564601414
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",8388608,0.654059170678283,0.630966619090094,0.659924154445845
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",8388608,0.812104507191317,0.79232915042757,0.825306906494739
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",8388608,0.785729104491419,0.776209694731118,0.807175638720244
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",8388608,0.610804415167963,0.607942874803157,0.617079174755732
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",8388608,0.679366448112462,0.671055626242492,0.693620056145305
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",8388608,1.2478224835986,1.01391164214866,1.35722353676034
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",8388608,1.08143381373771,0.948643557491697,1.11974956116463
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",8388608,1.17658936626262,1.16826166908597,1.18202610933104
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",8388608,1.1649030778453,1.15961070151951,1.19210888291602
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",8388608,2.21627350929594,2.18364639452675,2.28397522995292
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",8388608,1.0143123184115,1.00566437336163,1.04908772744613
+"gcc","lat","blocked","original fusion vs binary search",8388608,0.564609376176955,0.502616627222981,0.566865974954325
+"gcc","tput","blocked","original fusion vs binary search",8388608,1.08921863799283,0.996530151025276,1.09268549001308
+"clang","lat","shuffled","original fusion vs binary search",8388608,0.752186481675021,0.707506869394107,0.805761284723696
+"gcc","lat","shuffled","original fusion vs binary search",8388608,0.589805137036333,0.587350646374959,0.612044025289114
+"clang","tput","shuffled","original fusion vs binary search",8388608,0.956829531376601,0.935180098686676,1.04854947698832
+"gcc","tput","shuffled","original fusion vs binary search",8388608,1.15093561467992,1.14932962490004,1.15471610883655
+"gcc","lat","blocked","original fusion vs branch-free B-tree",8388608,1.35669720089004,1.17247960658177,1.50077958778529
+"gcc","tput","blocked","original fusion vs branch-free B-tree",8388608,1.25712100556061,1.04418918912661,1.28636733126094
+"clang","lat","shuffled","original fusion vs branch-free B-tree",8388608,1.26638431489842,1.2567866920609,1.28215534295315
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",8388608,1.27639753840092,1.22472865959971,1.28742901290711
+"clang","tput","shuffled","original fusion vs branch-free B-tree",8388608,2.58721153559046,2.57619181567857,2.59895527398866
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",8388608,1.20035359606833,1.1841159592233,1.21166315280337
+"gcc","lat","blocked","branch-free rank vs original rank",16777216,1.03126838772277,0.984529900019904,1.03418025211901
+"gcc","tput","blocked","branch-free rank vs original rank",16777216,1.01497857913681,0.991232284563109,1.02554800514047
+"clang","lat","shuffled","branch-free rank vs original rank",16777216,1.01011178742011,1.00619217054078,1.0154996637866
+"gcc","lat","shuffled","branch-free rank vs original rank",16777216,1.01026959268121,0.991848271202753,1.01404452061639
+"clang","tput","shuffled","branch-free rank vs original rank",16777216,0.994568674507033,0.975236725677389,1.01404815567795
+"gcc","tput","shuffled","branch-free rank vs original rank",16777216,1.01406054672929,1.00015812877835,1.03595663387978
+"gcc","lat","blocked","compact 128-B node vs 184-B node",16777216,0.933127451093833,0.891383060358149,0.961720268820485
+"gcc","tput","blocked","compact 128-B node vs 184-B node",16777216,0.888923504015216,0.885319235088682,0.894919884464692
+"clang","lat","shuffled","compact 128-B node vs 184-B node",16777216,0.915399926244079,0.909822468803077,0.915878053805861
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",16777216,0.909718620937332,0.897320187054061,0.922265253056368
+"clang","tput","shuffled","compact 128-B node vs 184-B node",16777216,0.925284820845231,0.912209268887508,0.941881867240982
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",16777216,0.909198840641414,0.90790204607168,0.911489628038453
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",16777216,1.30735748694882,1.26951862799572,1.47776138212166
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",16777216,1.06686068410298,1.06184828014584,1.28691741420676
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",16777216,1.14821824082064,1.14703007967863,1.15343500032341
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",16777216,1.14438751872875,1.13127707087636,1.15456014549401
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",16777216,2.71569235346781,2.70717154202536,2.73247643548478
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",16777216,1.15787852864137,1.15629278956483,1.17663836173998
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",16777216,1.26415155210778,1.25452750084587,1.3577154380075
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",16777216,0.920768569257628,0.90137600864791,1.01494294858695
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",16777216,1.19216259563595,1.18382775169453,1.20096882038064
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",16777216,1.19555141081154,1.19294522681634,1.22848342116773
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",16777216,2.21704758498113,2.21632507055874,2.2191662122597
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",16777216,1.02133383301476,1.00880704456531,1.04561437344596
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",16777216,0.772519431247408,0.762092474896906,0.811602119884688
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",16777216,0.607229178728744,0.593573559519469,0.614432059994677
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",16777216,0.761720271433673,0.757820461531983,0.764854608328074
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",16777216,0.768037116692747,0.74909460183102,0.774159633686479
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",16777216,0.570912710215642,0.560329448505467,0.583262699387143
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",16777216,0.647025108953374,0.636359738753965,0.659585982855126
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",16777216,1.26415155210778,1.25452750084587,1.3577154380075
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",16777216,0.927439186875288,0.920768569257628,1.01494294858695
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",16777216,1.19216259563595,1.18382775169453,1.20096882038064
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",16777216,1.19555141081154,1.19294522681634,1.22848342116773
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",16777216,2.21704758498113,2.21632507055874,2.2191662122597
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",16777216,1.02133383301476,1.00880704456531,1.04561437344596
+"gcc","lat","blocked","original fusion vs binary search",16777216,0.43934557046384,0.422757613741163,0.441489246980933
+"gcc","tput","blocked","original fusion vs binary search",16777216,0.903153848010695,0.879729969493829,0.94790213176124
+"clang","lat","shuffled","original fusion vs binary search",16777216,0.626290812576861,0.587320898042815,0.705494158263978
+"gcc","lat","shuffled","original fusion vs binary search",16777216,0.48852494343282,0.470970748822122,0.488900386946783
+"clang","tput","shuffled","original fusion vs binary search",16777216,0.779866989168227,0.737473202291635,0.819637806454706
+"gcc","tput","shuffled","original fusion vs binary search",16777216,0.93971341020949,0.916292838760611,0.94495045333403
+"gcc","lat","blocked","original fusion vs branch-free B-tree",16777216,1.18901189317727,1.1293085462515,1.24720812597631
+"gcc","tput","blocked","original fusion vs branch-free B-tree",16777216,1.18097910919152,1.13063528301379,1.32504878001411
+"clang","lat","shuffled","original fusion vs branch-free B-tree",16777216,1.18552565047866,1.18129287046065,1.19447148351116
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",16777216,1.21213117333725,1.1984751395966,1.21881627582864
+"clang","tput","shuffled","original fusion vs branch-free B-tree",16777216,2.81374806411852,2.75328701355269,2.82630994418206
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",16777216,1.22103518892241,1.15510444568015,1.22769903246736
+"gcc","lat","blocked","branch-free rank vs original rank",33554432,1.02075132939662,1.00935134250035,1.02437625826933
+"gcc","tput","blocked","branch-free rank vs original rank",33554432,1.00923635427446,0.990337272759236,1.02934312795748
+"clang","lat","shuffled","branch-free rank vs original rank",33554432,1.0010158445046,1.00030459145358,1.00830834318578
+"gcc","lat","shuffled","branch-free rank vs original rank",33554432,1.01985727544151,1.01483159457713,1.02667240312088
+"clang","tput","shuffled","branch-free rank vs original rank",33554432,1.00233180675396,0.994747909245408,1.02086103429568
+"gcc","tput","shuffled","branch-free rank vs original rank",33554432,1.0425571355064,1.03235312265792,1.04862438186657
+"gcc","lat","blocked","compact 128-B node vs 184-B node",33554432,0.89453076409205,0.845059427453174,0.928731079118533
+"gcc","tput","blocked","compact 128-B node vs 184-B node",33554432,0.855755732496987,0.827664854703256,0.875578311135386
+"clang","lat","shuffled","compact 128-B node vs 184-B node",33554432,0.919985370977882,0.919477767219489,0.925732260849496
+"gcc","lat","shuffled","compact 128-B node vs 184-B node",33554432,0.909643329630445,0.903701497340667,0.913522137216086
+"clang","tput","shuffled","compact 128-B node vs 184-B node",33554432,0.903602470553237,0.898421348709655,0.912408444070978
+"gcc","tput","shuffled","compact 128-B node vs 184-B node",33554432,0.890322646609578,0.883334771325773,0.891523310542108
+"gcc","lat","blocked","equal footprint: compact fusion vs aligned B-tree",33554432,1.28425197658227,1.27351845672388,1.31060975867418
+"gcc","tput","blocked","equal footprint: compact fusion vs aligned B-tree",33554432,1.13310965190429,0.976449857774067,1.15440342813368
+"clang","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",33554432,1.13932433065375,1.13541176754275,1.14398230195583
+"gcc","lat","shuffled","equal footprint: compact fusion vs aligned B-tree",33554432,1.14227899144444,1.12819675522453,1.15621567845781
+"clang","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",33554432,2.77310308955263,2.7730508741011,2.7971880230449
+"gcc","tput","shuffled","equal footprint: compact fusion vs aligned B-tree",33554432,1.15797403966154,1.15094901973171,1.16393101858484
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 16-key B-tree",33554432,1.26591774368762,1.25524857069937,1.30597499232432
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 16-key B-tree",33554432,1.0669572359277,0.914302802669603,1.11586385296995
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",33554432,1.20381719738018,1.20346111643762,1.21082473272062
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",33554432,1.2018501648751,1.19753848150262,1.20223629754808
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",33554432,2.30512961100209,2.28146185851166,2.34259323166568
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 16-key B-tree",33554432,1.03027117986717,1.02468997410291,1.0385405672598
+"gcc","lat","blocked","Exp 4: 16-key fusion vs 8-key fusion",33554432,1.02437918960632,1.02032126563629,1.05452651592118
+"gcc","tput","blocked","Exp 4: 16-key fusion vs 8-key fusion",33554432,0.982669912714057,0.932896711944642,1.02960085348478
+"clang","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",33554432,1.05782214768129,1.05516732628412,1.06392897830184
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs 8-key fusion",33554432,1.04417231999644,1.0439067154847,1.0527522276113
+"clang","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",33554432,1.01833813946187,0.980160677870755,1.02294558762156
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs 8-key fusion",33554432,0.967667456342072,0.951091091146601,0.983319640422591
+"gcc","lat","blocked","Exp 4: 16-key fusion vs best B-tree",33554432,1.48813017419285,1.45838003231966,1.55060053716155
+"gcc","tput","blocked","Exp 4: 16-key fusion vs best B-tree",33554432,1.29559800823518,1.21786351065719,1.3667607485389
+"clang","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",33554432,1.36663913626883,1.36495343825871,1.37695329773592
+"gcc","lat","shuffled","Exp 4: 16-key fusion vs best B-tree",33554432,1.35386510582834,1.34196282819038,1.35898835450833
+"clang","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",33554432,3.09499926936838,3.05167916227432,3.13936013005894
+"gcc","tput","shuffled","Exp 4: 16-key fusion vs best B-tree",33554432,1.30305317452892,1.26819192874767,1.34175332585658
+"gcc","lat","blocked","original fusion vs binary search",33554432,0.355253856289812,0.328428395111462,0.370381419392505
+"gcc","tput","blocked","original fusion vs binary search",33554432,0.704546445142966,0.644784145004257,0.714482606351249
+"clang","lat","shuffled","original fusion vs binary search",33554432,0.530201484304651,0.513596137534543,0.588709803353826
+"gcc","lat","shuffled","original fusion vs binary search",33554432,0.39926064143867,0.397984724382512,0.404471680962806
+"clang","tput","shuffled","original fusion vs binary search",33554432,0.650732923682254,0.605243103937531,0.672599435998067
+"gcc","tput","shuffled","original fusion vs binary search",33554432,0.773982941039046,0.770447636497722,0.813259518502127
+"gcc","lat","blocked","original fusion vs branch-free B-tree",33554432,1.29787013714975,1.24197486722672,1.31465654959665
+"gcc","tput","blocked","original fusion vs branch-free B-tree",33554432,1.26396375943853,1.15547573047482,1.30358126762713
+"clang","lat","shuffled","original fusion vs branch-free B-tree",33554432,1.17321564558622,1.16799618086783,1.17682454291772
+"gcc","lat","shuffled","original fusion vs branch-free B-tree",33554432,1.18739774109248,1.18184267246975,1.19319596156538
+"clang","tput","shuffled","original fusion vs branch-free B-tree",33554432,2.95410979254968,2.9260269814839,2.9548377806613
+"gcc","tput","shuffled","original fusion vs branch-free B-tree",33554432,1.22187598030677,1.21175749665092,1.2218941127011

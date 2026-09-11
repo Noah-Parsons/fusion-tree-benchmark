@@ -134,9 +134,33 @@ private:
         bool leaf;
     };
 
+    // The branch-free scan is written with explicit AVX2 instructions: four
+    // keys per compare, no jumps. Written as a plain loop, g++ 16 vectorised
+    // it in one benchmark harness and emitted eight scalar compare/and/add
+    // groups in another, from identical source. The scalar version took
+    // 443 ns per query at n = 2^25 against 193 ns for the vector one, which
+    // would have quietly weakened the baseline (found 10 Sep 2026; see
+    // Experiments_Report_2026-09-10.docx). The fusion nodes use explicit
+    // instructions (PEXT, POPCNT, AVX2) too, so both sides are now spelled out.
     static int node_rank(const Node& nd, u64 q) {
         int r = 0;
         if constexpr (Branchless) {
+#if defined(__AVX2__)
+            if constexpr (B % 4 == 0) {
+                // AVX2 compares SIGNED 64-bit lanes; flipping the top bit of
+                // both sides turns that into the unsigned "key < q" we need.
+                const __m256i flip = _mm256_set1_epi64x((long long)0x8000000000000000ull);
+                const __m256i qv = _mm256_xor_si256(_mm256_set1_epi64x((long long)q), flip);
+                unsigned m = 0;
+                for (int i = 0; i < B; i += 4) {
+                    __m256i k = _mm256_xor_si256(
+                        _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&nd.key[i])), flip);
+                    __m256i lt = _mm256_cmpgt_epi64(qv, k);
+                    m |= (unsigned)_mm256_movemask_pd(_mm256_castsi256_pd(lt)) << i;
+                }
+                return popcount(m & ((1u << nd.n) - 1));   // only the n live keys
+            }
+#endif
             for (int i = 0; i < B; ++i) r += (i < nd.n) & (nd.key[i] < q);
         } else {
             while (r < nd.n && nd.key[r] < q) ++r;   // early-exit scan

@@ -16,11 +16,21 @@
 # interquartile range was found to understate session-to-session variation
 # (work log, 10 September), so the session range is the honest error bar.
 
+#   Rscript analysis/final.R [input dir = results/final_v2] [tag = v2]
+# Output file names carry the tag (results/final_<tag>_summary.csv, ...).
+# results/final (tag v1) is the first campaign, whose harness had the
+# checksum-aliasing flaw described in bench_pred.cpp; it is kept as a record.
+
 suppressPackageStartupMessages(library(ggplot2))
 dir.create("figures", showWarnings = FALSE)
 
-files <- list.files("results/final", pattern = "^[a-z]+_[a-z]+_[a-z]+_s[0-9]+\\.csv$", full.names = TRUE)
-if (length(files) == 0) stop("no files in results/final")
+args <- commandArgs(trailingOnly = TRUE)
+indir <- if (length(args) >= 1) args[1] else "results/final_v2"
+tag   <- if (length(args) >= 2) args[2] else "v2"
+out   <- function(stem, ext) sprintf("%s_%s.%s", stem, tag, ext)
+
+files <- list.files(indir, pattern = "^[a-z]+_[a-z]+_[a-z]+_s[0-9]+\\.csv$", full.names = TRUE)
+if (length(files) == 0) stop("no files in ", indir)
 parts <- do.call(rbind, strsplit(sub("\\.csv$", "", basename(files)), "_"))
 d <- do.call(rbind, lapply(seq_along(files), function(i) {
   x <- read.csv(files[i])

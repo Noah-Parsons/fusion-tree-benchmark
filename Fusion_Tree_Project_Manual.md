@@ -18,7 +18,7 @@ Three conventions:
 
 The companion code tree accompanies this manual. Everything in it has been compiled and run; the correctness tests pass 5.3 million checks with zero failures, and the timing figures quoted in Part X are real measurements, not illustrations.
 
-> **Updated 10–11 September 2026.** The code tree has grown since this manual was written: three more fusion node types (branch-free, compact, 256-bit), four more B-tree variants, and tools for Experiments 3 and 4. The tests now run 8,483,288 node checks and 12,000,000 structure checks, all passing under both g++ and clang. Corrections to this manual are marked **[Correction]** where they occur. The work logs in the repository record what changed and why.
+> **Updated 10 September 2026.** The code tree has grown since this manual was written: three more fusion node types (branch-free, compact, 256-bit), four more B-tree variants, and tools for Experiments 3 and 4. The tests now run 8,483,288 node checks and 12,000,000 structure checks, all passing under both g++ and clang. Corrections to this manual are marked **[Correction]** where they occur. The work logs in the repository record what changed and why.
 
 ---
 
