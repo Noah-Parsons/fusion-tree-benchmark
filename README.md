@@ -23,6 +23,12 @@ mechanism is responsible?
 | fusion tree, 16 keys on a 256-bit word | 576 | 611 |
 | binary search | 723 | 1407 |
 
+![Fusion tree time divided by each baseline, by mode and run order](figures/final_ratios_v3.png)
+
+*Every comparison, both timing modes (columns) and both run orders (rows).
+Below the dashed line the fusion variant wins; the band is the range across
+three sessions. Only the comparison against plain binary search ever crosses.*
+
 Four independent lines of evidence agree on why:
 
 1. **It executes more instructions, not fewer.** Measured with hardware
