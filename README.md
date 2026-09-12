@@ -140,4 +140,4 @@ fails with "Cannot create temporary file in C:\Windows\". With
 Without BMI2, drop `-mbmi2 -DFT_USE_PEXT` from the Makefile; a portable
 fallback is used.
 
-STEM Lab 2026–27. MIT licensed.
+MIT licensed.
