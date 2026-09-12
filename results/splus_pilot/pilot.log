@@ -1,0 +1,6 @@
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=7 max_log=25 structures=5 seed=20260909 keys=uniform compiler=gcc 16.1.0
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=7 max_log=25 structures=5 seed=20260909 keys=uniform compiler=gcc 16.1.0
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=7 max_log=25 structures=5 seed=20260909 keys=clustered compiler=gcc 16.1.0
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=7 max_log=25 structures=5 seed=20260909 keys=clustered compiler=gcc 16.1.0
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=7 max_log=25 structures=5 seed=20260909 keys=clustered compiler=gcc 16.1.0
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=7 max_log=25 structures=5 seed=20260909 keys=clustered compiler=gcc 16.1.0

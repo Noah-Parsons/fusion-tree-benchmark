@@ -1,0 +1,31 @@
+2026-09-12T17:12:06.4208667-06:00 session 1 start seed=20260910
+2026-09-12T17:12:06.4238718-06:00   run tput_uniform
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=uniform compiler=gcc 16.1.0
+2026-09-12T17:12:19.5351487-06:00   run lat_uniform
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=uniform compiler=gcc 16.1.0
+2026-09-12T17:12:41.5332205-06:00   run tput_clustered
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=clustered compiler=gcc 16.1.0
+2026-09-12T17:12:56.2919588-06:00   run lat_clustered
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=clustered compiler=gcc 16.1.0
+2026-09-12T17:13:19.3426737-06:00 session 1 done
+2026-09-12T17:14:19.3642371-06:00 session 2 start seed=20260911
+2026-09-12T17:14:19.3657714-06:00   run tput_uniform
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=uniform compiler=gcc 16.1.0
+2026-09-12T17:14:32.3580296-06:00   run lat_uniform
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=uniform compiler=gcc 16.1.0
+2026-09-12T17:14:53.4435307-06:00   run tput_clustered
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=clustered compiler=gcc 16.1.0
+2026-09-12T17:15:10.3024756-06:00   run lat_clustered
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=clustered compiler=gcc 16.1.0
+2026-09-12T17:15:35.4488354-06:00 session 2 done
+2026-09-12T17:16:35.4538624-06:00 session 3 start seed=20260912
+2026-09-12T17:16:35.4571036-06:00   run tput_uniform
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=uniform compiler=gcc 16.1.0
+2026-09-12T17:16:47.9842755-06:00   run lat_uniform
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=uniform compiler=gcc 16.1.0
+2026-09-12T17:17:08.4185637-06:00   run tput_clustered
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=clustered compiler=gcc 16.1.0
+2026-09-12T17:17:23.2287174-06:00   run lat_clustered
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=clustered compiler=gcc 16.1.0
+2026-09-12T17:17:45.8065662-06:00 session 3 done
+2026-09-12T17:17:45.8180445-06:00 campaign done

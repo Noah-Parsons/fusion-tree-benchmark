@@ -38,8 +38,12 @@
 //
 // Run:   ./build/bench_pred [reps=15] [max_log=22] [cpu=-1] [tput|lat]
 //                           [shuffled|blocked] [structures=all|name,name,...]
-//                           [seed=20260909]
+//                           [seed=20260909] [uniform|clustered]
 #include "structures.hpp"
+#include "splus_tree.hpp"
+#include "radix_jump.hpp"
+#include "spline_index.hpp"
+#include "cluster_jump.hpp"
 #include <algorithm>
 #include <chrono>
 #include <cstdio>
@@ -76,11 +80,23 @@ static bool pin_to_cpu(int cpu) {
 // about n^2 / 2^65) this consumes exactly the same random numbers as the
 // earlier std::set version, so the key sets are identical, but it is far
 // faster at n = 2^25.
-static std::vector<u64> make_sorted_keys(std::size_t n, std::mt19937_64& rng) {
+//
+// clustered: 64 random centres, every key within 2^32 above one of them. Most
+// of the 64-bit range is empty and the keys sit in dense clumps. This is the
+// case built to defeat RadixJump's table (see radix_jump.hpp). Queries are
+// drawn the same way, so they land inside the clumps as well; uniform queries
+// against clumped keys would mostly fall in the empty space and be trivial.
+// With centre == nullptr, draw() is one plain rng() call, as before.
+static u64 draw(std::mt19937_64& rng, const u64* centre) {
+    u64 x = rng();
+    return centre ? (centre[x & 63] | (x >> 32)) : x;
+}
+
+static std::vector<u64> make_sorted_keys(std::size_t n, std::mt19937_64& rng, const u64* centre = nullptr) {
     std::vector<u64> v;
     v.reserve(n);
     while (v.size() < n) {
-        while (v.size() < n) v.push_back(rng());
+        while (v.size() < n) v.push_back(draw(rng, centre));
         std::sort(v.begin(), v.end());
         v.erase(std::unique(v.begin(), v.end()), v.end());
     }
@@ -158,6 +174,7 @@ int main(int argc, char** argv) {
     // The seed fixes the key sets and queries. Different seeds give
     // independent key sets; 20260909 reproduces every earlier campaign.
     unsigned long long seed = (argc > 7) ? std::strtoull(argv[7], nullptr, 10) : 20260909ull;
+    bool clustered = (argc > 8) && std::strcmp(argv[8], "clustered") == 0;
     std::size_t nq = 1u << 16;
 
     std::vector<Entry> all = {
@@ -171,6 +188,13 @@ int main(int argc, char** argv) {
         make_entry<Fusion8BF>("fusion8_bf"),
         make_entry<Fusion8C>("fusion8_c"),
         make_entry<Fusion16W>("fusion16_w"),
+        make_entry<SPlus8>("splus8"),
+        make_entry<SPlus16>("splus16"),
+        make_entry<RadixJump>("radixjump"),
+        make_entry<Spline8>("spline8"),
+        make_entry<Spline16>("spline16"),
+        make_entry<Spline32>("spline32"),
+        make_entry<ClusterJump>("clusterjump"),
     };
     std::vector<Entry> es;
     for (auto& e : all)
@@ -190,9 +214,10 @@ int main(int argc, char** argv) {
 #else
     const char* compiler = "gcc " __VERSION__;
 #endif
-    std::fprintf(stderr, "mode=%s order=%s cpu=%d pinned=%d sketch=%s reps=%d max_log=%d structures=%zu seed=%llu compiler=%s\n",
+    std::fprintf(stderr, "mode=%s order=%s cpu=%d pinned=%d sketch=%s reps=%d max_log=%d structures=%zu seed=%llu keys=%s compiler=%s\n",
                  latency ? "lat" : "tput", blocked ? "blocked" : "shuffled",
-                 cpu, pinned ? 1 : 0, sketch, reps, max_log, es.size(), seed, compiler);
+                 cpu, pinned ? 1 : 0, sketch, reps, max_log, es.size(), seed,
+                 clustered ? "clustered" : "uniform", compiler);
 
     std::mt19937_64 rng(seed);
     std::mt19937 order_rng(12345);
@@ -200,10 +225,13 @@ int main(int argc, char** argv) {
 
     for (int lg = 8; lg <= max_log; ++lg) {
         std::size_t n = (std::size_t)1 << lg;
-        std::vector<u64> keys = make_sorted_keys(n, rng);
+        u64 centre[64];
+        if (clustered) for (auto& c : centre) c = rng() & ~0xFFFFFFFFull;
+        const u64* cp = clustered ? centre : nullptr;
+        std::vector<u64> keys = make_sorted_keys(n, rng, cp);
 
         std::vector<u64> queries(nq);
-        for (auto& q : queries) q = rng();
+        for (auto& q : queries) q = draw(rng, cp);
 
         for (auto& e : es) e.build(keys);
         for (auto& e : es) e.warm(queries);

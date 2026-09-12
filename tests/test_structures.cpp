@@ -5,6 +5,10 @@
 //
 // Build: make test
 #include "structures.hpp"
+#include "splus_tree.hpp"
+#include "radix_jump.hpp"
+#include "spline_index.hpp"
+#include "cluster_jump.hpp"
 #include <algorithm>
 #include <cstdio>
 #include <random>
@@ -73,6 +77,13 @@ int main() {
         Fusion8BF f2;     f2.build(a);   check("fusion8_bf", f2, a, qs, t);
         Fusion8C f3;      f3.build(a);   check("fusion8_c", f3, a, qs, t);
         Fusion16W f4;     f4.build(a);   check("fusion16_w", f4, a, qs, t);
+        SPlus8 s1;        s1.build(a);   check("splus8", s1, a, qs, t);
+        SPlus16 s2;       s2.build(a);   check("splus16", s2, a, qs, t);
+        RadixJump rj;     rj.build(a);   check("radixjump", rj, a, qs, t);
+        Spline8 p1;       p1.build(a);   check("spline8", p1, a, qs, t);
+        Spline16 p2;      p2.build(a);   check("spline16", p2, a, qs, t);
+        Spline32 p3;      p3.build(a);   check("spline32", p3, a, qs, t);
+        ClusterJump cj;   cj.build(a);   check("clusterjump", cj, a, qs, t);
     }
     std::printf("checks=%lld failures=%lld\n", t.checks, t.failures);
     return t.failures == 0 ? 0 : 1;
