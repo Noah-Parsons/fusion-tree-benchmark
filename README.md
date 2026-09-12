@@ -1,5 +1,7 @@
 # Fusion Tree — Galactic Algorithms, Measured
 
+<a href="https://doi.org/10.5281/zenodo.22718523"><img src="https://zenodo.org/badge/1365176754.svg" alt="DOI"></a>
+
 The fusion tree (Fredman & Willard, 1993) answers predecessor queries in
 O(log_w n) time, beating the Ω(log n) comparison bound. It is the textbook
 example of a *galactic algorithm*: provably faster, universally assumed to be
