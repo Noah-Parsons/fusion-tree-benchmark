@@ -149,6 +149,51 @@ confirmed in three sessions:
   each search waits on memory fewer times in a row.
 - Not compared: RMI, which needs a separate code generator per dataset.
 
+**Clumps inside clumps: ClusterJump's weakness, confirmed.** Keys in 64
+clusters, each made of 64 sub-clusters (`bench_pred ... nested`; plan in
+`results/nested/PLAN.md`). ClusterJump loses to every rival, 1.6–2.2× slower,
+and is even slower than the plain branch-free B-tree (throughput 197 ns
+against the S+ tree's 110 and RadixSpline's 105). Its advantage needs
+clustering at one scale.
+
+**Data that changes.** `include/cluster_jump_dynamic.hpp` (ClusterJumpD)
+accepts inserts. It gives every second-level slot a box of 16 keys and
+rebuilds a bucket when too many boxes overflow. Its rivals are the TLX B+ tree
+and ALEX, the best-known learned index for changing data (`third_party/`);
+the dynamic PGM-index cannot step backwards, so it cannot answer "largest key
+below q". Deletion is not supported. 2^24 keys, half bulk-loaded, then 8.4
+million operations with 10% or 50% inserts; plan and results in
+`results/dynamic/PLAN.md`. ClusterJumpD time ÷ rival time, three sessions:
+
+| keys | vs TLX, 10% inserts | vs ALEX, 10% | vs TLX, 50% inserts | vs ALEX, 50% |
+|---|---|---|---|---|
+| uniform | **0.14** | **0.66** | **0.26** | **0.95** |
+| clustered | **0.11** | **0.34** | **0.21** | **0.53** |
+| books | **0.15** | **0.72** | **0.27** | **0.95** |
+| wiki | **0.15** | **0.72** | **0.25** | **0.82** |
+| osm | **0.27** | **0.53** | **0.51** | **0.73** |
+| fb | 0.30 (tie) | 0.67 (tie) | 0.63 (tie) | 0.83 (tie) |
+
+- **Faster than ALEX and TLX on five of six key sets**, with both insert shares.
+- **fb exposes a bad worst case.** In one of three sessions ClusterJumpD was
+  3.6× (10%) to 12× (50%) slower than ALEX. fb's few enormous IDs squeezed
+  nearly all keys into one top bucket, and they piled into overflow lists of
+  up to 47,000 keys (diagnosis in the plan).
+- **It uses the most memory:** 15–19 bytes per key, and about 25 on fb and
+  osm, against ALEX's 12–17.
+- **ALEX has bugs of its own,** found by `tests/test_dynamic.cpp` and
+  recorded in `third_party/PATCHES.md`: wrong answers for queries outside the
+  key range (worked around in its wrapper), wrong answers for very closely
+  spaced keys above 2^53, and a crash on one extreme input. ClusterJumpD and
+  TLX: 465,888 checks each, zero failures. In the race itself every checksum
+  agreed.
+
+Build the changing-data programs as C++17 (ALEX needs it):
+
+    g++ -O3 -std=c++17 -march=native -mbmi2 -Iinclude -Ithird_party/tlx -Ithird_party/ALEX/src/core -static tests/test_dynamic.cpp -o build/test_dynamic
+    g++ -O3 -std=c++17 -march=native -mbmi2 -Iinclude -Ithird_party/tlx -Ithird_party/ALEX/src/core -static bench/bench_dyn.cpp -o build/bench_dyn
+    Rscript analysis/dynamic_confirm.R
+
 Correctness: the tree test now covers all 16 structures, 20,400,000 checks,
 zero failures.
 

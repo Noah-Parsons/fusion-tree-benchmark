@@ -88,16 +88,22 @@ static bool pin_to_cpu(int cpu) {
 // drawn the same way, so they land inside the clumps as well; uniform queries
 // against clumped keys would mostly fall in the empty space and be trivial.
 // With centre == nullptr, draw() is one plain rng() call, as before.
-static u64 draw(std::mt19937_64& rng, const u64* centre) {
+//
+// nested: clumps inside clumps. 64 clusters, each 2^40 wide; inside each, 64
+// sub-clusters, each 2^20 wide. Built to defeat ClusterJump, which rescales
+// its table for clusters at one scale only (see cluster_jump.hpp).
+static u64 draw(std::mt19937_64& rng, const u64* centre, const u64* sub = nullptr) {
     u64 x = rng();
+    if (sub) return centre[x & 63] | sub[x & 4095] | (x >> 44);
     return centre ? (centre[x & 63] | (x >> 32)) : x;
 }
 
-static std::vector<u64> make_sorted_keys(std::size_t n, std::mt19937_64& rng, const u64* centre = nullptr) {
+static std::vector<u64> make_sorted_keys(std::size_t n, std::mt19937_64& rng,
+                                         const u64* centre = nullptr, const u64* sub = nullptr) {
     std::vector<u64> v;
     v.reserve(n);
     while (v.size() < n) {
-        while (v.size() < n) v.push_back(draw(rng, centre));
+        while (v.size() < n) v.push_back(draw(rng, centre, sub));
         std::sort(v.begin(), v.end());
         v.erase(std::unique(v.begin(), v.end()), v.end());
     }
@@ -205,6 +211,7 @@ int main(int argc, char** argv) {
     // independent key sets; 20260909 reproduces every earlier campaign.
     unsigned long long seed = (argc > 7) ? std::strtoull(argv[7], nullptr, 10) : 20260909ull;
     bool clustered = (argc > 8) && std::strcmp(argv[8], "clustered") == 0;
+    bool nested = (argc > 8) && std::strcmp(argv[8], "nested") == 0;
     // file:<path> — real keys from a SOSD-format file (a uint64 count, then
     // that many uint64 keys). Each size samples its keys from the file.
     std::vector<u64> dataset;
@@ -264,7 +271,7 @@ int main(int argc, char** argv) {
     std::fprintf(stderr, "mode=%s order=%s cpu=%d pinned=%d sketch=%s reps=%d max_log=%d structures=%zu seed=%llu keys=%s compiler=%s\n",
                  latency ? "lat" : "tput", blocked ? "blocked" : "shuffled",
                  cpu, pinned ? 1 : 0, sketch, reps, max_log, es.size(), seed,
-                 !dataset.empty() ? argv[8] : clustered ? "clustered" : "uniform", compiler);
+                 !dataset.empty() ? argv[8] : nested ? "nested" : clustered ? "clustered" : "uniform", compiler);
 
     std::mt19937_64 rng(seed);
     std::mt19937 order_rng(12345);
@@ -273,14 +280,21 @@ int main(int argc, char** argv) {
     for (int lg = 8; lg <= max_log; ++lg) {
         std::size_t n = (std::size_t)1 << lg;
         u64 centre[64];
+        std::vector<u64> sub;
         if (clustered) for (auto& c : centre) c = rng() & ~0xFFFFFFFFull;
-        const u64* cp = clustered ? centre : nullptr;
+        if (nested) {
+            for (auto& c : centre) c = rng() & ~((1ull << 40) - 1);                       // bits 40..63
+            sub.resize(4096);
+            for (auto& c : sub) c = rng() & (((1ull << 40) - 1) & ~((1ull << 20) - 1));  // bits 20..39
+        }
+        const u64* cp = (clustered || nested) ? centre : nullptr;
+        const u64* sp = nested ? sub.data() : nullptr;
         if (!dataset.empty() && n > dataset.size()) break;   // the file has too few keys
-        std::vector<u64> keys = dataset.empty() ? make_sorted_keys(n, rng, cp) : sample_keys(dataset, n, rng);
+        std::vector<u64> keys = dataset.empty() ? make_sorted_keys(n, rng, cp, sp) : sample_keys(dataset, n, rng);
 
         std::vector<u64> queries(nq);
         if (dataset.empty()) {
-            for (auto& q : queries) q = draw(rng, cp);
+            for (auto& q : queries) q = draw(rng, cp, sp);
         } else {
             // Real keys: land each query at a random point in a random gap
             // between stored keys (or on the key itself), so queries follow

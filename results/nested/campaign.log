@@ -1,0 +1,19 @@
+2026-09-12T18:47:36.1517610-06:00 session 1 start seed=20260910
+2026-09-12T18:47:36.1517610-06:00   run tput_nested
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=8 seed=20260910 keys=nested compiler=gcc 16.1.0
+2026-09-12T18:47:59.6257360-06:00   run lat_nested
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=8 seed=20260910 keys=nested compiler=gcc 16.1.0
+2026-09-12T18:48:33.1145293-06:00 session 1 done
+2026-09-12T18:49:33.1146466-06:00 session 2 start seed=20260911
+2026-09-12T18:49:33.1146466-06:00   run tput_nested
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=8 seed=20260911 keys=nested compiler=gcc 16.1.0
+2026-09-12T18:49:59.1798143-06:00   run lat_nested
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=8 seed=20260911 keys=nested compiler=gcc 16.1.0
+2026-09-12T18:50:34.7568039-06:00 session 2 done
+2026-09-12T18:51:34.7692900-06:00 session 3 start seed=20260912
+2026-09-12T18:51:34.7692900-06:00   run tput_nested
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=8 seed=20260912 keys=nested compiler=gcc 16.1.0
+2026-09-12T18:51:57.2121053-06:00   run lat_nested
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=8 seed=20260912 keys=nested compiler=gcc 16.1.0
+2026-09-12T18:52:30.0864326-06:00 session 3 done
+2026-09-12T18:52:30.0874697-06:00 campaign done

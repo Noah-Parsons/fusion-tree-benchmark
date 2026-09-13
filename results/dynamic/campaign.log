@@ -1,0 +1,79 @@
+2026-09-12T19:02:40.5232138-06:00 session 1 start seed=20260910
+2026-09-12T19:02:40.5284101-06:00   run uniform_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260910 keys=uniform log_n=24
+2026-09-12T19:03:04.8056102-06:00   run uniform_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260910 keys=uniform log_n=24
+2026-09-12T19:03:35.8559100-06:00   run clustered_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260910 keys=clustered log_n=24
+2026-09-12T19:04:03.6839354-06:00   run clustered_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260910 keys=clustered log_n=24
+2026-09-12T19:04:37.1818012-06:00   run books_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260910 keys=file:data\books_200M_uint64 log_n=24
+2026-09-12T19:05:11.5712020-06:00   run books_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260910 keys=file:data\books_200M_uint64 log_n=24
+2026-09-12T19:05:52.2572551-06:00   run wiki_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260910 keys=file:data\wiki_ts_200M_uint64 log_n=24
+2026-09-12T19:06:31.5654606-06:00   run wiki_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260910 keys=file:data\wiki_ts_200M_uint64 log_n=24
+2026-09-12T19:07:16.8628913-06:00   run fb_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260910 keys=file:data\fb_200M_uint64 log_n=24
+2026-09-12T19:08:11.2330564-06:00   run fb_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260910 keys=file:data\fb_200M_uint64 log_n=24
+2026-09-12T19:09:16.0531453-06:00   run osm_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260910 keys=file:data\osm_cellids_200M_uint64 log_n=24
+2026-09-12T19:10:01.8490993-06:00   run osm_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260910 keys=file:data\osm_cellids_200M_uint64 log_n=24
+2026-09-12T19:10:57.1681858-06:00 session 1 done
+2026-09-12T19:11:57.1870961-06:00 session 2 start seed=20260911
+2026-09-12T19:11:57.1880961-06:00   run uniform_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260911 keys=uniform log_n=24
+2026-09-12T19:12:20.4176109-06:00   run uniform_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260911 keys=uniform log_n=24
+2026-09-12T19:12:49.1295857-06:00   run clustered_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260911 keys=clustered log_n=24
+2026-09-12T19:13:19.7400472-06:00   run clustered_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260911 keys=clustered log_n=24
+2026-09-12T19:13:54.2938125-06:00   run books_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260911 keys=file:data\books_200M_uint64 log_n=24
+2026-09-12T19:14:28.9172883-06:00   run books_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260911 keys=file:data\books_200M_uint64 log_n=24
+2026-09-12T19:15:09.3205977-06:00   run wiki_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260911 keys=file:data\wiki_ts_200M_uint64 log_n=24
+2026-09-12T19:15:47.4919007-06:00   run wiki_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260911 keys=file:data\wiki_ts_200M_uint64 log_n=24
+2026-09-12T19:16:32.0337068-06:00   run fb_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260911 keys=file:data\fb_200M_uint64 log_n=24
+2026-09-12T19:17:56.5021867-06:00   run fb_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260911 keys=file:data\fb_200M_uint64 log_n=24
+2026-09-12T19:21:45.6802864-06:00   run osm_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260911 keys=file:data\osm_cellids_200M_uint64 log_n=24
+2026-09-12T19:22:28.5541428-06:00   run osm_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260911 keys=file:data\osm_cellids_200M_uint64 log_n=24
+2026-09-12T19:23:20.8430910-06:00 session 2 done
+2026-09-12T19:24:20.8595667-06:00 session 3 start seed=20260912
+2026-09-12T19:24:20.8595667-06:00   run uniform_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260912 keys=uniform log_n=24
+2026-09-12T19:24:41.9419281-06:00   run uniform_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260912 keys=uniform log_n=24
+2026-09-12T19:25:09.1307576-06:00   run clustered_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260912 keys=clustered log_n=24
+2026-09-12T19:25:36.1538705-06:00   run clustered_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260912 keys=clustered log_n=24
+2026-09-12T19:26:08.4914991-06:00   run books_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260912 keys=file:data\books_200M_uint64 log_n=24
+2026-09-12T19:26:41.0944398-06:00   run books_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260912 keys=file:data\books_200M_uint64 log_n=24
+2026-09-12T19:27:19.0402236-06:00   run wiki_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260912 keys=file:data\wiki_ts_200M_uint64 log_n=24
+2026-09-12T19:27:55.8177477-06:00   run wiki_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260912 keys=file:data\wiki_ts_200M_uint64 log_n=24
+2026-09-12T19:28:40.4765213-06:00   run fb_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260912 keys=file:data\fb_200M_uint64 log_n=24
+2026-09-12T19:29:19.8197738-06:00   run fb_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260912 keys=file:data\fb_200M_uint64 log_n=24
+2026-09-12T19:30:09.5318282-06:00   run osm_w10
+reps=5 cpu=8 pinned=1 write_pct=10 structures=3 seed=20260912 keys=file:data\osm_cellids_200M_uint64 log_n=24
+2026-09-12T19:30:55.2770359-06:00   run osm_w50
+reps=5 cpu=8 pinned=1 write_pct=50 structures=3 seed=20260912 keys=file:data\osm_cellids_200M_uint64 log_n=24
+2026-09-12T19:31:48.8476327-06:00 session 3 done
+2026-09-12T19:31:48.8476327-06:00 campaign done

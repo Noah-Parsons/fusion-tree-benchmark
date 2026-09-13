@@ -5,8 +5,11 @@
 # otherwise TIES. Rivals: rs18_e16, pgm16, and the faster S+ tree.
 #
 # Output: results/learned_summary.csv
-# Run:    Rscript analysis/learned_confirm.R
-dir <- "results/learned"
+# Run:    Rscript analysis/learned_confirm.R [dir] [output.csv]
+#         Rscript analysis/learned_confirm.R results/nested results/nested_summary.csv
+args <- commandArgs(trailingOnly = TRUE)
+dir <- if (length(args) >= 1) args[1] else "results/learned"
+outfile <- if (length(args) >= 2) args[2] else "results/learned_summary.csv"
 pat <- "^(tput|lat)_([a-z]+)_s([0-9]+)\\.csv$"
 files <- list.files(dir, pattern = pat, full.names = TRUE)
 if (!length(files)) stop("no Stage 2 files in ", dir)
@@ -37,5 +40,5 @@ for (rival in c("rs18_e16", "pgm16", "best_splus")) {
   out <- rbind(out, s)
 }
 out <- out[order(out$mode, out$rival, out$dataset), ]
-write.csv(out, "results/learned_summary.csv", row.names = FALSE)
+write.csv(out, outfile, row.names = FALSE)
 print(out, row.names = FALSE, digits = 3)
