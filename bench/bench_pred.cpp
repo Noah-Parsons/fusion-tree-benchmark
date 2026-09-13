@@ -44,6 +44,7 @@
 #include "radix_jump.hpp"
 #include "spline_index.hpp"
 #include "cluster_jump.hpp"
+#include "learned_indexes.hpp"
 #include <algorithm>
 #include <chrono>
 #include <cstdio>
@@ -231,6 +232,16 @@ int main(int argc, char** argv) {
         make_entry<Spline16>("spline16"),
         make_entry<Spline32>("spline32"),
         make_entry<ClusterJump>("clusterjump"),
+        make_entry<RS18E8>("rs18_e8"),
+        make_entry<RS18E16>("rs18_e16"),
+        make_entry<RS18E32>("rs18_e32"),
+        make_entry<RS22E8>("rs22_e8"),
+        make_entry<RS22E16>("rs22_e16"),
+        make_entry<RS22E32>("rs22_e32"),
+        make_entry<PGM16>("pgm16"),
+        make_entry<PGM32>("pgm32"),
+        make_entry<PGM64>("pgm64"),
+        make_entry<PGM128>("pgm128"),
     };
     std::vector<Entry> es;
     for (auto& e : all)

@@ -51,6 +51,7 @@ public:
         std::size_t total = 0;
         for (int h = 0; h < H_; ++h) total += nodes[h] * B;
         mem_ = static_cast<u64*>(_mm_malloc(total * sizeof(u64), 64));
+        total_ = total;
         // Root layer first in memory, leaves last.
         std::size_t off = 0;
         for (int h = H_ - 1; h >= 0; --h) { layer_[h] = mem_ + off; off += nodes[h] * B; }
@@ -89,6 +90,7 @@ public:
 
     u64 key_at(std::size_t i) const { return layer_[0][i] ^ FLIP; }
     std::size_t size() const { return n_; }
+    std::size_t bytes() const { return total_ * sizeof(u64); }
     int levels(u64) const { return H_; }
 
 private:
@@ -104,7 +106,7 @@ private:
 
     u64* mem_ = nullptr;
     u64* layer_[16] = {};
-    std::size_t n_ = 0;
+    std::size_t n_ = 0, total_ = 0;
     int H_ = 0;
 };
 

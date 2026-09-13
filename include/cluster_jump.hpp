@@ -123,6 +123,9 @@ public:
     }
 
     std::size_t size() const { return n_; }
+    std::size_t bytes() const {
+        return (n_ + 8) * sizeof(u64) + top_.size() * sizeof(Top) + t2_.size() * sizeof(std::uint32_t);
+    }
     int levels(u64) const { return 2; }
 
 private:

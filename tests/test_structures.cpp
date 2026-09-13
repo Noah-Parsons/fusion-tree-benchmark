@@ -9,6 +9,7 @@
 #include "radix_jump.hpp"
 #include "spline_index.hpp"
 #include "cluster_jump.hpp"
+#include "learned_indexes.hpp"
 #include <algorithm>
 #include <cstdio>
 #include <random>
@@ -84,6 +85,10 @@ int main() {
         Spline16 p2;      p2.build(a);   check("spline16", p2, a, qs, t);
         Spline32 p3;      p3.build(a);   check("spline32", p3, a, qs, t);
         ClusterJump cj;   cj.build(a);   check("clusterjump", cj, a, qs, t);
+        RS18E32 l1;       l1.build(a);   check("rs18_e32", l1, a, qs, t);
+        RS22E8 l2;        l2.build(a);   check("rs22_e8", l2, a, qs, t);
+        PGM16 l3;         l3.build(a);   check("pgm16", l3, a, qs, t);
+        PGM128 l4;        l4.build(a);   check("pgm128", l4, a, qs, t);
     }
     std::printf("checks=%lld failures=%lld\n", t.checks, t.failures);
     return t.failures == 0 ? 0 : 1;

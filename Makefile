@@ -23,7 +23,7 @@
 # portable fallback.
 
 CXX      ?= g++
-CXXFLAGS ?= -O3 -std=c++20 -march=native -mbmi2 -DFT_USE_PEXT -Iinclude -Wall -Wextra -static
+CXXFLAGS ?= -O3 -std=c++20 -march=native -mbmi2 -DFT_USE_PEXT -Iinclude -Ithird_party/RadixSpline/include -Ithird_party/PGM-index/include -Wall -Wextra -static
 LOOPFLAGS := $(filter-out -DFT_USE_PEXT,$(CXXFLAGS))
 BUILD    := build
 CPU      ?= 8

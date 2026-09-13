@@ -121,8 +121,33 @@ running), 2^25 keys sampled from each, time ÷ the faster S+ tree:
 
 ClusterJump is 1.6–2.3× faster than the S+ tree in throughput on all four
 real datasets, and ties or wins slightly in latency. SplineIndex's latency win
-does not survive fb and osm. Not yet compared: learned indexes built for this
-data (RadixSpline, PGM-index, RMI), which are the real state of the art here.
+does not survive fb and osm.
+
+**Against the learned indexes.** RadixSpline and PGM-index, the published
+state of the art for this data (`third_party/`, one portability patch in
+`third_party/PATCHES.md`), each tuned over its recommended settings by a rule
+fixed in advance, and given the same final search step as ClusterJump. Plan
+and results: `results/learned/PLAN.md`. ClusterJump time ÷ rival time at 2^25,
+confirmed in three sessions:
+
+| dataset | vs RadixSpline, throughput | vs PGM, throughput | vs RadixSpline, latency | vs PGM, latency |
+|---|---|---|---|---|
+| books | **0.73** | **0.42** | 1.21 | 1.26 |
+| wiki | **0.76** | **0.42** | 1.28 | 1.31 |
+| fb | **0.38** | **0.46** | **0.90** | 1.06 |
+| osm | **0.68** | **0.44** | 1.13 | 1.12 |
+
+- **Throughput: ClusterJump wins everywhere,** 1.3–2.6× faster than
+  RadixSpline and 2.2–2.4× faster than PGM-index.
+- **Latency: the learned indexes win,** by 6–31%. The one exception is fb,
+  where ClusterJump beats RadixSpline by 10%.
+- **Memory is a wash:** every structure uses 8.0–9.0 bytes per key, keys
+  included (a bare array is 8.00). The learned indexes are slightly smaller.
+- **Why they split.** It is the same trade-off seen throughout this
+  repository. ClusterJump's search is very short, so many searches overlap
+  while waiting on memory. A learned index's prediction is more accurate, so
+  each search waits on memory fewer times in a row.
+- Not compared: RMI, which needs a separate code generator per dataset.
 
 Correctness: the tree test now covers all 16 structures, 20,400,000 checks,
 zero failures.
