@@ -9,13 +9,16 @@
 # Output:      results/spline_confirm_summary.csv   medians, ratios, verdicts
 #
 # Run: Rscript analysis/confirm.R results/spline_confirm
+#      Rscript analysis/confirm.R results/realdata results/realdata_summary.csv
 args <- commandArgs(trailingOnly = TRUE)
 dir <- if (length(args) >= 1) args[1] else "results/spline_confirm"
-files <- list.files(dir, pattern = "^(tput|lat)_(uniform|clustered)_s[0-9]+\\.csv$", full.names = TRUE)
+outfile <- if (length(args) >= 2) args[2] else "results/spline_confirm_summary.csv"
+pat <- "^(tput|lat)_([A-Za-z0-9]+)_s([0-9]+)\\.csv$"   # keys: uniform, clustered, wiki, fb, ...
+files <- list.files(dir, pattern = pat, full.names = TRUE)
 if (!length(files)) stop("no result files in ", dir)
 
 rows <- do.call(rbind, lapply(files, function(f) {
-  m <- regmatches(basename(f), regexec("^(tput|lat)_(uniform|clustered)_s([0-9]+)\\.csv$", basename(f)))[[1]]
+  m <- regmatches(basename(f), regexec(pat, basename(f)))[[1]]
   d <- read.csv(f)
   # Every structure must have answered the same queries.
   bad <- aggregate(checksum ~ n, d, function(x) length(unique(x)))
@@ -40,7 +43,7 @@ for (cand in c("clusterjump", "spline32")) {
   out <- rbind(out, s)
 }
 out <- out[order(out$candidate, out$mode, out$keys, out$n), ]
-write.csv(out, "results/spline_confirm_summary.csv", row.names = FALSE)
+write.csv(out, outfile, row.names = FALSE)
 
 big <- out[out$n == 2^25, c("candidate", "mode", "keys", "candidate_ns", "best_splus_ns", "ratio_median", "ratio_min", "ratio_max", "beats_splus")]
 print(big, row.names = FALSE, digits = 3)

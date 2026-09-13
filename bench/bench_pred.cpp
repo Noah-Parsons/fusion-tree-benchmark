@@ -103,6 +103,35 @@ static std::vector<u64> make_sorted_keys(std::size_t n, std::mt19937_64& rng, co
     return v;
 }
 
+// A SOSD dataset file: uint64 count, then the keys. Returned sorted, no
+// duplicates (some SOSD sets repeat keys; predecessor needs distinct ones).
+static std::vector<u64> load_sosd(const char* path) {
+    std::vector<u64> v;
+    FILE* f = std::fopen(path, "rb");
+    if (!f) return v;
+    u64 count = 0;
+    if (std::fread(&count, sizeof count, 1, f) == 1) {
+        v.resize(count);
+        v.resize(std::fread(v.data(), sizeof(u64), count, f));
+    }
+    std::fclose(f);
+    std::sort(v.begin(), v.end());
+    v.erase(std::unique(v.begin(), v.end()), v.end());
+    return v;
+}
+
+// n distinct keys sampled at random from a dataset, sorted.
+static std::vector<u64> sample_keys(const std::vector<u64>& data, std::size_t n, std::mt19937_64& rng) {
+    std::vector<u64> v;
+    v.reserve(n);
+    while (v.size() < n) {
+        while (v.size() < n) v.push_back(data[rng() % data.size()]);
+        std::sort(v.begin(), v.end());
+        v.erase(std::unique(v.begin(), v.end()), v.end());
+    }
+    return v;
+}
+
 template <typename S>
 static void warm(const S& st, const std::vector<u64>& queries) {
     u64 sink = 0;
@@ -175,6 +204,13 @@ int main(int argc, char** argv) {
     // independent key sets; 20260909 reproduces every earlier campaign.
     unsigned long long seed = (argc > 7) ? std::strtoull(argv[7], nullptr, 10) : 20260909ull;
     bool clustered = (argc > 8) && std::strcmp(argv[8], "clustered") == 0;
+    // file:<path> — real keys from a SOSD-format file (a uint64 count, then
+    // that many uint64 keys). Each size samples its keys from the file.
+    std::vector<u64> dataset;
+    if (argc > 8 && std::strncmp(argv[8], "file:", 5) == 0) {
+        dataset = load_sosd(argv[8] + 5);
+        if (dataset.empty()) { std::fprintf(stderr, "could not read %s\n", argv[8] + 5); return 2; }
+    }
     std::size_t nq = 1u << 16;
 
     std::vector<Entry> all = {
@@ -217,7 +253,7 @@ int main(int argc, char** argv) {
     std::fprintf(stderr, "mode=%s order=%s cpu=%d pinned=%d sketch=%s reps=%d max_log=%d structures=%zu seed=%llu keys=%s compiler=%s\n",
                  latency ? "lat" : "tput", blocked ? "blocked" : "shuffled",
                  cpu, pinned ? 1 : 0, sketch, reps, max_log, es.size(), seed,
-                 clustered ? "clustered" : "uniform", compiler);
+                 !dataset.empty() ? argv[8] : clustered ? "clustered" : "uniform", compiler);
 
     std::mt19937_64 rng(seed);
     std::mt19937 order_rng(12345);
@@ -228,10 +264,22 @@ int main(int argc, char** argv) {
         u64 centre[64];
         if (clustered) for (auto& c : centre) c = rng() & ~0xFFFFFFFFull;
         const u64* cp = clustered ? centre : nullptr;
-        std::vector<u64> keys = make_sorted_keys(n, rng, cp);
+        if (!dataset.empty() && n > dataset.size()) break;   // the file has too few keys
+        std::vector<u64> keys = dataset.empty() ? make_sorted_keys(n, rng, cp) : sample_keys(dataset, n, rng);
 
         std::vector<u64> queries(nq);
-        for (auto& q : queries) q = draw(rng, cp);
+        if (dataset.empty()) {
+            for (auto& q : queries) q = draw(rng, cp);
+        } else {
+            // Real keys: land each query at a random point in a random gap
+            // between stored keys (or on the key itself), so queries follow
+            // the data's own shape.
+            for (auto& q : queries) {
+                std::size_t i = rng() % n;
+                u64 gap = i + 1 < n ? keys[i + 1] - keys[i] : 1;
+                q = keys[i] + rng() % gap;
+            }
+        }
 
         for (auto& e : es) e.build(keys);
         for (auto& e : es) e.warm(queries);

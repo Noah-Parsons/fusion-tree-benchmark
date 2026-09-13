@@ -1,0 +1,55 @@
+2026-09-12T17:43:09.3676974-06:00 session 1 start seed=20260910
+2026-09-12T17:43:09.3848726-06:00   run tput_wiki
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=file:data\wiki_ts_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:44:02.0359150-06:00   run lat_wiki
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=file:data\wiki_ts_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:45:01.9159476-06:00   run tput_fb
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=file:data\fb_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:45:40.2369760-06:00   run lat_fb
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=file:data\fb_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:46:26.5072099-06:00   run tput_books
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=file:data\books_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:47:05.5586523-06:00   run lat_books
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=file:data\books_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:47:51.6185106-06:00   run tput_osm
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=file:data\osm_cellids_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:48:34.0812126-06:00   run lat_osm
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260910 keys=file:data\osm_cellids_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:49:26.2875680-06:00 session 1 done
+2026-09-12T17:50:26.2997235-06:00 session 2 start seed=20260911
+2026-09-12T17:50:26.2997235-06:00   run tput_wiki
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=file:data\wiki_ts_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:51:13.7983246-06:00   run lat_wiki
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=file:data\wiki_ts_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:52:11.5627843-06:00   run tput_fb
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=file:data\fb_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:52:50.6149824-06:00   run lat_fb
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=file:data\fb_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:53:37.6029872-06:00   run tput_books
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=file:data\books_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:54:16.2170966-06:00   run lat_books
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=file:data\books_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:55:02.4773063-06:00   run tput_osm
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=file:data\osm_cellids_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:55:44.2626645-06:00   run lat_osm
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260911 keys=file:data\osm_cellids_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:56:32.2464063-06:00 session 2 done
+2026-09-12T17:57:32.2613330-06:00 session 3 start seed=20260912
+2026-09-12T17:57:32.2633338-06:00   run tput_wiki
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=file:data\wiki_ts_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:58:23.2898687-06:00   run lat_wiki
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=file:data\wiki_ts_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:59:23.0327216-06:00   run tput_fb
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=file:data\fb_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T17:59:58.5850629-06:00   run lat_fb
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=file:data\fb_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T18:00:42.7166396-06:00   run tput_books
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=file:data\books_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T18:01:18.4290848-06:00   run lat_books
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=file:data\books_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T18:02:01.0404728-06:00   run tput_osm
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=file:data\osm_cellids_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T18:02:36.0246710-06:00   run lat_osm
+mode=lat order=shuffled cpu=8 pinned=1 sketch=pext reps=15 max_log=25 structures=6 seed=20260912 keys=file:data\osm_cellids_200M_uint64 compiler=gcc 16.1.0
+2026-09-12T18:03:19.4058894-06:00 session 3 done
+2026-09-12T18:03:19.4079803-06:00 campaign done

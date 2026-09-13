@@ -108,6 +108,22 @@ sessions [range]. Clustered keys: 64 dense clusters, queries drawn the same way.
   clusters would defeat it; SplineIndex's error bound holds for any shape.
   One machine, static keys, two key distributions.
 
+**On real data.** The same race on the four SOSD benchmark datasets
+(200 million real keys each; plan in `results/realdata/PLAN.md`, fixed before
+running), 2^25 keys sampled from each, time ÷ the faster S+ tree:
+
+| dataset | clusterjump throughput | clusterjump latency | spline32 latency |
+|---|---|---|---|
+| books (Amazon sales) | **0.43** | **0.95** | **0.88** |
+| wiki (edit times) | **0.43** | **0.95** | **0.82** |
+| fb (user IDs) | **0.64** | 1.00 (tie) | 1.27 |
+| osm (map cells) | **0.60** | 1.00 (tie) | 1.17 |
+
+ClusterJump is 1.6–2.3× faster than the S+ tree in throughput on all four
+real datasets, and ties or wins slightly in latency. SplineIndex's latency win
+does not survive fb and osm. Not yet compared: learned indexes built for this
+data (RadixSpline, PGM-index, RMI), which are the real state of the art here.
+
 Correctness: the tree test now covers all 16 structures, 20,400,000 checks,
 zero failures.
 
