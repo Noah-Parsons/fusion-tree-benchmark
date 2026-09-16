@@ -45,6 +45,8 @@
 #include "spline_index.hpp"
 #include "cluster_jump.hpp"
 #include "learned_indexes.hpp"
+#include "sosd_rivals.hpp"
+#include "rmi_index.hpp"
 #include <algorithm>
 #include <chrono>
 #include <cstdio>
@@ -249,6 +251,30 @@ int main(int argc, char** argv) {
         make_entry<PGM32>("pgm32"),
         make_entry<PGM64>("pgm64"),
         make_entry<PGM128>("pgm128"),
+        make_entry<CHT64E16>("cht64_e16"),
+        make_entry<CHT64E32>("cht64_e32"),
+        make_entry<CHT64E64>("cht64_e64"),
+        make_entry<CHT64E128>("cht64_e128"),
+        make_entry<CHT256E16>("cht256_e16"),
+        make_entry<CHT256E32>("cht256_e32"),
+        make_entry<CHT256E64>("cht256_e64"),
+        make_entry<CHT256E128>("cht256_e128"),
+        make_entry<CHT1024E16>("cht1024_e16"),
+        make_entry<CHT1024E32>("cht1024_e32"),
+        make_entry<CHT1024E64>("cht1024_e64"),
+        make_entry<CHT1024E128>("cht1024_e128"),
+        // RMI by rank on each dataset's Pareto list (1 = smallest model). Only
+        // meaningful at the size its RMIs were trained on (see rmi_index.hpp).
+        make_entry<RMIIndex<1>>("rmi_r1"),
+        make_entry<RMIIndex<2>>("rmi_r2"),
+        make_entry<RMIIndex<3>>("rmi_r3"),
+        make_entry<RMIIndex<4>>("rmi_r4"),
+        make_entry<RMIIndex<5>>("rmi_r5"),
+        make_entry<RMIIndex<6>>("rmi_r6"),
+        make_entry<RMIIndex<7>>("rmi_r7"),
+        make_entry<RMIIndex<8>>("rmi_r8"),
+        make_entry<RMIIndex<9>>("rmi_r9"),
+        make_entry<RMIIndex<10>>("rmi_r10"),
     };
     std::vector<Entry> es;
     for (auto& e : all)
@@ -291,6 +317,18 @@ int main(int argc, char** argv) {
         const u64* sp = nested ? sub.data() : nullptr;
         if (!dataset.empty() && n > dataset.size()) break;   // the file has too few keys
         std::vector<u64> keys = dataset.empty() ? make_sorted_keys(n, rng, cp, sp) : sample_keys(dataset, n, rng);
+        // Optional 9th argument dump:<path> writes the largest size's keys in
+        // SOSD format (a uint64 count, then the keys), so that structures
+        // built by outside tools (RMI) are trained on exactly these keys.
+        if (argc > 9 && std::strncmp(argv[9], "dump:", 5) == 0 && lg == max_log) {
+            FILE* df = std::fopen(argv[9] + 5, "wb");
+            if (!df) { std::fprintf(stderr, "cannot write %s\n", argv[9] + 5); return 2; }
+            u64 count = keys.size();
+            std::fwrite(&count, sizeof count, 1, df);
+            std::fwrite(keys.data(), sizeof(u64), keys.size(), df);
+            std::fclose(df);
+            std::fprintf(stderr, "wrote %zu keys to %s\n", keys.size(), argv[9] + 5);
+        }
 
         std::vector<u64> queries(nq);
         if (dataset.empty()) {

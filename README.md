@@ -2,6 +2,24 @@
 
 <a href="https://doi.org/10.5281/zenodo.22718523"><img src="https://zenodo.org/badge/1365176754.svg" alt="DOI"></a>
 
+> **New here? Start with [docs/START_HERE.md](docs/START_HERE.md).** It takes
+> you from nothing installed to your first result, in plain language.
+>
+> **Want to understand the whole project, from zero?** Read
+> [docs/THE_WHOLE_STORY.md](docs/THE_WHOLE_STORY.md), a simple, chapter-by-chapter
+> explanation of everything, up to where the project stands today.
+>
+> | Guide | For |
+> |---|---|
+> | [THE_WHOLE_STORY](docs/THE_WHOLE_STORY.md) | the entire project explained simply, start to now |
+> | [START_HERE](docs/START_HERE.md) | installing, building, testing, your first race |
+> | [GLOSSARY](docs/GLOSSARY.md) | every technical word, explained simply |
+> | [STRUCTURES](docs/STRUCTURES.md) | what each search method does |
+> | [EXPERIMENTS](docs/EXPERIMENTS.md) | every question asked, and the answer |
+> | [PROGRAMS](docs/PROGRAMS.md) | how to run each program, and what its output means |
+> | [REPO_MAP](docs/REPO_MAP.md) | what every folder and file is for |
+> | [TROUBLESHOOTING](docs/TROUBLESHOOTING.md) | fixes for common problems |
+
 The fusion tree (Fredman & Willard, 1993) answers predecessor queries in
 O(log_w n) time, beating the Ω(log n) comparison bound. It is the textbook
 example of a *galactic algorithm*: provably faster, universally assumed to be

@@ -23,7 +23,7 @@
 # portable fallback.
 
 CXX      ?= g++
-CXXFLAGS ?= -O3 -std=c++20 -march=native -mbmi2 -DFT_USE_PEXT -Iinclude -Ithird_party/RadixSpline/include -Ithird_party/PGM-index/include -Wall -Wextra -static
+CXXFLAGS ?= -O3 -std=c++20 -march=native -mbmi2 -DFT_USE_PEXT -Iinclude -Ithird_party/RadixSpline/include -Ithird_party/PGM-index/include -Ithird_party/CHT/include -Wall -Wextra -static
 LOOPFLAGS := $(filter-out -DFT_USE_PEXT,$(CXXFLAGS))
 BUILD    := build
 CPU      ?= 8
@@ -49,8 +49,21 @@ $(BUILD)/test_node_loop: tests/test_node.cpp include/*.hpp | dirs
 $(BUILD)/test_structures_loop: tests/test_structures.cpp include/*.hpp | dirs
 	$(CXX) $(LOOPFLAGS) tests/test_structures.cpp -o $@
 
-$(BUILD)/bench_pred: bench/bench_pred.cpp include/*.hpp | dirs
-	$(CXX) $(CXXFLAGS) bench/bench_pred.cpp -o $@
+# Generated RMIs (data/rmi/, from analysis/rmi_build.sh and rmi_registry.py).
+# Without them, an empty registry is linked and every RMI entry falls back to
+# a plain search.
+RMI_SRCS := $(wildcard data/rmi/gen/*.cpp)
+RMI_REG  := $(if $(wildcard data/rmi/registry.cpp),data/rmi/registry.cpp,bench/rmi_none.cpp)
+
+$(BUILD)/bench_pred: bench/bench_pred.cpp include/*.hpp $(RMI_REG) $(RMI_SRCS) | dirs
+	$(CXX) $(CXXFLAGS) -Idata/rmi/gen bench/bench_pred.cpp $(RMI_REG) $(RMI_SRCS) -o $@
+
+$(BUILD)/test_rmi: tests/test_rmi.cpp include/*.hpp $(RMI_REG) $(RMI_SRCS) | dirs
+	$(CXX) $(CXXFLAGS) -Idata/rmi/gen tests/test_rmi.cpp $(RMI_REG) $(RMI_SRCS) -o $@
+
+# The light harness: one 2^25 sample, one structure in memory at a time, hard memory cap.
+$(BUILD)/bench_one: bench/bench_one.cpp include/*.hpp $(RMI_REG) $(RMI_SRCS) | dirs
+	$(CXX) $(CXXFLAGS) -Idata/rmi/gen bench/bench_one.cpp $(RMI_REG) $(RMI_SRCS) -Xlinker --stack=16777216,8388608 -o $@
 
 $(BUILD)/bench_pred_loop: bench/bench_pred.cpp include/*.hpp | dirs
 	$(CXX) $(LOOPFLAGS) bench/bench_pred.cpp -o $@

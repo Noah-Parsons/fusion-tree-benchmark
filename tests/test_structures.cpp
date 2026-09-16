@@ -10,6 +10,7 @@
 #include "spline_index.hpp"
 #include "cluster_jump.hpp"
 #include "learned_indexes.hpp"
+#include "sosd_rivals.hpp"
 #include <algorithm>
 #include <cstdio>
 #include <random>
@@ -89,6 +90,8 @@ int main() {
         RS22E8 l2;        l2.build(a);   check("rs22_e8", l2, a, qs, t);
         PGM16 l3;         l3.build(a);   check("pgm16", l3, a, qs, t);
         PGM128 l4;        l4.build(a);   check("pgm128", l4, a, qs, t);
+        CHT64E16 h1;      h1.build(a);   check("cht64_e16", h1, a, qs, t);
+        CHT1024E128 h2;   h2.build(a);   check("cht1024_e128", h2, a, qs, t);
     }
     std::printf("checks=%lld failures=%lld\n", t.checks, t.failures);
     return t.failures == 0 ? 0 : 1;

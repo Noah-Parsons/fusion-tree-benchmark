@@ -19,6 +19,7 @@
 #include <immintrin.h>
 #include <cstddef>
 #include <cstdint>
+#include <new>
 #include <vector>
 
 // Their headers use assert(), some of it inside the search. Compile them the
@@ -45,6 +46,7 @@ static constexpr u64 LI_FLIP = 0x8000000000000000ull;
 // Keys stored with the top bit flipped, followed by 8 padding slots.
 inline u64* flipped_copy(const std::vector<u64>& a) {
     u64* k = static_cast<u64*>(_mm_malloc((a.size() + 8) * sizeof(u64), 64));
+    if (!k) throw std::bad_alloc();   // fail cleanly under a memory cap
     for (std::size_t i = 0; i < a.size(); ++i) k[i] = a[i] ^ LI_FLIP;
     for (std::size_t i = a.size(); i < a.size() + 8; ++i) k[i] = ~0ull ^ LI_FLIP;
     return k;
