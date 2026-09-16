@@ -1,6 +1,6 @@
 # Third-party code used in the learned-index race
 
-Downloaded 2026-09-12 with the user's permission. Shallow clones; the `.git`
+Downloaded 2026-09-12. Shallow clones; the `.git`
 folders record the exact commit.
 
 | library | source | commit | license |
