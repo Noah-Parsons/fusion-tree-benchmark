@@ -1,14 +1,11 @@
-# The whole story: from knowing nothing to where the project is today
+# An explanation of the project and its current progress
 
-This guide explains **everything** in this project, in order, assuming you
-know nothing about computer science. Read it from top to bottom, like a book.
+This guide explains the entire project, in order, assuming you
+know nothing about computer science.
 Each chapter builds on the one before.
 
 - To install and run things, use [START_HERE.md](START_HERE.md).
 - To look up a word, use [GLOSSARY.md](GLOSSARY.md).
-
-**Reading time:** about an hour. There are check-yourself questions at the
-end, with answers.
 
 ---
 
@@ -27,7 +24,7 @@ end, with answers.
 11. [Part 6: data that changes](#chapter-11-part-6-data-that-changes)
 12. [Part 7: is it new?](#chapter-12-part-7-is-it-new)
 13. [Part 8: the missing rivals, and where things stand now](#chapter-13-part-8-the-missing-rivals-and-where-things-stand-now)
-14. [The big lessons](#chapter-14-the-big-lessons)
+14. [Lessons](#chapter-14-lessons)
 15. [Check yourself](#chapter-15-check-yourself)
 
 ---
@@ -286,8 +283,7 @@ With 256-bit numbers, 16 keys fit in a box. **It is no faster.**
 
 ## Chapter 6: How to race fairly
 
-A race is only worth something if it is fair. These rules apply to everything
-after this chapter.
+A race is only worth something if it is fair. The following rules are applied:
 
 ### Correct answers first
 
@@ -334,8 +330,7 @@ From Part 2 onward, every race has a **plan file** (`PLAN.md`), written
 After the race, the outcome is added to the same file, including when the
 expectation was **wrong**.
 
-This stops anyone from changing the rules after seeing results. It's how
-scientists keep themselves honest.
+This stops anyone from changing the rules after seeing results.
 
 ### Confirm on fresh data
 
@@ -509,8 +504,6 @@ Operations were a mix of searching and adding numbers: 10% adds or 50% adds.
 
 ## Chapter 12: Part 7: is it new?
 
-Before claiming anything, check whether someone already did it.
-
 **Answer: no, it isn't new.** In 2021, Andrew Crotty published the
 **Hist-Tree**. It also splits the number range into equal slices and zooms into
 crowded slices, and it keeps zooming **as many levels as needed**. That
@@ -519,15 +512,12 @@ weakness.
 
 ClusterJump is essentially **a two-level Hist-Tree.**
 
-**So what is this project's contribution?** **Careful, honest measurement:**
+**So what is this project's contribution?**
 - rules written in advance;
 - fresh-data confirmation;
 - identical final search steps for every method;
 - failure cases found and explained;
 - bugs found in a published library.
-
-That is valuable. It just isn't a new invention, and it shouldn't be described
-as one. Details: `results/RELATED_WORK.md`.
 
 ---
 
@@ -535,7 +525,7 @@ as one. Details: `results/RELATED_WORK.md`.
 
 ### Why this part exists
 
-A reviewer pointed out that ClusterJump still hadn't raced its two most
+ClusterJump still hasn't raced its two most
 important rivals:
 - **CHT (Compact Hist-Tree):** its closest relative.
 - **RMI (Recursive Model Index):** the original learned index (Google and MIT,
@@ -580,13 +570,13 @@ All of this is written down in `results/sosd_rivals/PLAN.md`.
 
 ### Exactly where the project is today
 
-- ✅ Parts 1–7 are complete, confirmed and written up.
-- ✅ CHT and RMI are set up, and pass their correctness tests.
-- ✅ The memory-safe program works.
-- ✅ The tuning race is finished for the **books** dataset.
-- ⏸️ **The tuning race for the other three datasets stopped** with an error
-  (exit code 4) that **hasn't been investigated yet**. That is the next task.
-- ⏳ Still to do after that:
+- Parts 1–7 are complete, confirmed and written up.
+- CHT and RMI are set up, and pass their correctness tests.
+- The memory-safe program works.
+- The tuning race is finished for the **books** dataset.
+- **The tuning race for the other three datasets stopped** with an error
+  (exit code 4) that **has not been investigated yet**.
+- Still to do after that:
   1. choose CHT's and RMI's best settings by the written rule;
   2. generate RMIs for the three fresh data sets;
   3. run the confirmation race;
@@ -600,7 +590,7 @@ If that happens, ClusterJump's remaining advantage is simplicity, not speed.
 
 ---
 
-## Chapter 14: The big lessons
+## Chapter 14: Lessons
 
 1. **Real speed is about memory and short step chains**, not about the math of
    counting comparisons.
