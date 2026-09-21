@@ -6,7 +6,7 @@
 > you from nothing installed to your first result.
 >
 > **For a simple explanation of the project** Read
-> [docs/THE_WHOLE_STORY.md](docs/Explanation.md), a simple, chapter-by-chapter
+> [docs/Explanation.md](docs/Explanation.md), a simple, chapter-by-chapter
 > explanation of the project and its current progress.
 >
 > | Guide | For |
