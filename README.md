@@ -11,7 +11,7 @@
 >
 > | Guide | For |
 > |---|---|
-> | [THE_WHOLE_STORY](docs/Explanation.md) | an explanation of the entire project and its current progress |
+> | [Explanation](docs/Explanation.md) | an explanation of the entire project and its current progress |
 > | [START_HERE](docs/START_HERE.md) | installing, building, testing, your first race |
 > | [GLOSSARY](docs/GLOSSARY.md) | every technical word |
 > | [STRUCTURES](docs/STRUCTURES.md) | what each search method does |
