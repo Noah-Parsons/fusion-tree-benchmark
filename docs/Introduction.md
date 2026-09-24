@@ -204,7 +204,7 @@ Rscript analysis/analyse.R results/timing_raw.csv tput
 
 | I want to… | Read |
 |---|---|
-| understand the whole project, from zero to now | [THE_WHOLE_STORY.md](THE_WHOLE_STORY.md) |
+| understand the whole project, from zero to now | [Introduction.md](Introduction.md) |
 | understand the words | [GLOSSARY.md](GLOSSARY.md) |
 | understand each search method | [STRUCTURES.md](STRUCTURES.md) |
 | see every question the project asked, and the answers | [EXPERIMENTS.md](EXPERIMENTS.md) |
