@@ -9,7 +9,6 @@ folders record the exact commit.
 | PGM-index | https://github.com/gvinciguerra/PGM-index | c6fcf3d34e55eb0061b01e2f49dfcbdb711f1407 (2024-11-28) | Apache-2.0 |
 | ALEX | https://github.com/microsoft/ALEX | 4370da6aa8b509fdc9b0d2c49faa0624b0078589 (2024-03-12) | MIT |
 | TLX | https://github.com/tlx/tlx | 2dd63ab839909f0b43cd02108a1869c4670b2c8e (2025-01-10) | BSL-1.0 |
-
 | CHT (compact Hist-Tree) | https://github.com/stoianmihail/CHT | 8b6f7b3641c375a34506e808db9753384c44ca26 (2021-07-17) | MIT |
 
 ALEX and TLX were downloaded later the same day, for the changing-data race.
