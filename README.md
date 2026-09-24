@@ -2,7 +2,7 @@
 
 <a href="https://doi.org/10.5281/zenodo.22718523"><img src="https://zenodo.org/badge/1365176754.svg" alt="DOI"></a>
 
-> **New here? Start with [docs/START_HERE.md](docs/START_HERE.md).** It takes
+> **Start with [docs/Introduction.md](docs/Introduction.md).** It takes
 > you from nothing installed to your first result.
 >
 > **For a simple explanation of the project** Read
