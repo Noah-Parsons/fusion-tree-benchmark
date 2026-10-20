@@ -32,6 +32,7 @@
 // Output (reps = 0): CSV lines: structure,FITS|OVER_MEMORY_CAP,build_ms,peak_gb
 #include "splus_tree.hpp"
 #include "cluster_jump.hpp"
+#include "cluster_jump2.hpp"
 #include "learned_indexes.hpp"
 #include "sosd_rivals.hpp"
 #include "rmi_index.hpp"
@@ -168,6 +169,7 @@ int main(int argc, char** argv) {
         [](const std::vector<u64>& k, const std::vector<u64>& q, bool l, int r) { run_one<T>(n, k, q, l, r); }, \
         [](const std::vector<u64>& k) { return build_only<T>(k); }})
     E(SPlus8, "splus8"); E(SPlus16, "splus16"); E(ClusterJump, "clusterjump");
+    E(CJ2_K2W8, "cj2_k2w8"); E(CJ2_K3W16, "cj2_k3w16"); E(CJ2_K4W16, "cj2_k4w16");
     E(RS18E16, "rs18_e16"); E(PGM16, "pgm16");
     E(CHT64E16, "cht64_e16"); E(CHT64E32, "cht64_e32"); E(CHT64E64, "cht64_e64"); E(CHT64E128, "cht64_e128");
     E(CHT256E16, "cht256_e16"); E(CHT256E32, "cht256_e32"); E(CHT256E64, "cht256_e64"); E(CHT256E128, "cht256_e128");

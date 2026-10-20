@@ -1,0 +1,86 @@
+2026-10-19T18:12:35.2068519-06:00  pilot cj2 (bench_one, safe, seed 20260909) start reps=7 structures=clusterjump,cj2_k2w8,cj2_k3w16,cj2_k4w16,splus8,rs18_e16,pgm16,cht256_e16,cht64_e16,rmi_r10,rmi_r7 cap_gb=8 watchdog_free_mb=6000
+2026-10-19T18:12:36.0247899-06:00    preflight books s0 cht256_e16 exit=0 killed=False peak_GB=0.82 lowest_free_GB=17.5 result=FITS
+2026-10-19T18:12:39.8576930-06:00    preflight books s0 cht64_e16 exit=0 killed=False peak_GB=0.83 lowest_free_GB=17.5 result=FITS
+2026-10-19T18:13:02.9122517-06:00    ran pilot_tput_books structures=11 exit=0 killed=False seconds=20 peak_GB=0.98 lowest_free_GB=17.4
+2026-10-19T18:13:45.3125029-06:00    ran pilot_lat_books structures=11 exit=0 killed=False seconds=22 peak_GB=0.98 lowest_free_GB=15.7
+2026-10-19T18:14:06.1542428-06:00    preflight wiki s0 cht256_e16 exit=0 killed=False peak_GB=0.81 lowest_free_GB=16.8 result=FITS
+2026-10-19T18:14:09.9579839-06:00    preflight wiki s0 cht64_e16 exit=0 killed=False peak_GB=0.81 lowest_free_GB=16.9 result=FITS
+2026-10-19T18:14:32.7530917-06:00    ran pilot_tput_wiki structures=11 exit=0 killed=False seconds=20 peak_GB=0.9 lowest_free_GB=16.6
+2026-10-19T18:15:13.9105266-06:00    ran pilot_lat_wiki structures=11 exit=0 killed=False seconds=21 peak_GB=0.9 lowest_free_GB=17.2
+2026-10-19T18:15:36.0077994-06:00    preflight fb s0 cht256_e16 exit=0 killed=False peak_GB=2.46 lowest_free_GB=15.8 result=FITS
+2026-10-19T18:15:40.3359983-06:00    preflight fb s0 cht64_e16 exit=0 killed=False peak_GB=1.27 lowest_free_GB=17.2 result=FITS
+2026-10-19T18:16:18.8576455-06:00    ran pilot_tput_fb structures=11 exit=0 killed=False seconds=36 peak_GB=2.47 lowest_free_GB=15.8
+2026-10-19T18:17:11.4422174-06:00    ran pilot_lat_fb structures=11 exit=0 killed=False seconds=33 peak_GB=2.47 lowest_free_GB=15.6
+2026-10-19T18:17:33.0682670-06:00    preflight osm s0 cht256_e16 exit=0 killed=False peak_GB=2.1 lowest_free_GB=16.5 result=FITS
+2026-10-19T18:17:37.1418060-06:00    preflight osm s0 cht64_e16 exit=0 killed=False peak_GB=1.05 lowest_free_GB=17.5 result=FITS
+2026-10-19T18:18:11.1593753-06:00    ran pilot_tput_osm structures=11 exit=0 killed=False seconds=31 peak_GB=2.1 lowest_free_GB=16.5
+2026-10-19T18:19:01.6165721-06:00    ran pilot_lat_osm structures=11 exit=0 killed=False seconds=30 peak_GB=2.1 lowest_free_GB=16.6
+2026-10-19T18:19:21.6215374-06:00  pilot cj2 done
+2026-10-19T18:21:51.8630588-06:00  pilot cj2 (bench_one, safe, seed 20260909) start reps=7 structures=clusterjump,cj2_k2w8,cj2_k3w16,cj2_k4w16,splus8,rs18_e16,pgm16,cht256_e16,cht64_e16,rmi_r10,rmi_r7 cap_gb=8 watchdog_free_mb=6000
+2026-10-19T18:21:52.6893093-06:00    preflight books s0 cht256_e16 exit=0 killed=False peak_GB=0.8 lowest_free_GB=18 result=FITS
+2026-10-19T18:21:56.4587460-06:00    preflight books s0 cht64_e16 exit=0 killed=False peak_GB=0.77 lowest_free_GB=17.9 result=FITS
+2026-10-19T18:22:20.9408174-06:00    ran pilot_tput_books structures=11 exit=0 killed=False seconds=21 peak_GB=0.98 lowest_free_GB=17.7
+2026-10-19T18:23:03.2634532-06:00    ran pilot_lat_books structures=11 exit=0 killed=False seconds=22 peak_GB=0.98 lowest_free_GB=17.7
+2026-10-19T18:23:24.0469758-06:00    preflight wiki s0 cht256_e16 exit=0 killed=False peak_GB=0.82 lowest_free_GB=17.8 result=FITS
+2026-10-19T18:23:27.8214667-06:00    preflight wiki s0 cht64_e16 exit=0 killed=False peak_GB=0.78 lowest_free_GB=17.8 result=FITS
+2026-10-19T18:23:51.5009126-06:00    ran pilot_tput_wiki structures=11 exit=0 killed=False seconds=21 peak_GB=0.9 lowest_free_GB=17.7
+2026-10-19T18:24:31.5382657-06:00    ran pilot_lat_wiki structures=11 exit=0 killed=False seconds=20 peak_GB=0.9 lowest_free_GB=17.8
+2026-10-19T18:24:53.4210437-06:00    preflight fb s0 cht256_e16 exit=0 killed=False peak_GB=2.46 lowest_free_GB=16.5 result=FITS
+2026-10-19T18:24:57.7950238-06:00    preflight fb s0 cht64_e16 exit=0 killed=False peak_GB=1.27 lowest_free_GB=17.7 result=FITS
+2026-10-19T18:25:32.2595576-06:00    ran pilot_tput_fb structures=11 exit=0 killed=False seconds=31 peak_GB=2.47 lowest_free_GB=16.2
+2026-10-19T18:26:23.9158543-06:00    ran pilot_lat_fb structures=11 exit=0 killed=False seconds=32 peak_GB=2.47 lowest_free_GB=16.3
+2026-10-19T18:26:45.5093525-06:00    preflight osm s0 cht256_e16 exit=0 killed=False peak_GB=2.1 lowest_free_GB=17 result=FITS
+2026-10-19T18:26:49.5517008-06:00    preflight osm s0 cht64_e16 exit=0 killed=False peak_GB=1.06 lowest_free_GB=17.7 result=FITS
+2026-10-19T18:27:21.0803536-06:00    ran pilot_tput_osm structures=11 exit=0 killed=False seconds=28 peak_GB=2.1 lowest_free_GB=16.7
+2026-10-19T18:28:10.4406238-06:00    ran pilot_lat_osm structures=11 exit=0 killed=False seconds=29 peak_GB=2.1 lowest_free_GB=16.7
+2026-10-19T18:28:30.4413748-06:00  pilot cj2 done
+2026-10-19T18:51:08.8868407-06:00  confirmation cj2_k2w8 (bench_one, safe) start reps=15 structures=cj2_k2w8,clusterjump,splus8,splus16,rs18_e16,pgm16,cht256_e16,cht64_e16,rmi_r10,rmi_r7 cap_gb=8 watchdog_free_mb=6000
+2026-10-19T18:51:09.7170016-06:00    preflight books s1 cht256_e16 exit=0 killed=False peak_GB=0.8 lowest_free_GB=17.6 result=FITS
+2026-10-19T18:51:13.5071442-06:00    preflight books s1 cht64_e16 exit=0 killed=False peak_GB=0.83 lowest_free_GB=17.5 result=FITS
+2026-10-19T18:51:59.5763703-06:00    ran conf2_tput_books_s1 structures=10 exit=0 killed=False seconds=43 peak_GB=0.98 lowest_free_GB=17.4
+2026-10-19T18:53:01.7225115-06:00    ran conf2_lat_books_s1 structures=10 exit=0 killed=False seconds=42 peak_GB=0.98 lowest_free_GB=17.3
+2026-10-19T18:53:22.5244900-06:00    preflight wiki s1 cht256_e16 exit=0 killed=False peak_GB=0.79 lowest_free_GB=16.6 result=FITS
+2026-10-19T18:53:26.3304949-06:00    preflight wiki s1 cht64_e16 exit=0 killed=False peak_GB=0.78 lowest_free_GB=16.7 result=FITS
+2026-10-19T18:54:10.3061537-06:00    ran conf2_tput_wiki_s1 structures=10 exit=0 killed=False seconds=41 peak_GB=0.9 lowest_free_GB=16.4
+2026-10-19T18:55:17.2197104-06:00    ran conf2_lat_wiki_s1 structures=10 exit=0 killed=False seconds=47 peak_GB=0.9 lowest_free_GB=15.8
+2026-10-19T18:55:39.3630712-06:00    preflight fb s1 cht256_e16 exit=0 killed=False peak_GB=2.46 lowest_free_GB=14.8 result=FITS
+2026-10-19T18:55:43.7170248-06:00    preflight fb s1 cht64_e16 exit=0 killed=False peak_GB=1.27 lowest_free_GB=16 result=FITS
+2026-10-19T18:56:54.1012529-06:00    ran conf2_tput_fb_s1 structures=10 exit=0 killed=False seconds=67 peak_GB=2.47 lowest_free_GB=14.8
+2026-10-19T18:58:22.9290046-06:00    ran conf2_lat_fb_s1 structures=10 exit=0 killed=False seconds=69 peak_GB=2.47 lowest_free_GB=14.5
+2026-10-19T18:58:44.8241966-06:00    preflight osm s1 cht256_e16 exit=0 killed=False peak_GB=2.1 lowest_free_GB=14 result=FITS
+2026-10-19T18:58:48.9125060-06:00    preflight osm s1 cht64_e16 exit=0 killed=False peak_GB=1.04 lowest_free_GB=15 result=FITS
+2026-10-19T18:59:53.0956523-06:00    ran conf2_tput_osm_s1 structures=10 exit=0 killed=False seconds=61 peak_GB=2.11 lowest_free_GB=14.2
+2026-10-19T19:01:14.0537422-06:00    ran conf2_lat_osm_s1 structures=10 exit=0 killed=False seconds=61 peak_GB=2.11 lowest_free_GB=14.5
+2026-10-19T19:01:34.8722781-06:00    preflight books s2 cht256_e16 exit=0 killed=False peak_GB=0.78 lowest_free_GB=16 result=FITS
+2026-10-19T19:01:38.7002367-06:00    preflight books s2 cht64_e16 exit=0 killed=False peak_GB=0.84 lowest_free_GB=15.8 result=FITS
+2026-10-19T19:02:22.8051367-06:00    ran conf2_tput_books_s2 structures=10 exit=0 killed=False seconds=41 peak_GB=0.98 lowest_free_GB=15.5
+2026-10-19T19:03:25.9630209-06:00    ran conf2_lat_books_s2 structures=10 exit=0 killed=False seconds=43 peak_GB=0.98 lowest_free_GB=16.9
+2026-10-19T19:03:46.7849370-06:00    preflight wiki s2 cht256_e16 exit=0 killed=False peak_GB=0.83 lowest_free_GB=16.9 result=FITS
+2026-10-19T19:03:50.5922907-06:00    preflight wiki s2 cht64_e16 exit=0 killed=False peak_GB=0.83 lowest_free_GB=16.8 result=FITS
+2026-10-19T19:04:34.9540314-06:00    ran conf2_tput_wiki_s2 structures=10 exit=0 killed=False seconds=41 peak_GB=0.9 lowest_free_GB=16.5
+2026-10-19T19:05:38.5927513-06:00    ran conf2_lat_wiki_s2 structures=10 exit=0 killed=False seconds=44 peak_GB=0.9 lowest_free_GB=15.9
+2026-10-19T19:06:00.6931018-06:00    preflight fb s2 cht256_e16 exit=0 killed=False peak_GB=2.46 lowest_free_GB=14.8 result=FITS
+2026-10-19T19:06:05.0268526-06:00    preflight fb s2 cht64_e16 exit=0 killed=False peak_GB=1.27 lowest_free_GB=16.2 result=FITS
+2026-10-19T19:07:14.1892474-06:00    ran conf2_tput_fb_s2 structures=10 exit=0 killed=False seconds=66 peak_GB=2.47 lowest_free_GB=14.8
+2026-10-19T19:08:43.6584051-06:00    ran conf2_lat_fb_s2 structures=10 exit=0 killed=False seconds=69 peak_GB=2.47 lowest_free_GB=14.6
+2026-10-19T19:09:05.2746603-06:00    preflight osm s2 cht256_e16 exit=0 killed=False peak_GB=2.1 lowest_free_GB=15.4 result=FITS
+2026-10-19T19:09:09.3450767-06:00    preflight osm s2 cht64_e16 exit=0 killed=False peak_GB=1.05 lowest_free_GB=15.9 result=FITS
+2026-10-19T19:10:12.0137621-06:00    ran conf2_tput_osm_s2 structures=10 exit=0 killed=False seconds=60 peak_GB=2.11 lowest_free_GB=15.3
+2026-10-19T19:11:33.2424366-06:00    ran conf2_lat_osm_s2 structures=10 exit=0 killed=False seconds=61 peak_GB=2.11 lowest_free_GB=15.4
+2026-10-19T19:11:54.0634326-06:00    preflight books s3 cht256_e16 exit=0 killed=False peak_GB=0.8 lowest_free_GB=16.7 result=FITS
+2026-10-19T19:11:57.8824268-06:00    preflight books s3 cht64_e16 exit=0 killed=False peak_GB=0.83 lowest_free_GB=16.7 result=FITS
+2026-10-19T19:12:42.1683885-06:00    ran conf2_tput_books_s3 structures=10 exit=0 killed=False seconds=41 peak_GB=0.98 lowest_free_GB=16.4
+2026-10-19T19:13:46.5099847-06:00    ran conf2_lat_books_s3 structures=10 exit=0 killed=False seconds=44 peak_GB=0.98 lowest_free_GB=15.9
+2026-10-19T19:14:07.3049933-06:00    preflight wiki s3 cht256_e16 exit=0 killed=False peak_GB=0.82 lowest_free_GB=16.2 result=FITS
+2026-10-19T19:14:11.1036484-06:00    preflight wiki s3 cht64_e16 exit=0 killed=False peak_GB=0.82 lowest_free_GB=16.2 result=FITS
+2026-10-19T19:14:55.8001606-06:00    ran conf2_tput_wiki_s3 structures=10 exit=0 killed=False seconds=42 peak_GB=0.9 lowest_free_GB=15.4
+2026-10-19T19:15:58.6871114-06:00    ran conf2_lat_wiki_s3 structures=10 exit=0 killed=False seconds=43 peak_GB=0.9 lowest_free_GB=15
+2026-10-19T19:16:20.5297800-06:00    preflight fb s3 cht256_e16 exit=0 killed=False peak_GB=2.46 lowest_free_GB=15.1 result=FITS
+2026-10-19T19:16:24.8399654-06:00    preflight fb s3 cht64_e16 exit=0 killed=False peak_GB=1.27 lowest_free_GB=16.3 result=FITS
+2026-10-19T19:17:35.6844823-06:00    ran conf2_tput_fb_s3 structures=10 exit=0 killed=False seconds=68 peak_GB=2.47 lowest_free_GB=14.7
+2026-10-19T19:19:03.3635594-06:00    ran conf2_lat_fb_s3 structures=10 exit=0 killed=False seconds=68 peak_GB=2.47 lowest_free_GB=15.3
+2026-10-19T19:19:24.9662811-06:00    preflight osm s3 cht256_e16 exit=0 killed=False peak_GB=2.1 lowest_free_GB=16.3 result=FITS
+2026-10-19T19:19:29.0493396-06:00    preflight osm s3 cht64_e16 exit=0 killed=False peak_GB=1.06 lowest_free_GB=17.4 result=FITS
+2026-10-19T19:20:34.4926498-06:00    ran conf2_tput_osm_s3 structures=10 exit=0 killed=False seconds=62 peak_GB=2.1 lowest_free_GB=16.2
+2026-10-19T19:21:57.8756446-06:00    ran conf2_lat_osm_s3 structures=10 exit=0 killed=False seconds=63 peak_GB=2.1 lowest_free_GB=16
+2026-10-19T19:22:17.8867412-06:00  confirmation cj2_k2w8 done

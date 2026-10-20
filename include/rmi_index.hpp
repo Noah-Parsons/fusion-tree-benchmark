@@ -39,6 +39,7 @@ struct RMIEntry {
     const char* architecture;      // e.g. "linear_spline,linear 2^20"
     std::size_t n;                 // fingerprint of the training keys
     std::uint64_t first, last;
+    std::uint64_t q1, mid;         // keys at n/4 and n/2 (added 2026-10-19 after a wiki collision)
     bool (*load)(char const* data_path);
     void (*cleanup)();
     std::uint64_t (*lookup)(std::uint64_t key, std::size_t* err);
@@ -65,7 +66,8 @@ public:
         const RMIEntry* reg = rmi_registry(count);
         for (std::size_t i = 0; i < count && n_; ++i) {
             const RMIEntry& e = reg[i];
-            if (e.rank == Rank && e.n == n_ && e.first == a.front() && e.last == a.back()) {
+            if (e.rank == Rank && e.n == n_ && e.first == a.front() && e.last == a.back()
+                && e.q1 == a[n_ / 4] && e.mid == a[n_ / 2]) {
                 if (!e.load(rmi_data_path())) break;
                 entry_ = &e;
                 break;

@@ -19,12 +19,15 @@ SAMPLES = ROOT / "data" / "samples"
 
 
 def fingerprint(path: Path):
+    """(count, first, last, key at n/4, key at n/2). The two interior keys were added on
+    2026-10-19: the wiki samples for seeds 20260910 and 20260912 share count, first and last key,
+    so the registry matched seed 12's keys to seed 10's RMI."""
+    def key_at(f, i):
+        f.seek(8 + 8 * i)
+        return struct.unpack("<Q", f.read(8))[0]
     with open(path, "rb") as f:
         (n,) = struct.unpack("<Q", f.read(8))
-        (first,) = struct.unpack("<Q", f.read(8))
-        f.seek(8 + 8 * (n - 1))
-        (last,) = struct.unpack("<Q", f.read(8))
-    return n, first, last
+        return n, key_at(f, 0), key_at(f, n - 1), key_at(f, n // 4), key_at(f, n // 2)
 
 
 def main():
@@ -43,15 +46,21 @@ def main():
         key = (r["dataset"], r["seed"])
         if key not in prints:
             prints[key] = fingerprint(SAMPLES / f"{r['dataset']}_{r['seed']}")
-        n, first, last = prints[key]
+        n, first, last, q1, mid = prints[key]
         ns = r["namespace"]
         arch = f"{r['layers']} {r['branching']}"
         lines.append(
             f'    {{"{r["dataset"]}", {r["seed"]}ULL, {r["rank"]}, "{arch}", {n}ULL, {first}ULL, {last}ULL, '
-            f"&{ns}::load, &{ns}::cleanup, &{ns}::lookup, {ns}::RMI_SIZE}},"
+            f"{q1}ULL, {mid}ULL, &{ns}::load, &{ns}::cleanup, &{ns}::lookup, {ns}::RMI_SIZE}},"
         )
+    # Two different key sets must never share a fingerprint, or an RMI is used on the wrong keys.
+    seen = {}
+    for key, fp in prints.items():
+        if fp in seen and seen[fp] != key:
+            raise SystemExit(f"fingerprint collision between {seen[fp]} and {key}: {fp}")
+        seen[fp] = key
     if not rows:
-        lines.append('    {"", 0, 0, "", 0, 0, 0, nullptr, nullptr, nullptr, 0},')
+        lines.append('    {"", 0, 0, "", 0, 0, 0, 0, 0, nullptr, nullptr, nullptr, 0},')
     lines += [
         "};",
         "const RMIEntry* rmi_registry(std::size_t& count) {",

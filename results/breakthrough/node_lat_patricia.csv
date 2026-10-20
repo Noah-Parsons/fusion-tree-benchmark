@@ -1,0 +1,11 @@
+﻿node,keys,mode,ns,cycles
+btree_scan_branchfree,16,tput,1.062,5.3
+btree_scan_branchfree,16,lat,6.299,31.2
+patricia_step,16,tput,0.995,4.9
+patricia_step,16,lat,6.085,30.1
+patricia_rank,16,tput,7.141,35.4
+patricia_rank,16,lat,14.862,73.6
+patricia_step,32,tput,1.447,7.2
+patricia_step,32,lat,6.616,32.8
+patricia_rank,32,tput,7.892,39.1
+patricia_rank,32,lat,16.644,82.4

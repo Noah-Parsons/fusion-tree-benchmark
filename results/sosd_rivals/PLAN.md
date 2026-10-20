@@ -188,3 +188,18 @@ Fixes, before any wiki data was kept:
   close to ClusterJump's own.
 - If CHT matches ClusterJump in throughput, ClusterJump's only remaining
   claim is being simpler, and that is not a performance claim.
+
+## Stage 1 finished (2026-10-19) and a finding about fb
+
+osm completed under the bench_one harness (peak 4.4 GB, lowest free RAM 13.8 GB, no setting over
+the cap). `sosd_select.R` chose: throughput CHT `cht256_e16`, RMI `rmi_r10`; latency CHT
+`cht64_e16`, RMI `rmi_r7`.
+
+**Finding (exploratory, tuning seed only).** ClusterJump's Stage 1 throughput on fb was 142 ns,
+2.9x the S+ tree, although the September confirmation runs had it at 0.64x. Cause, checked on
+the dumped key sets: every fb sample contains a few outlier IDs (3-7 keys above 2^40 while 99.99%
+are below 7.7e10). On seed 20260909 one outlier (1.41e14) falls into the same top bucket as the
+bulk (top-bucket width 2^48); that bucket's second level is fitted to its smallest and largest
+key, so it is stretched about 1,800x and the bulk crowds into a few slots. On seeds 20260910-12
+no outlier shares the bulk's bucket, which is why the confirmation runs looked fine. One key can
+therefore collapse ClusterJump; this is reported regardless of what Stage 2 shows.

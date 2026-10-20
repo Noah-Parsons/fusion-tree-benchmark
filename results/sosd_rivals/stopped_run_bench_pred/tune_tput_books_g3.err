@@ -1,0 +1,1 @@
+mode=tput order=shuffled cpu=8 pinned=1 sketch=pext reps=7 max_log=25 structures=7 seed=20260909 keys=file:data\books_200M_uint64 compiler=gcc 16.1.0

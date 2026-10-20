@@ -59,7 +59,7 @@ foreach ($k in $sets) {
     $done = @('tput', 'lat') | Where-Object {
         $f = "$out\tune_$($_)_${k}_g1.csv"; (Test-Path $f) -and ((Get-Content $f | Measure-Object -Line).Lines -gt 1)
     }
-    if ($done.Count -eq 2 -and $k -eq 'books') { Log "  $k already complete (both modes), skipped"; continue }
+    if ($done.Count -eq 2) { Log "  $k already complete (both modes), skipped"; continue }
 
     # 1. Pre-flight.
     $fits = @()
